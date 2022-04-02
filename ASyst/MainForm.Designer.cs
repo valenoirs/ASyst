@@ -51,7 +51,6 @@
             this.stpLoadDataset = new System.Windows.Forms.ToolStripMenuItem();
             this.stpAddFace = new System.Windows.Forms.ToolStripMenuItem();
             this.stpHelp = new System.Windows.Forms.ToolStripMenuItem();
-            this.stpSettings = new System.Windows.Forms.ToolStripMenuItem();
             this.btnStart = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblAttendedName = new System.Windows.Forms.Label();
@@ -253,8 +252,7 @@
             this.MenuStrip.BackColor = System.Drawing.SystemColors.Control;
             this.MenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
-            this.stpHelp,
-            this.stpSettings});
+            this.stpHelp});
             this.MenuStrip.Location = new System.Drawing.Point(0, 0);
             this.MenuStrip.Name = "MenuStrip";
             this.MenuStrip.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -275,7 +273,7 @@
             // stpLoadDataset
             // 
             this.stpLoadDataset.Name = "stpLoadDataset";
-            this.stpLoadDataset.Size = new System.Drawing.Size(142, 22);
+            this.stpLoadDataset.Size = new System.Drawing.Size(180, 22);
             this.stpLoadDataset.Tag = "";
             this.stpLoadDataset.Text = "Load Dataset";
             this.stpLoadDataset.Click += new System.EventHandler(this.stpLoadDataset_Click);
@@ -284,7 +282,7 @@
             // 
             this.stpAddFace.Enabled = false;
             this.stpAddFace.Name = "stpAddFace";
-            this.stpAddFace.Size = new System.Drawing.Size(142, 22);
+            this.stpAddFace.Size = new System.Drawing.Size(180, 22);
             this.stpAddFace.Text = "Add Face";
             this.stpAddFace.Click += new System.EventHandler(this.stpAddFace_Click);
             // 
@@ -294,13 +292,6 @@
             this.stpHelp.Size = new System.Drawing.Size(44, 20);
             this.stpHelp.Text = "Help";
             this.stpHelp.Click += new System.EventHandler(this.stpHelp_Click);
-            // 
-            // stpSettings
-            // 
-            this.stpSettings.Name = "stpSettings";
-            this.stpSettings.Size = new System.Drawing.Size(61, 20);
-            this.stpSettings.Text = "Settings";
-            this.stpSettings.Click += new System.EventHandler(this.stpSettings_Click);
             // 
             // btnStart
             // 
@@ -481,7 +472,6 @@
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ASyst";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.pcbRecognized)).EndInit();
@@ -538,7 +528,6 @@
         private System.Windows.Forms.Label lblIDOnScreenStts;
         private System.Windows.Forms.Label lblNameOnScreen;
         private System.Windows.Forms.Label lblProjectTorvald;
-        private System.Windows.Forms.ToolStripMenuItem stpSettings;
         private System.Windows.Forms.Button btnStop;
     }
 }

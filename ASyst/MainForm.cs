@@ -47,7 +47,6 @@ namespace ASyst
         private bool recognizing = false, CUDA = false;
         public static bool addFace = false;
         public static string NameLabel, IDLabel;
-        public static SettingsComponent settings;
 
 
         //Cascade Declaration
@@ -89,22 +88,10 @@ namespace ASyst
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            InitializeJSON();
 
             CUDA = CudaInvoke.HasCuda;
 
-            if (settings.boolLBPH == true)
-            {
-                recognizer = new LBPHFaceRecognizer(settings.Radius, settings.Neighbors, settings.GridX, settings.GridY, settings.ThresholdLPBH);
-            }
-            else if (settings.boolEigen == true)
-            {
-                recognizer = new EigenFaceRecognizer(settings.numCompEigen, settings.ThresholdEigen);
-            }
-            else if (settings.boolFisher == true)
-            {
-                recognizer = new FisherFaceRecognizer(settings.numCompFisher, settings.ThresholdFisher);
-            }
+            recognizer = new LBPHFaceRecognizer(1, 8, 8, 8, 5);
 
             if (!Directory.Exists(Application.StartupPath + "\\report"))
             {
@@ -317,7 +304,6 @@ namespace ASyst
             IDPersons.Clear();
         }
 
-
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
 
@@ -335,31 +321,11 @@ namespace ASyst
             }
         }
 
-        private void stpSettings_Click(object sender, EventArgs e)
-        {
-            Settings opensettings = new Settings();
-            opensettings.ShowDialog();
-
-            if(settings.boolLBPH == true)
-            {
-                recognizer = new LBPHFaceRecognizer(settings.Radius, settings.Neighbors, settings.GridX, settings.GridY, settings.ThresholdLPBH);
-            }
-            else if (settings.boolEigen == true)
-            {
-                recognizer = new EigenFaceRecognizer(settings.numCompEigen, settings.ThresholdEigen);
-            }
-            else if (settings.boolFisher == true)
-            {
-                recognizer = new FisherFaceRecognizer(settings.numCompFisher, settings.ThresholdFisher);
-            }
-        }
-
         private void stpHelp_Click(object sender, EventArgs e)
         {
             Help help = new Help();
             help.ShowDialog();
         }
-
 
         private void stpLoadDataset_Click(object sender, EventArgs e)
         {
@@ -442,12 +408,6 @@ namespace ASyst
             }
         }
 
-        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            File.WriteAllText(Application.StartupPath + "\\settings\\settings.json", JsonConvert.SerializeObject(settings));
-        }
-
-
         private void stpAddFace_Click(object sender, EventArgs e)
         {
             AddNewFace add = new AddNewFace();
@@ -460,7 +420,6 @@ namespace ASyst
                 pcbRecognized.Visible = true;
             }
         }
-
 
         private void ScanningCounter()
         {
@@ -591,44 +550,6 @@ namespace ASyst
                 }
             }
         }
-
-
-        private void InitializeJSON()
-        {
-            try
-            {
-                if(!Directory.Exists(Application.StartupPath + "\\settings"))
-                {
-                    Directory.CreateDirectory("settings");
-                }
-                
-                settings = JsonConvert.DeserializeObject<SettingsComponent>(File.ReadAllText(Application.StartupPath + "\\settings\\settings.json"));
-
-                if (File.Exists(Application.StartupPath + "\\settings\\settings.json"))
-                {
-                    MessageBox.Show("Settings Loaded");
-                }
-            }
-            catch (FileNotFoundException ex)
-            {
-                MessageBox.Show("No Settings Found, Generating One...");
-                settings = new SettingsComponent();
-                saveSettingsJSON();
-            }
-            catch (JsonReaderException e)
-            {
-                MessageBox.Show("Corrupt Settings File");
-                File.Delete(Application.StartupPath + "\\settings\\settings.json");
-                this.Close();
-            }
-        }
-
-
-        private void saveSettingsJSON()
-        {
-            File.WriteAllText(Application.StartupPath + "\\settings\\settings.json", JsonConvert.SerializeObject(settings));
-        }
-
 
         static string AlphabetToInt(int index)
         {
