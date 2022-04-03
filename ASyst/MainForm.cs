@@ -93,10 +93,32 @@ namespace ASyst
             // Initialize EmguCV Recognizer using LBPH
             recognizer = new LBPHFaceRecognizer(1, 8, 8, 8, 5.0);
 
-            // Check if directory to save dataset exist, if not create one
+            // Check if directory to save report and dataset exist, if not create one
             if (!Directory.Exists(Application.StartupPath + "\\report"))
             {
                 Directory.CreateDirectory(Application.StartupPath + "\\report");
+            }
+            if (!Directory.Exists(Application.StartupPath + "\\report\\dataset"))
+            {
+                Directory.CreateDirectory(Application.StartupPath + "\\report\\dataset");
+            }
+            if (!Directory.Exists(Application.StartupPath + "\\report\\dataset\\bitmap"))
+            {
+                Directory.CreateDirectory(Application.StartupPath + "\\report\\dataset\\bitmap");
+            }
+            if (!File.Exists(Application.StartupPath + "\\report\\Report.xlsx"))
+            {
+                using (ExcelEngine excelEngine = new ExcelEngine())
+                {
+                    IApplication application = excelEngine.Excel;
+                    application.DefaultVersion = ExcelVersion.Excel2013;
+                    IWorkbook workbook = application.Workbooks.Create(1);
+                    IWorksheet worksheet = workbook.Worksheets[0];
+
+                    workbook.SaveAs(Application.StartupPath + "\\report\\Report.xlsx");
+                    workbook.Close();
+                    excelEngine.Dispose();
+                }
             }
             if (!Directory.Exists(Application.StartupPath + "\\Face Recognition"))
             {
@@ -557,26 +579,6 @@ namespace ASyst
             return value;
         }
 
-        //private void loadExcelFile()
-        //{
-        //    Excel.Application xlApp = new Microsoft.Office.Interop.Excel.Application();
-
-        //    if(xlApp == null)
-        //    {
-        //        MessageBox.Show("Excel is not installed!");
-        //        return;
-        //    }
-
-        //    Excel.Workbook xlWorkBook;
-        //    Excel.Worksheet xlWorkSheet;
-        //    object misValue = System.Reflection.Missing.Value;
-
-        //    xlWorkBook = xlApp.Workbooks.Add(misValue);
-        //    xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
-
-
-        //}
-
         private void loadExcelFile()
         {
             using (ExcelEngine excelEngine = new ExcelEngine())
@@ -601,7 +603,7 @@ namespace ASyst
                     worksheet.Range["D1:T1"].ColumnWidth = 13;
                     worksheet.Range["B3:T3"].CellStyle = header;
 
-                    worksheet.Range["B3"].Text = "NIM";
+                    worksheet.Range["B3"].Text = "NIM"; 
                     worksheet.Range["C3"].Text = "NAMA";
                     worksheet.Range["D3"].Text = "Pertemuan1";
                     worksheet.Range["E3"].Text = "Pertemuan2";
