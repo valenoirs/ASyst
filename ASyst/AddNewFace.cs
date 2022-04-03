@@ -25,15 +25,15 @@ namespace ASyst
             }
             else if (txbIDLabel.Text.Length < 1)
             {
-                MessageBox.Show("NIM Cannot Empty ", "Training Fail", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("ID Cannot Empty ", "Training Fail", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else if (txbIDLabel.Text.Any(char.IsLetter))
             {
-                MessageBox.Show("NIM Cannot Contain Letter", "Training Fail", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("ID Cannot Contain Letter", "Training Fail", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else if (txbIDLabel.Text.Length != 8)
             {
-                MessageBox.Show("NIM Length Cannot More or Less Than 8 Digits", "Training Fail", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("ID Length Cannot More or Less Than 8 Digits", "Training Fail", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else
             {

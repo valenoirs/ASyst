@@ -42,7 +42,7 @@
     <GenerateManifests>false</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>book_read_ebook_open_icon_179752.ico</ApplicationIcon>
+    <ApplicationIcon>app_icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AForge, Version=2.2.5.0, Culture=neutral, PublicKeyToken=c1db6ff4eaa06aeb, processorArchitecture=MSIL">
@@ -174,6 +174,7 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app_icon.ico" />
     <Content Include="book_read_ebook_open_icon_179752.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

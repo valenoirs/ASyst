@@ -60,7 +60,7 @@ namespace ASyst
             InitializeComponent();
         }
 
-
+        //Adding shortcut key
         private void MainForm_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Control == true && e.KeyCode == Keys.S)
@@ -85,14 +85,15 @@ namespace ASyst
             }
         }
 
-
+        // App on load
         private void MainForm_Load(object sender, EventArgs e)
         {
-
+            // Check if Nvidia CUDA supported
             CUDA = CudaInvoke.HasCuda;
+            // Initialize EmguCV Recognizer using LBPH
+            recognizer = new LBPHFaceRecognizer(1, 8, 8, 8, 5.0);
 
-            recognizer = new LBPHFaceRecognizer(1, 8, 8, 8, 5);
-
+            // Check if directory to save dataset exist, if not create one
             if (!Directory.Exists(Application.StartupPath + "\\report"))
             {
                 Directory.CreateDirectory(Application.StartupPath + "\\report");
@@ -102,7 +103,7 @@ namespace ASyst
                 Directory.CreateDirectory(Application.StartupPath + "\\Face Recognition");
             }
 
-            //LOAD CAMERA DEVICE
+            //Load all camera device
             try
             {
                 filter = new FilterInfoCollection(FilterCategory.VideoInputDevice);
@@ -119,13 +120,13 @@ namespace ASyst
             }
         }
 
-
+        // Stop button
         private void btnStop_Click(object sender, EventArgs e)
         {
 
         }
 
-
+        // Start button
         private void Start_Click(object sender, EventArgs e)
         {
             if (faceCounter > 0)
@@ -140,7 +141,7 @@ namespace ASyst
             stpAddFace.Enabled = true;
         }
 
-
+        // Adding face function
         private void AddFace()
         {
             grayFrame = grabber.QueryFrame().ToImage<Gray, byte>().Resize(pcbCurrentFrame.Width, pcbCurrentFrame.Height, Inter.Cubic);
@@ -180,7 +181,6 @@ namespace ASyst
             lblFaceCounter.Text = (faceCounter / 10).ToString();
         }
 
-
         private void btnScanning_Click(object sender, EventArgs e)
         {
             counterAbsent = 5;
@@ -200,7 +200,6 @@ namespace ASyst
             }
         }
 
-
         private void tmrScanning_Tick(object sender, EventArgs e)
         {
             counterAbsent--;
@@ -210,7 +209,6 @@ namespace ASyst
                 counterAbsent = 5;
             }
         }
-
 
         private void FaceDetector (Rectangle[] facelessVoid)
         {
@@ -261,7 +259,6 @@ namespace ASyst
             }
         }
 
-
         private void FrameCapture(object sender, EventArgs e)
         {
             IDPersons.Add("");
@@ -292,9 +289,7 @@ namespace ASyst
                 AutoAbsent();
             }
 
-
             pcbCurrentFrame.Image = currentFrame;
-
 
             displayID = "";
             if (lblIDOnScreen.Text == "")
@@ -440,7 +435,6 @@ namespace ASyst
             lblIDOnScreen.Text = displayID;
         }
 
-
         private void AutoAbsent()
         {
             if (recognizing == true)
@@ -469,7 +463,6 @@ namespace ASyst
                 lblAttendedName.Text = "Paused";
             }
         }
-
 
         private void OverWriteExcel(string NIM)
         {
@@ -507,7 +500,6 @@ namespace ASyst
                 }
             }
         }
-
 
         private void tmrAddFace_Tick(object sender, EventArgs e)
         {
@@ -565,74 +557,74 @@ namespace ASyst
             return value;
         }
 
-        private void loadExcelFile()
-        {
-            Excel.Application xlApp = new Microsoft.Office.Interop.Excel.Application();
-
-            if(xlApp == null)
-            {
-                MessageBox.Show("Excel is not installed!");
-                return;
-            }
-
-            Excel.Workbook xlWorkBook;
-            Excel.Worksheet xlWorkSheet;
-            object misValue = System.Reflection.Missing.Value;
-
-            xlWorkBook = xlApp.Workbooks.Add(misValue);
-            xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
-
-
-        }
-
         //private void loadExcelFile()
         //{
-        //    using (ExcelEngine excelEngine = new ExcelEngine())
+        //    Excel.Application xlApp = new Microsoft.Office.Interop.Excel.Application();
+
+        //    if(xlApp == null)
         //    {
-        //        IApplication application = excelEngine.Excel;
-        //        application.DefaultVersion = ExcelVersion.Excel2013;
-        //        IWorkbook workbook = application.Workbooks.Open(pathExcel);
-        //        IWorksheet worksheet = workbook.Worksheets[0];
-
-        //        if (!workbook.Styles.Contains("Header"))
-        //        {
-        //            IStyle header = workbook.Styles.Add("Header");
-        //            header.Font.Bold = true;
-        //            header.HorizontalAlignment = ExcelHAlign.HAlignCenter;
-        //            header.Borders[ExcelBordersIndex.EdgeLeft].LineStyle = ExcelLineStyle.Thin;
-        //            header.Borders[ExcelBordersIndex.EdgeRight].LineStyle = ExcelLineStyle.Thin;
-        //            header.Borders[ExcelBordersIndex.EdgeTop].LineStyle = ExcelLineStyle.Thin;
-        //            header.Borders[ExcelBordersIndex.EdgeBottom].LineStyle = ExcelLineStyle.Thin;
-
-        //            worksheet.Range["B1"].ColumnWidth = 11;
-        //            worksheet.Range["C1"].ColumnWidth = 24;
-        //            worksheet.Range["D1:T1"].ColumnWidth = 13;
-        //            worksheet.Range["B3:T3"].CellStyle = header;
-
-        //            worksheet.Range["B3"].Text = "NIM";
-        //            worksheet.Range["C3"].Text = "NAMA";
-        //            worksheet.Range["D3"].Text = "Pertemuan1";
-        //            worksheet.Range["E3"].Text = "Pertemuan2";
-        //            worksheet.Range["F3"].Text = "Pertemuan3";
-        //            worksheet.Range["G3"].Text = "Pertemuan4";
-        //            worksheet.Range["H3"].Text = "Pertemuan5";
-        //            worksheet.Range["I3"].Text = "Pertemuan6";
-        //            worksheet.Range["J3"].Text = "Pertemuan7";
-        //            worksheet.Range["K3"].Text = "Pertemuan8";
-        //            worksheet.Range["L3"].Text = "Pertemuan9";
-        //            worksheet.Range["M3"].Text = "Pertemuan10";
-        //            worksheet.Range["N3"].Text = "Pertemuan11";
-        //            worksheet.Range["O3"].Text = "Pertemuan12";
-        //            worksheet.Range["P3"].Text = "Pertemuan13";
-        //            worksheet.Range["Q3"].Text = "Pertemuan14";
-        //            worksheet.Range["R3"].Text = "Pertemuan15";
-        //            worksheet.Range["S3"].Text = "Pertemuan16";
-        //            worksheet.Range["T3"].Text = "HADIR";
-        //        }
-        //        workbook.SaveAs(pathExcel);
-        //        workbook.Close();
-        //        excelEngine.Dispose();
+        //        MessageBox.Show("Excel is not installed!");
+        //        return;
         //    }
+
+        //    Excel.Workbook xlWorkBook;
+        //    Excel.Worksheet xlWorkSheet;
+        //    object misValue = System.Reflection.Missing.Value;
+
+        //    xlWorkBook = xlApp.Workbooks.Add(misValue);
+        //    xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+
+
         //}
+
+        private void loadExcelFile()
+        {
+            using (ExcelEngine excelEngine = new ExcelEngine())
+            {
+                IApplication application = excelEngine.Excel;
+                application.DefaultVersion = ExcelVersion.Excel2013;
+                IWorkbook workbook = application.Workbooks.Open(pathExcel);
+                IWorksheet worksheet = workbook.Worksheets[0];
+
+                if (!workbook.Styles.Contains("Header"))
+                {
+                    IStyle header = workbook.Styles.Add("Header");
+                    header.Font.Bold = true;
+                    header.HorizontalAlignment = ExcelHAlign.HAlignCenter;
+                    header.Borders[ExcelBordersIndex.EdgeLeft].LineStyle = ExcelLineStyle.Thin;
+                    header.Borders[ExcelBordersIndex.EdgeRight].LineStyle = ExcelLineStyle.Thin;
+                    header.Borders[ExcelBordersIndex.EdgeTop].LineStyle = ExcelLineStyle.Thin;
+                    header.Borders[ExcelBordersIndex.EdgeBottom].LineStyle = ExcelLineStyle.Thin;
+
+                    worksheet.Range["B1"].ColumnWidth = 11;
+                    worksheet.Range["C1"].ColumnWidth = 24;
+                    worksheet.Range["D1:T1"].ColumnWidth = 13;
+                    worksheet.Range["B3:T3"].CellStyle = header;
+
+                    worksheet.Range["B3"].Text = "NIM";
+                    worksheet.Range["C3"].Text = "NAMA";
+                    worksheet.Range["D3"].Text = "Pertemuan1";
+                    worksheet.Range["E3"].Text = "Pertemuan2";
+                    worksheet.Range["F3"].Text = "Pertemuan3";
+                    worksheet.Range["G3"].Text = "Pertemuan4";
+                    worksheet.Range["H3"].Text = "Pertemuan5";
+                    worksheet.Range["I3"].Text = "Pertemuan6";
+                    worksheet.Range["J3"].Text = "Pertemuan7";
+                    worksheet.Range["K3"].Text = "Pertemuan8";
+                    worksheet.Range["L3"].Text = "Pertemuan9";
+                    worksheet.Range["M3"].Text = "Pertemuan10";
+                    worksheet.Range["N3"].Text = "Pertemuan11";
+                    worksheet.Range["O3"].Text = "Pertemuan12";
+                    worksheet.Range["P3"].Text = "Pertemuan13";
+                    worksheet.Range["Q3"].Text = "Pertemuan14";
+                    worksheet.Range["R3"].Text = "Pertemuan15";
+                    worksheet.Range["S3"].Text = "Pertemuan16";
+                    worksheet.Range["T3"].Text = "HADIR";
+                }
+                workbook.SaveAs(pathExcel);
+                workbook.Close();
+                excelEngine.Dispose();
+            }
+        }
     }
 }

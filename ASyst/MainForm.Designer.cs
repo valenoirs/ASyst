@@ -273,7 +273,7 @@
             // stpLoadDataset
             // 
             this.stpLoadDataset.Name = "stpLoadDataset";
-            this.stpLoadDataset.Size = new System.Drawing.Size(180, 22);
+            this.stpLoadDataset.Size = new System.Drawing.Size(142, 22);
             this.stpLoadDataset.Tag = "";
             this.stpLoadDataset.Text = "Load Dataset";
             this.stpLoadDataset.Click += new System.EventHandler(this.stpLoadDataset_Click);
@@ -282,7 +282,7 @@
             // 
             this.stpAddFace.Enabled = false;
             this.stpAddFace.Name = "stpAddFace";
-            this.stpAddFace.Size = new System.Drawing.Size(180, 22);
+            this.stpAddFace.Size = new System.Drawing.Size(142, 22);
             this.stpAddFace.Text = "Add Face";
             this.stpAddFace.Click += new System.EventHandler(this.stpAddFace_Click);
             // 
