@@ -42,9 +42,9 @@ namespace ASyst
         List<string> trainingIDLabels = new List<string>();
         List<int> trainingImagesID = new List<int>();
         List<string> IDPersons = new List<string>();
-        int faceCounter, counterAddFace, counterAbsent = 5, counterScanning, dateNowDay, dateNowMonth;
+        int faceCounter, counterAddFace, counterAbsent = 5, counterScanning;
         string pathDataset = null, pathExcel = null, IDStored = null, NameStored = null, displayID = null;
-        private bool recognizing = false, CUDA = false;
+        private bool recognizing = false;
         public static bool addFace = false;
         public static string NameLabel, IDLabel;
         DateTime dateNow = DateTime.Now;
@@ -87,10 +87,21 @@ namespace ASyst
         // App on load
         private void MainForm_Load(object sender, EventArgs e)
         {
-            // Check if Nvidia CUDA supported
-            CUDA = CudaInvoke.HasCuda;
+            // Tell if Nvidia CUDA supported
+            if (CudaInvoke.HasCuda)
+            {
+                lblCudaStts.Text = "CUDA Status :             ON";
+            }
+            else
+            {
+                lblCudaStts.Text = "CUDA Status :             OFF";
+            }
+
             // Initialize EmguCV Recognizer using LBPH
             recognizer = new LBPHFaceRecognizer(1, 8, 8, 8, 5.0);
+
+            pathExcel = Application.StartupPath + "\\report\\" + dateNow.ToString("yyyy-MMMM") + ".xlsx";
+            pathDataset = Application.StartupPath + "\\report\\dataset\\";
 
             // Check if directory to save report and dataset exist, if not create one
             if (!Directory.Exists(Application.StartupPath + "\\report"))
@@ -101,42 +112,42 @@ namespace ASyst
             {
                 Directory.CreateDirectory(Application.StartupPath + "\\report\\dataset");
             }
-            if (!Directory.Exists(Application.StartupPath + "\\report\\dataset\\bitmap"))
+            if (!Directory.Exists(pathDataset + "bitmap"))
             {
-                Directory.CreateDirectory(Application.StartupPath + "\\report\\dataset\\bitmap");
+                Directory.CreateDirectory(pathDataset + "bitmap");
             }
-            if (!File.Exists(Application.StartupPath + "\\report\\" + dateNow.ToString("yyyy MMMM") + ".xlsx"))
+            if (!File.Exists(pathExcel))
             {
-                createNewExcel();
+                excelCreate();
             }
-            if (!File.Exists(Application.StartupPath + "\\report\\dataset\\" + "namelabels.txt"))
+            if (!File.Exists(pathDataset + "namelabels.txt"))
             {
-                File.CreateText(Application.StartupPath + "\\report\\dataset\\" + "namelabels.txt");
+                File.CreateText(pathDataset + "namelabels.txt");
             }
-            if (!File.Exists(Application.StartupPath + "\\report\\dataset\\" + "nimlabels.txt"))
+            if (!File.Exists(pathDataset + "idlabels.txt"))
             {
-                File.CreateText(Application.StartupPath + "\\report\\dataset\\" + "nimlabels.txt");
+                File.CreateText(pathDataset + "idlabels.txt");
             }
-            if (!File.Exists(Application.StartupPath + "\\report\\dataset\\" + "facecount.txt"))
+            if (!File.Exists(pathDataset + "facecount.txt"))
             {
-                File.CreateText(Application.StartupPath + "\\report\\dataset\\" + "facecount.txt");
+                File.CreateText(pathDataset + "facecount.txt");
             }
-            if (File.Exists(Application.StartupPath + "\\report\\dataset\\" + "trainingdata.xml"))
+            if (File.Exists(pathDataset + "trainingdata.xml"))
             {
-                recognizer.Load(Application.StartupPath + "\\report\\dataset\\" + "trainingdata.xml");
+                recognizer.Load(pathDataset + "trainingdata.xml");
 
                 string namelabels = File.ReadAllText(pathDataset + "namelabels.txt");
-                string nimlabels = File.ReadAllText(pathDataset + "nimlabels.txt");
+                string idlabels = File.ReadAllText(pathDataset + "idlabels.txt");
                 string[] Name = namelabels.Split('%');
-                string[] NIM = nimlabels.Split('%');
+                string[] NIM = idlabels.Split('%');
 
-                string[] count = Directory.GetFiles(Application.StartupPath + "\\report\\dataset\\bitmap", "*", SearchOption.AllDirectories);
+                string[] count = Directory.GetFiles(pathDataset + "bitmap", "*", SearchOption.AllDirectories);
                 faceCounter = count.Length;
                 //faceCounter = Convert.ToInt32(File.ReadAllText(pathDataset + "facecount.txt"));
 
                 for (int l = 0; l < faceCounter; l++)
                 {
-                    trainingImages.Add(new Image<Gray, byte>(Application.StartupPath + "\\report\\dataset\\bitmap\\" + "face" + (l + 1) + ".bmp"));
+                    trainingImages.Add(new Image<Gray, byte>(pathDataset + "bitmap\\" + "face" + (l + 1) + ".bmp"));
                     trainingNameLabels.Add(Name[l]);
                     trainingIDLabels.Add(NIM[l]);
                     trainingImagesID.Add(l);
@@ -173,7 +184,7 @@ namespace ASyst
         // Stop button
         private void btnStop_Click(object sender, EventArgs e)
         {
-            createNewExcel();
+            
         }
 
         // Start button
@@ -213,15 +224,15 @@ namespace ASyst
             File.WriteAllText(pathDataset + "facecount.txt", faceCounter.ToString());
 
             File.WriteAllText(pathDataset + "namelabels.txt", "");
-            File.WriteAllText(pathDataset + "nimlabels.txt", "");
+            File.WriteAllText(pathDataset + "idlabels.txt", "");
 
             pcbRecognized.Image = TrainedFace;
 
             for (int l = 0; l < faceCounter; l++)
             {
-                trainingImages.ToArray()[l].Save(pathDataset + "\\dataset\\face" + (l + 1) + ".bmp");
+                trainingImages.ToArray()[l].Save(pathDataset + "\\bitmap\\face" + (l + 1) + ".bmp");
                 File.AppendAllText(pathDataset + "namelabels.txt", trainingNameLabels.ToArray()[l] + "%");
-                File.AppendAllText(pathDataset + "nimlabels.txt", trainingIDLabels.ToArray()[l] + "%");
+                File.AppendAllText(pathDataset + "idlabels.txt", trainingIDLabels.ToArray()[l] + "%");
             }
 
             recognizer.Train(trainingImages.ToArray(), trainingImagesID.ToArray());
@@ -257,6 +268,47 @@ namespace ASyst
             {
                 counterAbsent = 5;
             }
+        }
+
+        private void FrameCapture(object sender, EventArgs e)
+        {
+            IDPersons.Add("");
+            currentFrame = grabber.QueryFrame().ToImage<Bgr, byte>().Resize(pcbCurrentFrame.Width, pcbCurrentFrame.Height, Inter.Cubic);
+            grayFrame = currentFrame.Convert<Gray, byte>();
+
+            if (CudaInvoke.HasCuda)
+            {
+                // If Nvidia CUDA Supported
+                lblCudaStts.Text = "CUDA Status :             ON";
+                using (CudaImage<Gray, byte> cuda_grayFrame = new CudaImage<Gray, byte>(grayFrame))
+                using (GpuMat region = new GpuMat())
+                {
+                    cuda_cascade.DetectMultiScale(cuda_grayFrame, region);
+                    faceDetected = cuda_cascade.Convert(region);
+                    faces.AddRange(faceDetected);
+                    FaceDetector(faceDetected);
+                }
+                ScanningCounter();
+                AutoAbsent();
+            }
+            else
+            {
+                // If Nvidia CUDA Unsupported
+                lblCudaStts.Text = "CUDA Status :             OFF";
+                faceDetected = cascade.DetectMultiScale(grayFrame, 1.1, 10, new Size(100, 100), Size.Empty);
+                FaceDetector(faceDetected);
+                ScanningCounter();
+                AutoAbsent();
+            }
+
+            pcbCurrentFrame.Image = currentFrame;
+
+            displayID = "";
+            if (lblIDOnScreen.Text == "")
+            {
+                displayID = "Scanning";
+            }
+            IDPersons.Clear();
         }
 
         private void FaceDetector(Rectangle[] facelessVoid)
@@ -306,46 +358,6 @@ namespace ASyst
                     continue;
                 }
             }
-        }
-
-        private void FrameCapture(object sender, EventArgs e)
-        {
-            IDPersons.Add("");
-            currentFrame = grabber.QueryFrame().ToImage<Bgr, byte>().Resize(pcbCurrentFrame.Width, pcbCurrentFrame.Height, Inter.Cubic);
-            grayFrame = currentFrame.Convert<Gray, byte>();
-
-            if (CUDA)
-            {
-                lblCudaStts.Text = "CUDA Status :             CUDA ON";
-                using (CudaImage<Gray, byte> cuda_grayFrame = new CudaImage<Gray, byte>(grayFrame))
-                using (GpuMat region = new GpuMat())
-                {
-                    cuda_cascade.DetectMultiScale(cuda_grayFrame, region);
-                    faceDetected = cuda_cascade.Convert(region);
-                    faces.AddRange(faceDetected);
-                    FaceDetector(faceDetected);
-                }
-                ScanningCounter();
-                AutoAbsent();
-            }
-            else
-            {
-                //IF THE USER DON'T HAVE NVIDIA GRAPHIC CARD
-                lblCudaStts.Text = "CUDA Status :             CUDA OFF";
-                faceDetected = cascade.DetectMultiScale(grayFrame, 1.1, 10, new Size(100, 100), Size.Empty);
-                FaceDetector(faceDetected);
-                ScanningCounter();
-                AutoAbsent();
-            }
-
-            pcbCurrentFrame.Image = currentFrame;
-
-            displayID = "";
-            if (lblIDOnScreen.Text == "")
-            {
-                displayID = "Scanning";
-            }
-            IDPersons.Clear();
         }
 
         public const int WM_NCLBUTTONDOWN = 0xA1;
@@ -411,12 +423,13 @@ namespace ASyst
                 if (lblIDOnScreen.Text.Length > 8)
                 {
                     tmrScanning.Start();
-                    OverWriteExcel(IDStored);
+                    //OverWriteExcel(IDStored);
                     lblAttendanceStatus.Text = counterAbsent.ToString();
                 }
                 else
                 {
                     tmrScanning.Stop();
+                    counterAbsent = 5;
                     lblAttendanceStatus.Text = "Scanning";
                     lblAttendedID.Text = "Scanning";
                     lblAttendedName.Text = "Scanning";
@@ -482,26 +495,8 @@ namespace ASyst
                 }
                 else if (counterAddFace == 1)
                 {
-                    using (ExcelEngine excelEngine = new ExcelEngine())
-                    {
-                        IApplication application = excelEngine.Excel;
-                        application.DefaultVersion = ExcelVersion.Excel2013;
-                        IWorkbook workbook = excelEngine.Excel.Workbooks.Open(pathExcel);
-                        IWorksheet worksheet = workbook.Worksheets[0];
-                        IStyle body = workbook.Styles.Add("Body" + (faceCounter / 10));
 
-                        body.Borders[ExcelBordersIndex.EdgeLeft].LineStyle = ExcelLineStyle.Thin;
-                        body.Borders[ExcelBordersIndex.EdgeRight].LineStyle = ExcelLineStyle.Thin;
-                        body.Borders[ExcelBordersIndex.EdgeBottom].LineStyle = ExcelLineStyle.Thin;
-                        worksheet.Range["B" + ((faceCounter / 10) + 3).ToString() + ":T" + ((faceCounter / 10) + 3).ToString()].CellStyle = body;
-
-                        worksheet.Range["B" + ((faceCounter / 10) + 3).ToString()].Text = IDLabel;
-                        worksheet.Range["C" + ((faceCounter / 10) + 3).ToString()].Text = NameLabel;
-
-                        workbook.SaveAs(pathExcel);
-                        workbook.Close();
-                        excelEngine.Dispose();
-                    }
+                    excelAdd();
 
                     MessageBox.Show("Done, Hope I Can Recognize Him/Her Later", "Face Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     tmrAddFace.Enabled = false;
@@ -527,9 +522,67 @@ namespace ASyst
             return value;
         }
 
-        private void createNewExcel()
+        private void excelAdd()
         {
-            Excel.Application xlApp = new Microsoft.Office.Interop.Excel.Application();
+            Excel.Application xlApp = new Excel.Application();
+
+            int columnToUpdate = faceCounter / 10 + 4;
+
+            if (xlApp == null)
+            {
+                MessageBox.Show("Excel not installed properly", "Excel not installed!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            Excel.Workbook xlWorkBook;
+            Excel.Worksheet xlWorksheet;
+            object misValue = System.Reflection.Missing.Value;
+
+            xlWorkBook = xlApp.Workbooks.Open(pathExcel);
+            xlWorksheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+
+            xlWorksheet.Cells[columnToUpdate, 1] = faceCounter / 10;
+            xlWorksheet.Cells[columnToUpdate, 2] = IDLabel;
+            xlWorksheet.Cells[columnToUpdate, 3] = NameLabel;
+
+            xlApp.DisplayAlerts = false;
+
+            xlWorkBook.SaveAs(pathExcel, Excel.XlFileFormat.xlWorkbookDefault, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+
+            xlWorkBook.Close(true, misValue, misValue);
+            xlApp.Quit();
+        }
+
+        private void excelUpdate()
+        {
+            Excel.Application xlApp = new Excel.Application();
+
+            if (xlApp == null)
+            {
+                MessageBox.Show("Excel not installed properly", "Excel not installed!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            Excel.Workbook xlWorkBook;
+            Excel.Worksheet xlWorksheet;
+            object misValue = System.Reflection.Missing.Value;
+
+            xlWorkBook = xlApp.Workbooks.Open(pathExcel);
+            xlWorksheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+
+
+
+            xlApp.DisplayAlerts = false;
+
+            xlWorkBook.SaveAs(pathExcel, Excel.XlFileFormat.xlWorkbookDefault, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+
+            xlWorkBook.Close(true, misValue, misValue);
+            xlApp.Quit();
+        }
+
+        private void excelCreate()
+        {
+            Excel.Application xlApp = new Excel.Application();
 
             if (xlApp == null)
             {
@@ -548,8 +601,8 @@ namespace ASyst
             xlWorksheet.Range[xlWorksheet.Cells[2, 1], xlWorksheet.Cells[2, 6]].Merge();
 
             xlWorksheet.Columns[1].ColumnWidth = 5;
-            xlWorksheet.Columns[2].ColumnWidth = 20;
-            xlWorksheet.Columns[3].ColumnWidth = 27;
+            xlWorksheet.Columns[2].ColumnWidth = 22;
+            xlWorksheet.Columns[3].ColumnWidth = 28;
             xlWorksheet.Columns[4].ColumnWidth = 16;
 
             xlWorksheet.Cells[1, 1].Font.Bold = true;
@@ -562,6 +615,9 @@ namespace ASyst
             xlWorksheet.Cells[1, 1].HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
             xlWorksheet.Cells[2, 1].HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
 
+            xlWorksheet.Columns[1].HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
+            xlWorksheet.Columns[2].HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
+
             xlWorksheet.Cells[1, 1] = "DATA KEHADIRAN GURU & PEGAWAI SD GMIM 2 TONDANO";
             xlWorksheet.Cells[2, 1] = dateNow.ToString("MMMM . yyyy");
             xlWorksheet.Cells[4, 1] = "No";
@@ -571,12 +627,12 @@ namespace ASyst
 
             xlApp.DisplayAlerts = false;
 
-            xlWorkBook.SaveAs(Application.StartupPath + "\\report\\" + dateNow.ToString("yyyy MMMM") + ".xlsx", Excel.XlFileFormat.xlWorkbookDefault, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+            xlWorkBook.SaveAs(pathExcel, Excel.XlFileFormat.xlWorkbookDefault, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
 
             xlWorkBook.Close(true, misValue, misValue);
             xlApp.Quit();
 
-            //MessageBox.Show("Excel File Created!", "Excel Created!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("New Month, new Spreadsheet", "Excel Created!", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
     }
