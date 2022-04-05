@@ -277,7 +277,6 @@
             this.stpLoadDataset.Size = new System.Drawing.Size(180, 22);
             this.stpLoadDataset.Tag = "";
             this.stpLoadDataset.Text = "Load Dataset";
-            this.stpLoadDataset.Click += new System.EventHandler(this.stpLoadDataset_Click);
             // 
             // stpAddFace
             // 
