@@ -65,6 +65,7 @@
             this.lblNameOnScreen = new System.Windows.Forms.Label();
             this.lblNameOnScreenStts = new System.Windows.Forms.Label();
             this.lblProjectTorvald = new System.Windows.Forms.Label();
+            this.lblDateToday = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pcbRecognized)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbCurrentFrame)).BeginInit();
             this.MenuStrip.SuspendLayout();
@@ -273,7 +274,7 @@
             // stpLoadDataset
             // 
             this.stpLoadDataset.Name = "stpLoadDataset";
-            this.stpLoadDataset.Size = new System.Drawing.Size(142, 22);
+            this.stpLoadDataset.Size = new System.Drawing.Size(180, 22);
             this.stpLoadDataset.Tag = "";
             this.stpLoadDataset.Text = "Load Dataset";
             this.stpLoadDataset.Click += new System.EventHandler(this.stpLoadDataset_Click);
@@ -282,7 +283,7 @@
             // 
             this.stpAddFace.Enabled = false;
             this.stpAddFace.Name = "stpAddFace";
-            this.stpAddFace.Size = new System.Drawing.Size(142, 22);
+            this.stpAddFace.Size = new System.Drawing.Size(180, 22);
             this.stpAddFace.Text = "Add Face";
             this.stpAddFace.Click += new System.EventHandler(this.stpAddFace_Click);
             // 
@@ -295,7 +296,6 @@
             // 
             // btnStart
             // 
-            this.btnStart.Enabled = false;
             this.btnStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnStart.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnStart.Location = new System.Drawing.Point(336, 6);
@@ -366,7 +366,6 @@
             // 
             // btnStop
             // 
-            this.btnStop.Enabled = false;
             this.btnStop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnStop.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnStop.Location = new System.Drawing.Point(427, 6);
@@ -450,11 +449,22 @@
             this.lblProjectTorvald.TabIndex = 22;
             this.lblProjectTorvald.Text = "ASyst";
             // 
+            // lblDateToday
+            // 
+            this.lblDateToday.AutoSize = true;
+            this.lblDateToday.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDateToday.Location = new System.Drawing.Point(109, 207);
+            this.lblDateToday.Name = "lblDateToday";
+            this.lblDateToday.Size = new System.Drawing.Size(103, 20);
+            this.lblDateToday.TabIndex = 30;
+            this.lblDateToday.Text = "Date Today";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(534, 510);
+            this.Controls.Add(this.lblDateToday);
             this.Controls.Add(this.lblProjectTorvald);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel4);
@@ -529,6 +539,7 @@
         private System.Windows.Forms.Label lblNameOnScreen;
         private System.Windows.Forms.Label lblProjectTorvald;
         private System.Windows.Forms.Button btnStop;
+        private System.Windows.Forms.Label lblDateToday;
     }
 }
 

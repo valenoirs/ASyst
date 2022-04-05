@@ -42,18 +42,17 @@ namespace ASyst
         List<string> trainingIDLabels = new List<string>();
         List<int> trainingImagesID = new List<int>();
         List<string> IDPersons = new List<string>();
-        int faceCounter, counterAddFace, counterAbsent = 5, counterScanning;
+        int faceCounter, counterAddFace, counterAbsent = 5, counterScanning, dateNowDay, dateNowMonth;
         string pathDataset = null, pathExcel = null, IDStored = null, NameStored = null, displayID = null;
         private bool recognizing = false, CUDA = false;
         public static bool addFace = false;
         public static string NameLabel, IDLabel;
-
+        DateTime dateNow = DateTime.Now;
 
         //Cascade Declaration
         CudaCascadeClassifier cuda_cascade = new CudaCascadeClassifier("haarcascade_frontalface_default.xml");
         CascadeClassifier cascade = new CascadeClassifier("haarcascade_frontalface_default.xml");
         #endregion
-
 
         public MainForm()
         {
@@ -106,24 +105,53 @@ namespace ASyst
             {
                 Directory.CreateDirectory(Application.StartupPath + "\\report\\dataset\\bitmap");
             }
-            if (!File.Exists(Application.StartupPath + "\\report\\Report.xlsx"))
+            if (!File.Exists(Application.StartupPath + "\\report\\" + dateNow.ToString("yyyy MMMM") + ".xlsx"))
             {
-                using (ExcelEngine excelEngine = new ExcelEngine())
-                {
-                    IApplication application = excelEngine.Excel;
-                    application.DefaultVersion = ExcelVersion.Excel2013;
-                    IWorkbook workbook = application.Workbooks.Create(1);
-                    IWorksheet worksheet = workbook.Worksheets[0];
+                createNewExcel();
+            }
+            if (!File.Exists(Application.StartupPath + "\\report\\dataset\\" + "namelabels.txt"))
+            {
+                File.CreateText(Application.StartupPath + "\\report\\dataset\\" + "namelabels.txt");
+            }
+            if (!File.Exists(Application.StartupPath + "\\report\\dataset\\" + "nimlabels.txt"))
+            {
+                File.CreateText(Application.StartupPath + "\\report\\dataset\\" + "nimlabels.txt");
+            }
+            if (!File.Exists(Application.StartupPath + "\\report\\dataset\\" + "facecount.txt"))
+            {
+                File.CreateText(Application.StartupPath + "\\report\\dataset\\" + "facecount.txt");
+            }
+            if (File.Exists(Application.StartupPath + "\\report\\dataset\\" + "trainingdata.xml"))
+            {
+                recognizer.Load(Application.StartupPath + "\\report\\dataset\\" + "trainingdata.xml");
 
-                    workbook.SaveAs(Application.StartupPath + "\\report\\Report.xlsx");
-                    workbook.Close();
-                    excelEngine.Dispose();
+                string namelabels = File.ReadAllText(pathDataset + "namelabels.txt");
+                string nimlabels = File.ReadAllText(pathDataset + "nimlabels.txt");
+                string[] Name = namelabels.Split('%');
+                string[] NIM = nimlabels.Split('%');
+
+                string[] count = Directory.GetFiles(Application.StartupPath + "\\report\\dataset\\bitmap", "*", SearchOption.AllDirectories);
+                faceCounter = count.Length;
+                //faceCounter = Convert.ToInt32(File.ReadAllText(pathDataset + "facecount.txt"));
+
+                for (int l = 0; l < faceCounter; l++)
+                {
+                    trainingImages.Add(new Image<Gray, byte>(Application.StartupPath + "\\report\\dataset\\bitmap\\" + "face" + (l + 1) + ".bmp"));
+                    trainingNameLabels.Add(Name[l]);
+                    trainingIDLabels.Add(NIM[l]);
+                    trainingImagesID.Add(l);
                 }
+
+                lblFaceCounter.Text = (faceCounter / 10).ToString();
+                MessageBox.Show("Dataset Loaded,\n" + (faceCounter / 10) + " Face Added", "Dataset Loaded", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            if (!Directory.Exists(Application.StartupPath + "\\Face Recognition"))
+            else
             {
-                Directory.CreateDirectory(Application.StartupPath + "\\Face Recognition");
+                //MessageBox.Show("Empty Dataset Loaded,\nPlease Add Some Face First", "Dataset Loaded", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                //lblFaceCounter.Text = "Empty";
             }
+
+            lblDateToday.Text = dateNow.ToString("dddd, dd MMMM yyyy HH:mm:ss");
 
             //Load all camera device
             try
@@ -145,7 +173,7 @@ namespace ASyst
         // Stop button
         private void btnStop_Click(object sender, EventArgs e)
         {
-
+            createNewExcel();
         }
 
         // Start button
@@ -196,7 +224,6 @@ namespace ASyst
                 File.AppendAllText(pathDataset + "nimlabels.txt", trainingIDLabels.ToArray()[l] + "%");
             }
 
-
             recognizer.Train(trainingImages.ToArray(), trainingImagesID.ToArray());
             recognizer.Save(pathDataset + "trainingdata.xml");
 
@@ -226,13 +253,13 @@ namespace ASyst
         {
             counterAbsent--;
 
-            if(counterAbsent == -1)
+            if (counterAbsent == -1)
             {
                 counterAbsent = 5;
             }
         }
 
-        private void FaceDetector (Rectangle[] facelessVoid)
+        private void FaceDetector(Rectangle[] facelessVoid)
         {
             foreach (Rectangle face in facelessVoid)
             {
@@ -401,7 +428,7 @@ namespace ASyst
                         }
 
                         lblFaceCounter.Text = (faceCounter / 10).ToString();
-                        MessageBox.Show("Dataset Loaded,\n" + (faceCounter/10) + " Face Added", "Dataset Loaded", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Dataset Loaded,\n" + (faceCounter / 10) + " Face Added", "Dataset Loaded", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
@@ -503,7 +530,7 @@ namespace ASyst
                         if (counterAbsent == 0)
                         {
                             //string nameSpeech = worksheet.Range["C" + l.ToString()].Text.Substring(0, worksheet.Range["C" + l.ToString()].Text.IndexOf(' '));
-                            worksheet.Range[AlphabetToInt((Int32.Parse(cbxMeeting.Text.Substring(0, cbxMeeting.Text.Length-2))) + 2).ToString() + l.ToString()].Number = 1;
+                            worksheet.Range[AlphabetToInt((Int32.Parse(cbxMeeting.Text.Substring(0, cbxMeeting.Text.Length - 2))) + 2).ToString() + l.ToString()].Number = 1;
 
                             worksheet.Range["T" + l.ToString()].Formula = "=SUM(D" + l.ToString() + ":S" + l.ToString() + ")";
 
@@ -520,6 +547,8 @@ namespace ASyst
                         }
                     }
                 }
+                workbook.Close();
+                excelEngine.Dispose();
             }
         }
 
@@ -577,6 +606,58 @@ namespace ASyst
             value += letters[index % letters.Length];
 
             return value;
+        }
+
+        private void createNewExcel()
+        {
+            Excel.Application xlApp = new Microsoft.Office.Interop.Excel.Application();
+
+            if (xlApp == null)
+            {
+                MessageBox.Show("Excel not installed properly", "Excel not installed!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            Excel.Workbook xlWorkBook;
+            Excel.Worksheet xlWorksheet;
+            object misValue = System.Reflection.Missing.Value;
+
+            xlWorkBook = xlApp.Workbooks.Add(misValue);
+            xlWorksheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+
+            xlWorksheet.Range[xlWorksheet.Cells[1, 1], xlWorksheet.Cells[1, 6]].Merge();
+            xlWorksheet.Range[xlWorksheet.Cells[2, 1], xlWorksheet.Cells[2, 6]].Merge();
+
+            xlWorksheet.Columns[1].ColumnWidth = 5;
+            xlWorksheet.Columns[2].ColumnWidth = 20;
+            xlWorksheet.Columns[3].ColumnWidth = 27;
+            xlWorksheet.Columns[4].ColumnWidth = 16;
+
+            xlWorksheet.Cells[1, 1].Font.Bold = true;
+            xlWorksheet.Cells[2, 1].Font.Bold = true;
+            xlWorksheet.Cells[4, 1].Font.Bold = true;
+            xlWorksheet.Cells[4, 2].Font.Bold = true;
+            xlWorksheet.Cells[4, 3].Font.Bold = true;
+            xlWorksheet.Cells[4, 4].Font.Bold = true;
+
+            xlWorksheet.Cells[1, 1].HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+            xlWorksheet.Cells[2, 1].HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+
+            xlWorksheet.Cells[1, 1] = "DATA KEHADIRAN GURU & PEGAWAI SD GMIM 2 TONDANO";
+            xlWorksheet.Cells[2, 1] = dateNow.ToString("MMMM . yyyy");
+            xlWorksheet.Cells[4, 1] = "No";
+            xlWorksheet.Cells[4, 2] = "NIP";
+            xlWorksheet.Cells[4, 3] = "Nama";
+            xlWorksheet.Cells[4, 4] = "Hadir/Tidak Hadir";
+
+            xlApp.DisplayAlerts = false;
+
+            xlWorkBook.SaveAs(Application.StartupPath + "\\report\\" + dateNow.ToString("yyyy MMMM") + ".xlsx", Excel.XlFileFormat.xlWorkbookDefault, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+
+            xlWorkBook.Close(true, misValue, misValue);
+            xlApp.Quit();
+
+            //MessageBox.Show("Excel File Created!", "Excel Created!", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void loadExcelFile()
