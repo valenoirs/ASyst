@@ -59,12 +59,12 @@
             this.btnStop = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.lblIDOnScreenStts = new System.Windows.Forms.Label();
-            this.panel5 = new System.Windows.Forms.Panel();
             this.lblNameOnScreen = new System.Windows.Forms.Label();
+            this.lblIDOnScreenStts = new System.Windows.Forms.Label();
             this.lblNameOnScreenStts = new System.Windows.Forms.Label();
-            this.lblAsyst = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
             this.lblDateToday = new System.Windows.Forms.Label();
+            this.lblAsyst = new System.Windows.Forms.Label();
             this.tmrTimeNow = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pcbRecognized)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbCurrentFrame)).BeginInit();
@@ -370,25 +370,6 @@
             this.panel4.Size = new System.Drawing.Size(308, 81);
             this.panel4.TabIndex = 28;
             // 
-            // lblIDOnScreenStts
-            // 
-            this.lblIDOnScreenStts.AutoSize = true;
-            this.lblIDOnScreenStts.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIDOnScreenStts.Location = new System.Drawing.Point(2, 2);
-            this.lblIDOnScreenStts.Name = "lblIDOnScreenStts";
-            this.lblIDOnScreenStts.Size = new System.Drawing.Size(91, 14);
-            this.lblIDOnScreenStts.TabIndex = 20;
-            this.lblIDOnScreenStts.Text = "ID On Screen :";
-            // 
-            // panel5
-            // 
-            this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel5.Controls.Add(this.lblDateToday);
-            this.panel5.Location = new System.Drawing.Point(5, 161);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(308, 38);
-            this.panel5.TabIndex = 29;
-            // 
             // lblNameOnScreen
             // 
             this.lblNameOnScreen.AutoSize = true;
@@ -400,6 +381,16 @@
             this.lblNameOnScreen.TabIndex = 21;
             this.lblNameOnScreen.Text = ",";
             // 
+            // lblIDOnScreenStts
+            // 
+            this.lblIDOnScreenStts.AutoSize = true;
+            this.lblIDOnScreenStts.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIDOnScreenStts.Location = new System.Drawing.Point(2, 2);
+            this.lblIDOnScreenStts.Name = "lblIDOnScreenStts";
+            this.lblIDOnScreenStts.Size = new System.Drawing.Size(91, 14);
+            this.lblIDOnScreenStts.TabIndex = 20;
+            this.lblIDOnScreenStts.Text = "ID On Screen :";
+            // 
             // lblNameOnScreenStts
             // 
             this.lblNameOnScreenStts.AutoSize = true;
@@ -410,15 +401,14 @@
             this.lblNameOnScreenStts.TabIndex = 19;
             this.lblNameOnScreenStts.Text = "Name On Screen :";
             // 
-            // lblAsyst
+            // panel5
             // 
-            this.lblAsyst.AutoSize = true;
-            this.lblAsyst.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAsyst.Location = new System.Drawing.Point(472, 4);
-            this.lblAsyst.Name = "lblAsyst";
-            this.lblAsyst.Size = new System.Drawing.Size(56, 20);
-            this.lblAsyst.TabIndex = 22;
-            this.lblAsyst.Text = "ASyst";
+            this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel5.Controls.Add(this.lblDateToday);
+            this.panel5.Location = new System.Drawing.Point(5, 161);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(308, 38);
+            this.panel5.TabIndex = 29;
             // 
             // lblDateToday
             // 
@@ -429,6 +419,16 @@
             this.lblDateToday.Size = new System.Drawing.Size(103, 20);
             this.lblDateToday.TabIndex = 30;
             this.lblDateToday.Text = "Date Today";
+            // 
+            // lblAsyst
+            // 
+            this.lblAsyst.AutoSize = true;
+            this.lblAsyst.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAsyst.Location = new System.Drawing.Point(472, 4);
+            this.lblAsyst.Name = "lblAsyst";
+            this.lblAsyst.Size = new System.Drawing.Size(56, 20);
+            this.lblAsyst.TabIndex = 22;
+            this.lblAsyst.Text = "ASyst";
             // 
             // tmrTimeNow
             // 
@@ -459,7 +459,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ASyst";
             this.Load += new System.EventHandler(this.MainForm_Load);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.pcbRecognized)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbCurrentFrame)).EndInit();
             this.MenuStrip.ResumeLayout(false);

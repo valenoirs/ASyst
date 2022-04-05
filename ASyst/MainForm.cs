@@ -60,31 +60,6 @@ namespace ASyst
             InitializeComponent();
         }
 
-        //Adding shortcut key
-        private void MainForm_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Control == true && e.KeyCode == Keys.S)
-            {
-                btnStart.PerformClick();
-            }
-            else if (e.Control == true && e.KeyCode == Keys.F)
-            {
-                stpLoadDataset.PerformClick();
-            }
-            else if (e.Control == true && e.KeyCode == Keys.A)
-            {
-                stpAddFace.PerformClick();
-            }
-            else if (e.Control == true && e.KeyCode == Keys.R)
-            {
-                btnScanning.PerformClick();
-            }
-            else if (e.Control == true && e.KeyCode == Keys.F1)
-            {
-                stpHelp.PerformClick();
-            }
-        }
-
         // App on load
         private void MainForm_Load(object sender, EventArgs e)
         {
