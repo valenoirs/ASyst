@@ -39,7 +39,6 @@
             this.tmrAddFace = new System.Windows.Forms.Timer(this.components);
             this.tmrScanning = new System.Windows.Forms.Timer(this.components);
             this.lblAttendedID = new System.Windows.Forms.Label();
-            this.cbxMeeting = new System.Windows.Forms.ComboBox();
             this.lblAttendanceStatusStts = new System.Windows.Forms.Label();
             this.btnScanning = new System.Windows.Forms.Button();
             this.lblIDOnScreen = new System.Windows.Forms.Label();
@@ -64,8 +63,9 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.lblNameOnScreen = new System.Windows.Forms.Label();
             this.lblNameOnScreenStts = new System.Windows.Forms.Label();
-            this.lblProjectTorvald = new System.Windows.Forms.Label();
+            this.lblAsyst = new System.Windows.Forms.Label();
             this.lblDateToday = new System.Windows.Forms.Label();
+            this.tmrTimeNow = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pcbRecognized)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbCurrentFrame)).BeginInit();
             this.MenuStrip.SuspendLayout();
@@ -156,34 +156,6 @@
             this.lblAttendedID.TabIndex = 16;
             this.lblAttendedID.Text = "-";
             // 
-            // cbxMeeting
-            // 
-            this.cbxMeeting.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxMeeting.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.cbxMeeting.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbxMeeting.FormattingEnabled = true;
-            this.cbxMeeting.Items.AddRange(new object[] {
-            "1st",
-            "2nd",
-            "3rd",
-            "4th",
-            "5th",
-            "6th",
-            "7th",
-            "8th",
-            "9th",
-            "10th",
-            "11th",
-            "12th",
-            "13th",
-            "14th",
-            "15th",
-            "16th"});
-            this.cbxMeeting.Location = new System.Drawing.Point(6, 26);
-            this.cbxMeeting.Name = "cbxMeeting";
-            this.cbxMeeting.Size = new System.Drawing.Size(85, 22);
-            this.cbxMeeting.TabIndex = 17;
-            // 
             // lblAttendanceStatusStts
             // 
             this.lblAttendanceStatusStts.AutoSize = true;
@@ -199,7 +171,7 @@
             this.btnScanning.Enabled = false;
             this.btnScanning.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnScanning.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnScanning.Location = new System.Drawing.Point(6, 25);
+            this.btnScanning.Location = new System.Drawing.Point(5, 46);
             this.btnScanning.Name = "btnScanning";
             this.btnScanning.Size = new System.Drawing.Size(85, 24);
             this.btnScanning.TabIndex = 8;
@@ -274,7 +246,7 @@
             // stpLoadDataset
             // 
             this.stpLoadDataset.Name = "stpLoadDataset";
-            this.stpLoadDataset.Size = new System.Drawing.Size(180, 22);
+            this.stpLoadDataset.Size = new System.Drawing.Size(142, 22);
             this.stpLoadDataset.Tag = "";
             this.stpLoadDataset.Text = "Load Dataset";
             // 
@@ -282,7 +254,7 @@
             // 
             this.stpAddFace.Enabled = false;
             this.stpAddFace.Name = "stpAddFace";
-            this.stpAddFace.Size = new System.Drawing.Size(180, 22);
+            this.stpAddFace.Size = new System.Drawing.Size(142, 22);
             this.stpAddFace.Text = "Add Face";
             this.stpAddFace.Click += new System.EventHandler(this.stpAddFace_Click);
             // 
@@ -388,12 +360,14 @@
             // panel4
             // 
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel4.Controls.Add(this.btnScanning);
+            this.panel4.Controls.Add(this.lblNameOnScreen);
             this.panel4.Controls.Add(this.lblIDOnScreenStts);
             this.panel4.Controls.Add(this.lblIDOnScreen);
-            this.panel4.Controls.Add(this.cbxMeeting);
+            this.panel4.Controls.Add(this.lblNameOnScreenStts);
             this.panel4.Location = new System.Drawing.Point(5, 74);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(308, 61);
+            this.panel4.Size = new System.Drawing.Size(308, 81);
             this.panel4.TabIndex = 28;
             // 
             // lblIDOnScreenStts
@@ -409,19 +383,17 @@
             // panel5
             // 
             this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel5.Controls.Add(this.lblNameOnScreen);
-            this.panel5.Controls.Add(this.btnScanning);
-            this.panel5.Controls.Add(this.lblNameOnScreenStts);
-            this.panel5.Location = new System.Drawing.Point(5, 138);
+            this.panel5.Controls.Add(this.lblDateToday);
+            this.panel5.Location = new System.Drawing.Point(5, 161);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(308, 61);
+            this.panel5.Size = new System.Drawing.Size(308, 38);
             this.panel5.TabIndex = 29;
             // 
             // lblNameOnScreen
             // 
             this.lblNameOnScreen.AutoSize = true;
             this.lblNameOnScreen.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNameOnScreen.Location = new System.Drawing.Point(111, 2);
+            this.lblNameOnScreen.Location = new System.Drawing.Point(111, 23);
             this.lblNameOnScreen.MaximumSize = new System.Drawing.Size(195, 0);
             this.lblNameOnScreen.Name = "lblNameOnScreen";
             this.lblNameOnScreen.Size = new System.Drawing.Size(11, 14);
@@ -432,39 +404,44 @@
             // 
             this.lblNameOnScreenStts.AutoSize = true;
             this.lblNameOnScreenStts.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNameOnScreenStts.Location = new System.Drawing.Point(2, 2);
+            this.lblNameOnScreenStts.Location = new System.Drawing.Point(2, 23);
             this.lblNameOnScreenStts.Name = "lblNameOnScreenStts";
             this.lblNameOnScreenStts.Size = new System.Drawing.Size(112, 14);
             this.lblNameOnScreenStts.TabIndex = 19;
             this.lblNameOnScreenStts.Text = "Name On Screen :";
             // 
-            // lblProjectTorvald
+            // lblAsyst
             // 
-            this.lblProjectTorvald.AutoSize = true;
-            this.lblProjectTorvald.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProjectTorvald.Location = new System.Drawing.Point(472, 4);
-            this.lblProjectTorvald.Name = "lblProjectTorvald";
-            this.lblProjectTorvald.Size = new System.Drawing.Size(56, 20);
-            this.lblProjectTorvald.TabIndex = 22;
-            this.lblProjectTorvald.Text = "ASyst";
+            this.lblAsyst.AutoSize = true;
+            this.lblAsyst.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAsyst.Location = new System.Drawing.Point(472, 4);
+            this.lblAsyst.Name = "lblAsyst";
+            this.lblAsyst.Size = new System.Drawing.Size(56, 20);
+            this.lblAsyst.TabIndex = 22;
+            this.lblAsyst.Text = "ASyst";
             // 
             // lblDateToday
             // 
             this.lblDateToday.AutoSize = true;
             this.lblDateToday.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDateToday.Location = new System.Drawing.Point(109, 207);
+            this.lblDateToday.Location = new System.Drawing.Point(6, 7);
             this.lblDateToday.Name = "lblDateToday";
             this.lblDateToday.Size = new System.Drawing.Size(103, 20);
             this.lblDateToday.TabIndex = 30;
             this.lblDateToday.Text = "Date Today";
+            // 
+            // tmrTimeNow
+            // 
+            this.tmrTimeNow.Enabled = true;
+            this.tmrTimeNow.Interval = 1000;
+            this.tmrTimeNow.Tick += new System.EventHandler(this.tmrTimeNow_Tick);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(534, 510);
-            this.Controls.Add(this.lblDateToday);
-            this.Controls.Add(this.lblProjectTorvald);
+            this.Controls.Add(this.lblAsyst);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
@@ -512,7 +489,6 @@
         private System.Windows.Forms.Timer tmrAddFace;
         private System.Windows.Forms.Timer tmrScanning;
         private System.Windows.Forms.Label lblAttendedID;
-        private System.Windows.Forms.ComboBox cbxMeeting;
         private System.Windows.Forms.Label lblAttendanceStatusStts;
         private System.Windows.Forms.Button btnScanning;
         private System.Windows.Forms.Label lblIDOnScreen;
@@ -536,9 +512,10 @@
         private System.Windows.Forms.Label lblAttendedNameStts;
         private System.Windows.Forms.Label lblIDOnScreenStts;
         private System.Windows.Forms.Label lblNameOnScreen;
-        private System.Windows.Forms.Label lblProjectTorvald;
+        private System.Windows.Forms.Label lblAsyst;
         private System.Windows.Forms.Button btnStop;
         private System.Windows.Forms.Label lblDateToday;
+        private System.Windows.Forms.Timer tmrTimeNow;
     }
 }
 
