@@ -32,54 +32,49 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.pcbRecognized = new Emgu.CV.UI.ImageBox();
             this.lblFaceStored = new System.Windows.Forms.Label();
-            this.pcbCurrentFrame = new Emgu.CV.UI.ImageBox();
             this.cbxDevices = new System.Windows.Forms.ComboBox();
-            this.lblDevices = new System.Windows.Forms.Label();
             this.lblCudaStts = new System.Windows.Forms.Label();
             this.tmrAddFace = new System.Windows.Forms.Timer(this.components);
             this.tmrScanning = new System.Windows.Forms.Timer(this.components);
             this.lblAttendedID = new System.Windows.Forms.Label();
             this.lblAttendanceStatusStts = new System.Windows.Forms.Label();
-            this.btnScanning = new System.Windows.Forms.Button();
+            this.btnAuto = new System.Windows.Forms.Button();
             this.lblIDOnScreen = new System.Windows.Forms.Label();
             this.lblAttendanceStatus = new System.Windows.Forms.Label();
             this.lblAutoStts = new System.Windows.Forms.Label();
             this.lblFaceCounter = new System.Windows.Forms.Label();
-            this.MenuStrip = new System.Windows.Forms.MenuStrip();
-            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.stpLoadDataset = new System.Windows.Forms.ToolStripMenuItem();
-            this.stpAddFace = new System.Windows.Forms.ToolStripMenuItem();
-            this.stpHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.btnStart = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.lblAttendedName = new System.Windows.Forms.Label();
             this.lblAttendedIDStts = new System.Windows.Forms.Label();
             this.lblAttendedNameStts = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.btnStop = new System.Windows.Forms.Button();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.lblNameOnScreen = new System.Windows.Forms.Label();
             this.lblIDOnScreenStts = new System.Windows.Forms.Label();
             this.lblNameOnScreenStts = new System.Windows.Forms.Label();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.lblDateToday = new System.Windows.Forms.Label();
-            this.lblAsyst = new System.Windows.Forms.Label();
+            this.lblHourToday = new System.Windows.Forms.Label();
             this.tmrTimeNow = new System.Windows.Forms.Timer(this.components);
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.lblDateToday = new System.Windows.Forms.Label();
+            this.btnLaporan = new System.Windows.Forms.Button();
+            this.btnMonitor = new System.Windows.Forms.Button();
+            this.btnScanning = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.pcbCurrentFrame = new Emgu.CV.UI.ImageBox();
+            this.btnExit = new System.Windows.Forms.Button();
+            this.btnHide = new System.Windows.Forms.Button();
+            this.lblDevices = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pcbRecognized)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pcbCurrentFrame)).BeginInit();
-            this.MenuStrip.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
-            this.panel5.SuspendLayout();
+            this.panel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbCurrentFrame)).BeginInit();
             this.SuspendLayout();
             // 
             // pcbRecognized
             // 
             this.pcbRecognized.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pcbRecognized.Location = new System.Drawing.Point(3, 207);
+            this.pcbRecognized.Location = new System.Drawing.Point(190, 109);
             this.pcbRecognized.Name = "pcbRecognized";
             this.pcbRecognized.Size = new System.Drawing.Size(100, 100);
             this.pcbRecognized.TabIndex = 7;
@@ -90,47 +85,31 @@
             // 
             this.lblFaceStored.AutoSize = true;
             this.lblFaceStored.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFaceStored.Location = new System.Drawing.Point(12, 4);
+            this.lblFaceStored.Location = new System.Drawing.Point(212, 2);
             this.lblFaceStored.Name = "lblFaceStored";
             this.lblFaceStored.Size = new System.Drawing.Size(87, 14);
             this.lblFaceStored.TabIndex = 11;
             this.lblFaceStored.Text = "Face Stored : ";
             // 
-            // pcbCurrentFrame
-            // 
-            this.pcbCurrentFrame.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.pcbCurrentFrame.Location = new System.Drawing.Point(1, 205);
-            this.pcbCurrentFrame.Name = "pcbCurrentFrame";
-            this.pcbCurrentFrame.Size = new System.Drawing.Size(533, 300);
-            this.pcbCurrentFrame.TabIndex = 4;
-            this.pcbCurrentFrame.TabStop = false;
-            // 
             // cbxDevices
             // 
+            this.cbxDevices.BackColor = System.Drawing.Color.White;
             this.cbxDevices.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxDevices.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxDevices.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbxDevices.Font = new System.Drawing.Font("Calibri", 12F);
+            this.cbxDevices.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
             this.cbxDevices.FormattingEnabled = true;
-            this.cbxDevices.Location = new System.Drawing.Point(117, 7);
+            this.cbxDevices.Location = new System.Drawing.Point(349, 66);
             this.cbxDevices.Name = "cbxDevices";
-            this.cbxDevices.Size = new System.Drawing.Size(210, 22);
+            this.cbxDevices.Size = new System.Drawing.Size(266, 27);
             this.cbxDevices.TabIndex = 2;
             this.cbxDevices.TabStop = false;
-            // 
-            // lblDevices
-            // 
-            this.lblDevices.AutoSize = true;
-            this.lblDevices.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDevices.Location = new System.Drawing.Point(8, 10);
-            this.lblDevices.Name = "lblDevices";
-            this.lblDevices.Size = new System.Drawing.Size(103, 14);
-            this.lblDevices.TabIndex = 5;
-            this.lblDevices.Text = "Camera Device :";
             // 
             // lblCudaStts
             // 
             this.lblCudaStts.AutoSize = true;
             this.lblCudaStts.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCudaStts.Location = new System.Drawing.Point(11, 6);
+            this.lblCudaStts.Location = new System.Drawing.Point(2, 42);
             this.lblCudaStts.Name = "lblCudaStts";
             this.lblCudaStts.Size = new System.Drawing.Size(136, 14);
             this.lblCudaStts.TabIndex = 6;
@@ -150,7 +129,7 @@
             // 
             this.lblAttendedID.AutoSize = true;
             this.lblAttendedID.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAttendedID.Location = new System.Drawing.Point(136, 44);
+            this.lblAttendedID.Location = new System.Drawing.Point(336, 42);
             this.lblAttendedID.Name = "lblAttendedID";
             this.lblAttendedID.Size = new System.Drawing.Size(11, 14);
             this.lblAttendedID.TabIndex = 16;
@@ -160,24 +139,25 @@
             // 
             this.lblAttendanceStatusStts.AutoSize = true;
             this.lblAttendanceStatusStts.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAttendanceStatusStts.Location = new System.Drawing.Point(12, 63);
+            this.lblAttendanceStatusStts.Location = new System.Drawing.Point(212, 61);
             this.lblAttendanceStatusStts.Name = "lblAttendanceStatusStts";
             this.lblAttendanceStatusStts.Size = new System.Drawing.Size(124, 14);
             this.lblAttendanceStatusStts.TabIndex = 18;
             this.lblAttendanceStatusStts.Text = "Attendance Status : ";
             // 
-            // btnScanning
+            // btnAuto
             // 
-            this.btnScanning.Enabled = false;
-            this.btnScanning.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnScanning.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnScanning.Location = new System.Drawing.Point(5, 46);
-            this.btnScanning.Name = "btnScanning";
-            this.btnScanning.Size = new System.Drawing.Size(85, 24);
-            this.btnScanning.TabIndex = 8;
-            this.btnScanning.Text = "Automate";
-            this.btnScanning.UseVisualStyleBackColor = true;
-            this.btnScanning.Click += new System.EventHandler(this.btnScanning_Click);
+            this.btnAuto.Enabled = false;
+            this.btnAuto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAuto.Font = new System.Drawing.Font("Calibri", 12F);
+            this.btnAuto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnAuto.Location = new System.Drawing.Point(745, 66);
+            this.btnAuto.Name = "btnAuto";
+            this.btnAuto.Size = new System.Drawing.Size(85, 27);
+            this.btnAuto.TabIndex = 8;
+            this.btnAuto.Text = "Auto";
+            this.btnAuto.UseVisualStyleBackColor = false;
+            this.btnAuto.Click += new System.EventHandler(this.btnAuto_Click);
             // 
             // lblIDOnScreen
             // 
@@ -194,7 +174,7 @@
             // 
             this.lblAttendanceStatus.AutoSize = true;
             this.lblAttendanceStatus.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAttendanceStatus.Location = new System.Drawing.Point(136, 63);
+            this.lblAttendanceStatus.Location = new System.Drawing.Point(336, 61);
             this.lblAttendanceStatus.Name = "lblAttendanceStatus";
             this.lblAttendanceStatus.Size = new System.Drawing.Size(11, 14);
             this.lblAttendanceStatus.TabIndex = 20;
@@ -204,7 +184,7 @@
             // 
             this.lblAutoStts.AutoSize = true;
             this.lblAutoStts.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAutoStts.Location = new System.Drawing.Point(12, 23);
+            this.lblAutoStts.Location = new System.Drawing.Point(3, 61);
             this.lblAutoStts.Name = "lblAutoStts";
             this.lblAutoStts.Size = new System.Drawing.Size(155, 14);
             this.lblAutoStts.TabIndex = 21;
@@ -214,90 +194,31 @@
             // 
             this.lblFaceCounter.AutoSize = true;
             this.lblFaceCounter.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFaceCounter.Location = new System.Drawing.Point(136, 4);
+            this.lblFaceCounter.Location = new System.Drawing.Point(336, 2);
             this.lblFaceCounter.Name = "lblFaceCounter";
             this.lblFaceCounter.Size = new System.Drawing.Size(11, 14);
             this.lblFaceCounter.TabIndex = 23;
             this.lblFaceCounter.Text = "-";
             // 
-            // MenuStrip
-            // 
-            this.MenuStrip.BackColor = System.Drawing.SystemColors.Control;
-            this.MenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem,
-            this.stpHelp});
-            this.MenuStrip.Location = new System.Drawing.Point(0, 0);
-            this.MenuStrip.Name = "MenuStrip";
-            this.MenuStrip.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.MenuStrip.Size = new System.Drawing.Size(534, 24);
-            this.MenuStrip.TabIndex = 24;
-            this.MenuStrip.Text = "MenuStrip";
-            this.MenuStrip.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MenuStrip_MouseDown);
-            // 
-            // fileToolStripMenuItem
-            // 
-            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.stpLoadDataset,
-            this.stpAddFace});
-            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
-            this.fileToolStripMenuItem.Text = "Menu";
-            // 
-            // stpLoadDataset
-            // 
-            this.stpLoadDataset.Name = "stpLoadDataset";
-            this.stpLoadDataset.Size = new System.Drawing.Size(142, 22);
-            this.stpLoadDataset.Tag = "";
-            this.stpLoadDataset.Text = "Load Dataset";
-            // 
-            // stpAddFace
-            // 
-            this.stpAddFace.Enabled = false;
-            this.stpAddFace.Name = "stpAddFace";
-            this.stpAddFace.Size = new System.Drawing.Size(142, 22);
-            this.stpAddFace.Text = "Add Face";
-            this.stpAddFace.Click += new System.EventHandler(this.stpAddFace_Click);
-            // 
-            // stpHelp
-            // 
-            this.stpHelp.Name = "stpHelp";
-            this.stpHelp.Size = new System.Drawing.Size(44, 20);
-            this.stpHelp.Text = "Help";
-            this.stpHelp.Click += new System.EventHandler(this.stpHelp_Click);
-            // 
             // btnStart
             // 
+            this.btnStart.BackColor = System.Drawing.Color.Transparent;
             this.btnStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnStart.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStart.Location = new System.Drawing.Point(336, 6);
+            this.btnStart.Font = new System.Drawing.Font("Calibri", 12F);
+            this.btnStart.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnStart.Location = new System.Drawing.Point(639, 66);
             this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(85, 24);
+            this.btnStart.Size = new System.Drawing.Size(85, 27);
             this.btnStart.TabIndex = 6;
             this.btnStart.Text = "Start";
-            this.btnStart.UseVisualStyleBackColor = true;
+            this.btnStart.UseVisualStyleBackColor = false;
             this.btnStart.Click += new System.EventHandler(this.Start_Click);
-            // 
-            // panel1
-            // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.lblAttendedName);
-            this.panel1.Controls.Add(this.lblAttendanceStatus);
-            this.panel1.Controls.Add(this.lblFaceStored);
-            this.panel1.Controls.Add(this.lblAttendanceStatusStts);
-            this.panel1.Controls.Add(this.lblFaceCounter);
-            this.panel1.Controls.Add(this.lblAttendedIDStts);
-            this.panel1.Controls.Add(this.lblAttendedNameStts);
-            this.panel1.Controls.Add(this.lblAttendedID);
-            this.panel1.Location = new System.Drawing.Point(318, 116);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(210, 83);
-            this.panel1.TabIndex = 25;
             // 
             // lblAttendedName
             // 
             this.lblAttendedName.AutoSize = true;
             this.lblAttendedName.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAttendedName.Location = new System.Drawing.Point(136, 24);
+            this.lblAttendedName.Location = new System.Drawing.Point(336, 22);
             this.lblAttendedName.Name = "lblAttendedName";
             this.lblAttendedName.Size = new System.Drawing.Size(11, 14);
             this.lblAttendedName.TabIndex = 25;
@@ -307,7 +228,7 @@
             // 
             this.lblAttendedIDStts.AutoSize = true;
             this.lblAttendedIDStts.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAttendedIDStts.Location = new System.Drawing.Point(12, 44);
+            this.lblAttendedIDStts.Location = new System.Drawing.Point(212, 42);
             this.lblAttendedIDStts.Name = "lblAttendedIDStts";
             this.lblAttendedIDStts.Size = new System.Drawing.Size(87, 14);
             this.lblAttendedIDStts.TabIndex = 24;
@@ -317,64 +238,40 @@
             // 
             this.lblAttendedNameStts.AutoSize = true;
             this.lblAttendedNameStts.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAttendedNameStts.Location = new System.Drawing.Point(12, 24);
+            this.lblAttendedNameStts.Location = new System.Drawing.Point(212, 22);
             this.lblAttendedNameStts.Name = "lblAttendedNameStts";
             this.lblAttendedNameStts.Size = new System.Drawing.Size(108, 14);
             this.lblAttendedNameStts.TabIndex = 14;
             this.lblAttendedNameStts.Text = "Attended Name : ";
             // 
-            // panel2
-            // 
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.btnStop);
-            this.panel2.Controls.Add(this.cbxDevices);
-            this.panel2.Controls.Add(this.lblDevices);
-            this.panel2.Controls.Add(this.btnStart);
-            this.panel2.Location = new System.Drawing.Point(5, 30);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(523, 38);
-            this.panel2.TabIndex = 26;
-            // 
-            // btnStop
-            // 
-            this.btnStop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnStop.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStop.Location = new System.Drawing.Point(427, 6);
-            this.btnStop.Name = "btnStop";
-            this.btnStop.Size = new System.Drawing.Size(85, 24);
-            this.btnStop.TabIndex = 7;
-            this.btnStop.Text = "Stop";
-            this.btnStop.UseVisualStyleBackColor = true;
-            this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
-            // 
-            // panel3
-            // 
-            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Controls.Add(this.lblCudaStts);
-            this.panel3.Controls.Add(this.lblAutoStts);
-            this.panel3.Location = new System.Drawing.Point(318, 74);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(210, 43);
-            this.panel3.TabIndex = 27;
-            // 
             // panel4
             // 
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel4.Controls.Add(this.btnScanning);
+            this.panel4.Controls.Add(this.lblAutoStts);
+            this.panel4.Controls.Add(this.lblCudaStts);
+            this.panel4.Controls.Add(this.lblAttendedName);
             this.panel4.Controls.Add(this.lblNameOnScreen);
+            this.panel4.Controls.Add(this.lblAttendanceStatus);
             this.panel4.Controls.Add(this.lblIDOnScreenStts);
+            this.panel4.Controls.Add(this.lblFaceStored);
+            this.panel4.Controls.Add(this.lblAttendanceStatusStts);
             this.panel4.Controls.Add(this.lblIDOnScreen);
+            this.panel4.Controls.Add(this.lblFaceCounter);
             this.panel4.Controls.Add(this.lblNameOnScreenStts);
-            this.panel4.Location = new System.Drawing.Point(5, 74);
+            this.panel4.Controls.Add(this.lblAttendedIDStts);
+            this.panel4.Controls.Add(this.lblAttendedID);
+            this.panel4.Controls.Add(this.lblAttendedNameStts);
+            this.panel4.Location = new System.Drawing.Point(382, 475);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(308, 81);
+            this.panel4.Size = new System.Drawing.Size(448, 81);
             this.panel4.TabIndex = 28;
+            this.panel4.Visible = false;
             // 
             // lblNameOnScreen
             // 
             this.lblNameOnScreen.AutoSize = true;
             this.lblNameOnScreen.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNameOnScreen.Location = new System.Drawing.Point(111, 23);
+            this.lblNameOnScreen.Location = new System.Drawing.Point(111, 20);
             this.lblNameOnScreen.MaximumSize = new System.Drawing.Size(195, 0);
             this.lblNameOnScreen.Name = "lblNameOnScreen";
             this.lblNameOnScreen.Size = new System.Drawing.Size(11, 14);
@@ -395,40 +292,24 @@
             // 
             this.lblNameOnScreenStts.AutoSize = true;
             this.lblNameOnScreenStts.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNameOnScreenStts.Location = new System.Drawing.Point(2, 23);
+            this.lblNameOnScreenStts.Location = new System.Drawing.Point(2, 20);
             this.lblNameOnScreenStts.Name = "lblNameOnScreenStts";
             this.lblNameOnScreenStts.Size = new System.Drawing.Size(112, 14);
             this.lblNameOnScreenStts.TabIndex = 19;
             this.lblNameOnScreenStts.Text = "Name On Screen :";
             // 
-            // panel5
+            // lblHourToday
             // 
-            this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel5.Controls.Add(this.lblDateToday);
-            this.panel5.Location = new System.Drawing.Point(5, 161);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(308, 38);
-            this.panel5.TabIndex = 29;
-            // 
-            // lblDateToday
-            // 
-            this.lblDateToday.AutoSize = true;
-            this.lblDateToday.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDateToday.Location = new System.Drawing.Point(6, 7);
-            this.lblDateToday.Name = "lblDateToday";
-            this.lblDateToday.Size = new System.Drawing.Size(103, 20);
-            this.lblDateToday.TabIndex = 30;
-            this.lblDateToday.Text = "Date Today";
-            // 
-            // lblAsyst
-            // 
-            this.lblAsyst.AutoSize = true;
-            this.lblAsyst.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAsyst.Location = new System.Drawing.Point(472, 4);
-            this.lblAsyst.Name = "lblAsyst";
-            this.lblAsyst.Size = new System.Drawing.Size(56, 20);
-            this.lblAsyst.TabIndex = 22;
-            this.lblAsyst.Text = "ASyst";
+            this.lblHourToday.AutoSize = true;
+            this.lblHourToday.BackColor = System.Drawing.Color.Transparent;
+            this.lblHourToday.Font = new System.Drawing.Font("Calibri", 15F);
+            this.lblHourToday.ForeColor = System.Drawing.Color.White;
+            this.lblHourToday.Location = new System.Drawing.Point(35, 514);
+            this.lblHourToday.Name = "lblHourToday";
+            this.lblHourToday.Size = new System.Drawing.Size(100, 24);
+            this.lblHourToday.TabIndex = 30;
+            this.lblHourToday.Text = "00 : 00 : 00";
+            this.lblHourToday.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tmrTimeNow
             // 
@@ -436,52 +317,207 @@
             this.tmrTimeNow.Interval = 1000;
             this.tmrTimeNow.Tick += new System.EventHandler(this.tmrTimeNow_Tick);
             // 
+            // panel6
+            // 
+            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.panel6.Controls.Add(this.lblDateToday);
+            this.panel6.Controls.Add(this.lblHourToday);
+            this.panel6.Controls.Add(this.btnLaporan);
+            this.panel6.Controls.Add(this.btnMonitor);
+            this.panel6.Controls.Add(this.btnScanning);
+            this.panel6.Controls.Add(this.label1);
+            this.panel6.Location = new System.Drawing.Point(0, 0);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(170, 562);
+            this.panel6.TabIndex = 30;
+            // 
+            // lblDateToday
+            // 
+            this.lblDateToday.AutoSize = true;
+            this.lblDateToday.BackColor = System.Drawing.Color.Transparent;
+            this.lblDateToday.Font = new System.Drawing.Font("Calibri", 15F);
+            this.lblDateToday.ForeColor = System.Drawing.Color.White;
+            this.lblDateToday.Location = new System.Drawing.Point(21, 488);
+            this.lblDateToday.Name = "lblDateToday";
+            this.lblDateToday.Size = new System.Drawing.Size(126, 24);
+            this.lblDateToday.TabIndex = 35;
+            this.lblDateToday.Text = "20 / 02 / 2022";
+            this.lblDateToday.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnLaporan
+            // 
+            this.btnLaporan.BackColor = System.Drawing.Color.Transparent;
+            this.btnLaporan.FlatAppearance.BorderSize = 0;
+            this.btnLaporan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLaporan.Font = new System.Drawing.Font("Calibri", 15F);
+            this.btnLaporan.ForeColor = System.Drawing.Color.White;
+            this.btnLaporan.Location = new System.Drawing.Point(0, 191);
+            this.btnLaporan.Name = "btnLaporan";
+            this.btnLaporan.Size = new System.Drawing.Size(170, 35);
+            this.btnLaporan.TabIndex = 34;
+            this.btnLaporan.Text = "Laporan";
+            this.btnLaporan.UseVisualStyleBackColor = false;
+            this.btnLaporan.Click += new System.EventHandler(this.btnLaporan_Click);
+            // 
+            // btnMonitor
+            // 
+            this.btnMonitor.BackColor = System.Drawing.Color.Transparent;
+            this.btnMonitor.FlatAppearance.BorderSize = 0;
+            this.btnMonitor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMonitor.Font = new System.Drawing.Font("Calibri", 15F);
+            this.btnMonitor.ForeColor = System.Drawing.Color.White;
+            this.btnMonitor.Location = new System.Drawing.Point(0, 150);
+            this.btnMonitor.Name = "btnMonitor";
+            this.btnMonitor.Size = new System.Drawing.Size(170, 35);
+            this.btnMonitor.TabIndex = 33;
+            this.btnMonitor.Text = "Monitor";
+            this.btnMonitor.UseVisualStyleBackColor = false;
+            this.btnMonitor.Click += new System.EventHandler(this.btnMonitor_Click);
+            // 
+            // btnScanning
+            // 
+            this.btnScanning.BackColor = System.Drawing.Color.White;
+            this.btnScanning.FlatAppearance.BorderSize = 0;
+            this.btnScanning.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnScanning.Font = new System.Drawing.Font("Calibri", 15F);
+            this.btnScanning.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnScanning.Location = new System.Drawing.Point(0, 109);
+            this.btnScanning.Name = "btnScanning";
+            this.btnScanning.Size = new System.Drawing.Size(170, 35);
+            this.btnScanning.TabIndex = 32;
+            this.btnScanning.Text = "Scanning";
+            this.btnScanning.UseVisualStyleBackColor = false;
+            this.btnScanning.Click += new System.EventHandler(this.btnScanning_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Calibri", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(30, 26);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(110, 49);
+            this.label1.TabIndex = 31;
+            this.label1.Text = "ASyst";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Calibri", 15F);
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.label2.Location = new System.Drawing.Point(186, 488);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(72, 24);
+            this.label2.TabIndex = 31;
+            this.label2.Text = "Status :";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Calibri", 15F);
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.label3.Location = new System.Drawing.Point(264, 488);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(88, 24);
+            this.label3.TabIndex = 32;
+            this.label3.Text = "Waiting...";
+            // 
+            // pcbCurrentFrame
+            // 
+            this.pcbCurrentFrame.BackColor = System.Drawing.Color.Transparent;
+            this.pcbCurrentFrame.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pcbCurrentFrame.Location = new System.Drawing.Point(190, 109);
+            this.pcbCurrentFrame.Name = "pcbCurrentFrame";
+            this.pcbCurrentFrame.Size = new System.Drawing.Size(640, 360);
+            this.pcbCurrentFrame.TabIndex = 4;
+            this.pcbCurrentFrame.TabStop = false;
+            // 
+            // btnExit
+            // 
+            this.btnExit.BackColor = System.Drawing.Color.Transparent;
+            this.btnExit.FlatAppearance.BorderSize = 0;
+            this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExit.Font = new System.Drawing.Font("Calibri", 12F);
+            this.btnExit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnExit.Location = new System.Drawing.Point(809, -1);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(45, 27);
+            this.btnExit.TabIndex = 33;
+            this.btnExit.Text = "X";
+            this.btnExit.UseVisualStyleBackColor = false;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
+            // btnHide
+            // 
+            this.btnHide.BackColor = System.Drawing.Color.Transparent;
+            this.btnHide.FlatAppearance.BorderSize = 0;
+            this.btnHide.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHide.Font = new System.Drawing.Font("Calibri", 12F);
+            this.btnHide.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnHide.Location = new System.Drawing.Point(765, -1);
+            this.btnHide.Name = "btnHide";
+            this.btnHide.Size = new System.Drawing.Size(45, 27);
+            this.btnHide.TabIndex = 34;
+            this.btnHide.Text = "-";
+            this.btnHide.UseVisualStyleBackColor = false;
+            this.btnHide.Click += new System.EventHandler(this.btnHide_Click);
+            // 
+            // lblDevices
+            // 
+            this.lblDevices.AutoSize = true;
+            this.lblDevices.BackColor = System.Drawing.Color.Transparent;
+            this.lblDevices.Font = new System.Drawing.Font("Calibri", 15F);
+            this.lblDevices.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.lblDevices.Location = new System.Drawing.Point(186, 65);
+            this.lblDevices.Name = "lblDevices";
+            this.lblDevices.Size = new System.Drawing.Size(143, 24);
+            this.lblDevices.TabIndex = 5;
+            this.lblDevices.Text = "Camera Device :";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(534, 510);
-            this.Controls.Add(this.lblAsyst);
-            this.Controls.Add(this.panel5);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(850, 562);
+            this.Controls.Add(this.btnHide);
+            this.Controls.Add(this.btnExit);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.btnAuto);
+            this.Controls.Add(this.panel6);
+            this.Controls.Add(this.btnStart);
+            this.Controls.Add(this.cbxDevices);
+            this.Controls.Add(this.lblDevices);
             this.Controls.Add(this.panel4);
-            this.Controls.Add(this.panel3);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.pcbRecognized);
             this.Controls.Add(this.pcbCurrentFrame);
-            this.Controls.Add(this.MenuStrip);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
-            this.MainMenuStrip = this.MenuStrip;
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ASyst";
             this.Load += new System.EventHandler(this.MainForm_Load);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainForm_MouseDown);
             ((System.ComponentModel.ISupportInitialize)(this.pcbRecognized)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pcbCurrentFrame)).EndInit();
-            this.MenuStrip.ResumeLayout(false);
-            this.MenuStrip.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbCurrentFrame)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private Emgu.CV.UI.ImageBox pcbCurrentFrame;
         private System.Windows.Forms.ComboBox cbxDevices;
-        private System.Windows.Forms.Label lblDevices;
         private System.Windows.Forms.Label lblCudaStts;
         private Emgu.CV.UI.ImageBox pcbRecognized;
         private System.Windows.Forms.Label lblFaceStored;
@@ -489,32 +525,33 @@
         private System.Windows.Forms.Timer tmrScanning;
         private System.Windows.Forms.Label lblAttendedID;
         private System.Windows.Forms.Label lblAttendanceStatusStts;
-        private System.Windows.Forms.Button btnScanning;
+        private System.Windows.Forms.Button btnAuto;
         private System.Windows.Forms.Label lblIDOnScreen;
         private System.Windows.Forms.Label lblAttendanceStatus;
         private System.Windows.Forms.Label lblAutoStts;
         private System.Windows.Forms.Label lblFaceCounter;
-        private System.Windows.Forms.MenuStrip MenuStrip;
-        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem stpLoadDataset;
-        private System.Windows.Forms.ToolStripMenuItem stpAddFace;
         private System.Windows.Forms.Button btnStart;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label lblAttendedName;
         private System.Windows.Forms.Label lblAttendedIDStts;
-        private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Label lblNameOnScreenStts;
-        private System.Windows.Forms.ToolStripMenuItem stpHelp;
         private System.Windows.Forms.Label lblAttendedNameStts;
         private System.Windows.Forms.Label lblIDOnScreenStts;
         private System.Windows.Forms.Label lblNameOnScreen;
-        private System.Windows.Forms.Label lblAsyst;
-        private System.Windows.Forms.Button btnStop;
-        private System.Windows.Forms.Label lblDateToday;
+        private System.Windows.Forms.Label lblHourToday;
         private System.Windows.Forms.Timer tmrTimeNow;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Button btnScanning;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnMonitor;
+        private System.Windows.Forms.Button btnLaporan;
+        private System.Windows.Forms.Label lblDateToday;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private Emgu.CV.UI.ImageBox pcbCurrentFrame;
+        private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.Button btnHide;
+        private System.Windows.Forms.Label lblDevices;
     }
 }
 
