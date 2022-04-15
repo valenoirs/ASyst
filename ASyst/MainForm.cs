@@ -407,6 +407,8 @@ namespace ASyst
             btnScanning.ForeColor = Color.FromArgb(0, 122, 204);
             btnMonitorReset();
             btnLaporanReset();
+
+            pnlMonitor.Visible = false;
         }
 
         private void btnMonitor_Click(object sender, EventArgs e)
@@ -415,6 +417,8 @@ namespace ASyst
             btnMonitor.ForeColor = Color.FromArgb(0, 122, 204);
             btnScanningReset();
             btnLaporanReset();
+
+            pnlMonitor.Visible = true;
         }
 
         private void btnLaporan_Click(object sender, EventArgs e)
