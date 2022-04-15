@@ -374,12 +374,10 @@ namespace ASyst
             if (recognizing == false)
             {
                 recognizing = true;
-                lblAutoStts.Text = "Automate Status :       ON";
             }
             else if (recognizing == true)
             {
                 recognizing = false;
-                lblAutoStts.Text = "Automate Status :       OFF";
             }
         }
 
@@ -462,6 +460,10 @@ namespace ASyst
         private void btnAddFace_Click(object sender, EventArgs e)
         {
             pnlMonitor.Visible = false;
+            btnScanning.BackColor = Color.White;
+            btnScanning.ForeColor = Color.FromArgb(0, 122, 204);
+            btnMonitorReset();
+
             AddNewFace add = new AddNewFace();
             add.ShowDialog();
 

@@ -42,7 +42,6 @@
             this.btnAuto = new System.Windows.Forms.Button();
             this.lblIDOnScreen = new System.Windows.Forms.Label();
             this.lblAttendanceStatus = new System.Windows.Forms.Label();
-            this.lblAutoStts = new System.Windows.Forms.Label();
             this.btnStart = new System.Windows.Forms.Button();
             this.lblAttendedName = new System.Windows.Forms.Label();
             this.lblAttendedIDStts = new System.Windows.Forms.Label();
@@ -67,12 +66,14 @@
             this.lblDevices = new System.Windows.Forms.Label();
             this.lblFaceCounter = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.waktuHadir = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nama = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblFaceStored = new System.Windows.Forms.Label();
             this.btnAddFace = new System.Windows.Forms.Button();
             this.pnlMonitor = new System.Windows.Forms.Panel();
             this.lblAddFaceWarn = new System.Windows.Forms.Label();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nama = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.waktuHadir = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.waktuPulang = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.pcbRecognized)).BeginInit();
             this.panel4.SuspendLayout();
             this.pnlSidePanel.SuspendLayout();
@@ -183,16 +184,6 @@
             this.lblAttendanceStatus.TabIndex = 20;
             this.lblAttendanceStatus.Text = "-";
             // 
-            // lblAutoStts
-            // 
-            this.lblAutoStts.AutoSize = true;
-            this.lblAutoStts.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAutoStts.Location = new System.Drawing.Point(3, 61);
-            this.lblAutoStts.Name = "lblAutoStts";
-            this.lblAutoStts.Size = new System.Drawing.Size(155, 14);
-            this.lblAutoStts.TabIndex = 21;
-            this.lblAutoStts.Text = "Automate Status :       OFF";
-            // 
             // btnStart
             // 
             this.btnStart.BackColor = System.Drawing.Color.Transparent;
@@ -241,7 +232,6 @@
             // 
             this.panel4.BackColor = System.Drawing.Color.White;
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel4.Controls.Add(this.lblAutoStts);
             this.panel4.Controls.Add(this.lblAttendedName);
             this.panel4.Controls.Add(this.lblNameOnScreen);
             this.panel4.Controls.Add(this.lblAttendanceStatus);
@@ -499,8 +489,10 @@
             this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ID,
             this.Nama,
-            this.waktuHadir});
+            this.waktuHadir,
+            this.waktuPulang});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Calibri", 12F);
@@ -513,28 +505,10 @@
             this.dataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
             this.dataGridView1.Location = new System.Drawing.Point(0, 43);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.dataGridView1.Size = new System.Drawing.Size(640, 217);
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.Size = new System.Drawing.Size(640, 388);
             this.dataGridView1.TabIndex = 0;
-            // 
-            // waktuHadir
-            // 
-            this.waktuHadir.HeaderText = "Waktu Hadir";
-            this.waktuHadir.Name = "waktuHadir";
-            this.waktuHadir.ReadOnly = true;
-            this.waktuHadir.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.waktuHadir.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.waktuHadir.Width = 299;
-            // 
-            // Nama
-            // 
-            this.Nama.HeaderText = "Nama";
-            this.Nama.Name = "Nama";
-            this.Nama.ReadOnly = true;
-            this.Nama.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Nama.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Nama.Width = 299;
             // 
             // lblFaceStored
             // 
@@ -588,6 +562,36 @@
             this.lblAddFaceWarn.TabIndex = 26;
             this.lblAddFaceWarn.Text = "*Please start camera first";
             // 
+            // ID
+            // 
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.ID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ID.Width = 200;
+            // 
+            // Nama
+            // 
+            this.Nama.HeaderText = "Nama";
+            this.Nama.Name = "Nama";
+            this.Nama.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Nama.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Nama.Width = 238;
+            // 
+            // waktuHadir
+            // 
+            this.waktuHadir.HeaderText = "Datang";
+            this.waktuHadir.Name = "waktuHadir";
+            this.waktuHadir.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.waktuHadir.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // waktuPulang
+            // 
+            this.waktuPulang.HeaderText = "Pulang";
+            this.waktuPulang.Name = "waktuPulang";
+            this.waktuPulang.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.waktuPulang.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -640,7 +644,6 @@
         private System.Windows.Forms.Button btnAuto;
         private System.Windows.Forms.Label lblIDOnScreen;
         private System.Windows.Forms.Label lblAttendanceStatus;
-        private System.Windows.Forms.Label lblAutoStts;
         private System.Windows.Forms.Button btnStart;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label lblAttendedName;
@@ -665,12 +668,14 @@
         private System.Windows.Forms.Label lblDevices;
         private System.Windows.Forms.Label lblFaceCounter;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nama;
-        private System.Windows.Forms.DataGridViewTextBoxColumn waktuHadir;
         private System.Windows.Forms.Label lblFaceStored;
         private System.Windows.Forms.Button btnAddFace;
         private System.Windows.Forms.Panel pnlMonitor;
         private System.Windows.Forms.Label lblAddFaceWarn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nama;
+        private System.Windows.Forms.DataGridViewTextBoxColumn waktuHadir;
+        private System.Windows.Forms.DataGridViewTextBoxColumn waktuPulang;
     }
 }
 
