@@ -382,22 +382,47 @@ namespace ASyst
             }
         }
 
+        private void btnScanningReset()
+        {
+            btnScanning.BackColor = Color.Transparent;
+            btnScanning.ForeColor = Color.White;
+        }
+
+        private void btnMonitorReset()
+        {
+            btnMonitor.BackColor = Color.Transparent;
+            btnMonitor.ForeColor = Color.White;
+        }
+
+        private void btnLaporanReset()
+        {
+            btnLaporan.BackColor = Color.Transparent;
+            btnLaporan.ForeColor = Color.White;
+        }
+
+
         private void btnScanning_Click(object sender, EventArgs e)
         {
             btnScanning.BackColor = Color.White;
             btnScanning.ForeColor = Color.FromArgb(0, 122, 204);
+            btnMonitorReset();
+            btnLaporanReset();
         }
 
         private void btnMonitor_Click(object sender, EventArgs e)
         {
             btnMonitor.BackColor = Color.White;
             btnMonitor.ForeColor = Color.FromArgb(0, 122, 204);
+            btnScanningReset();
+            btnLaporanReset();
         }
 
         private void btnLaporan_Click(object sender, EventArgs e)
         {
             btnLaporan.BackColor = Color.White;
             btnLaporan.ForeColor = Color.FromArgb(0, 122, 204);
+            btnScanningReset();
+            btnMonitorReset();
         }
 
         private void MainForm_MouseDown(object sender, MouseEventArgs e)
