@@ -58,8 +58,8 @@
             this.btnMonitor = new System.Windows.Forms.Button();
             this.btnScanning = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lbl = new System.Windows.Forms.Label();
+            this.lblScanningStatus = new System.Windows.Forms.Label();
             this.pcbCurrentFrame = new Emgu.CV.UI.ImageBox();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnHide = new System.Windows.Forms.Button();
@@ -74,6 +74,7 @@
             this.Nama = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.waktuHadir = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.waktuPulang = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lblPersonDetected = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pcbRecognized)).BeginInit();
             this.panel4.SuspendLayout();
             this.pnlSidePanel.SuspendLayout();
@@ -133,7 +134,7 @@
             // 
             this.lblAttendedID.AutoSize = true;
             this.lblAttendedID.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAttendedID.Location = new System.Drawing.Point(127, 115);
+            this.lblAttendedID.Location = new System.Drawing.Point(127, 66);
             this.lblAttendedID.Name = "lblAttendedID";
             this.lblAttendedID.Size = new System.Drawing.Size(11, 14);
             this.lblAttendedID.TabIndex = 16;
@@ -143,7 +144,7 @@
             // 
             this.lblAttendanceStatusStts.AutoSize = true;
             this.lblAttendanceStatusStts.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAttendanceStatusStts.Location = new System.Drawing.Point(3, 134);
+            this.lblAttendanceStatusStts.Location = new System.Drawing.Point(3, 85);
             this.lblAttendanceStatusStts.Name = "lblAttendanceStatusStts";
             this.lblAttendanceStatusStts.Size = new System.Drawing.Size(124, 14);
             this.lblAttendanceStatusStts.TabIndex = 18;
@@ -167,7 +168,7 @@
             // 
             this.lblIDOnScreen.AutoSize = true;
             this.lblIDOnScreen.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIDOnScreen.Location = new System.Drawing.Point(111, 2);
+            this.lblIDOnScreen.Location = new System.Drawing.Point(112, 9);
             this.lblIDOnScreen.MaximumSize = new System.Drawing.Size(195, 0);
             this.lblIDOnScreen.Name = "lblIDOnScreen";
             this.lblIDOnScreen.Size = new System.Drawing.Size(11, 14);
@@ -178,7 +179,7 @@
             // 
             this.lblAttendanceStatus.AutoSize = true;
             this.lblAttendanceStatus.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAttendanceStatus.Location = new System.Drawing.Point(127, 134);
+            this.lblAttendanceStatus.Location = new System.Drawing.Point(187, 539);
             this.lblAttendanceStatus.Name = "lblAttendanceStatus";
             this.lblAttendanceStatus.Size = new System.Drawing.Size(11, 14);
             this.lblAttendanceStatus.TabIndex = 20;
@@ -202,7 +203,7 @@
             // 
             this.lblAttendedName.AutoSize = true;
             this.lblAttendedName.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAttendedName.Location = new System.Drawing.Point(127, 95);
+            this.lblAttendedName.Location = new System.Drawing.Point(127, 46);
             this.lblAttendedName.Name = "lblAttendedName";
             this.lblAttendedName.Size = new System.Drawing.Size(11, 14);
             this.lblAttendedName.TabIndex = 25;
@@ -212,7 +213,7 @@
             // 
             this.lblAttendedIDStts.AutoSize = true;
             this.lblAttendedIDStts.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAttendedIDStts.Location = new System.Drawing.Point(3, 115);
+            this.lblAttendedIDStts.Location = new System.Drawing.Point(3, 66);
             this.lblAttendedIDStts.Name = "lblAttendedIDStts";
             this.lblAttendedIDStts.Size = new System.Drawing.Size(87, 14);
             this.lblAttendedIDStts.TabIndex = 24;
@@ -222,7 +223,7 @@
             // 
             this.lblAttendedNameStts.AutoSize = true;
             this.lblAttendedNameStts.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAttendedNameStts.Location = new System.Drawing.Point(3, 95);
+            this.lblAttendedNameStts.Location = new System.Drawing.Point(3, 46);
             this.lblAttendedNameStts.Name = "lblAttendedNameStts";
             this.lblAttendedNameStts.Size = new System.Drawing.Size(108, 14);
             this.lblAttendedNameStts.TabIndex = 14;
@@ -234,7 +235,6 @@
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel4.Controls.Add(this.lblAttendedName);
             this.panel4.Controls.Add(this.lblNameOnScreen);
-            this.panel4.Controls.Add(this.lblAttendanceStatus);
             this.panel4.Controls.Add(this.lblIDOnScreenStts);
             this.panel4.Controls.Add(this.lblAttendanceStatusStts);
             this.panel4.Controls.Add(this.lblIDOnScreen);
@@ -242,9 +242,9 @@
             this.panel4.Controls.Add(this.lblAttendedIDStts);
             this.panel4.Controls.Add(this.lblAttendedID);
             this.panel4.Controls.Add(this.lblAttendedNameStts);
-            this.panel4.Location = new System.Drawing.Point(3, 263);
+            this.panel4.Location = new System.Drawing.Point(3, 376);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(162, 181);
+            this.panel4.Size = new System.Drawing.Size(162, 107);
             this.panel4.TabIndex = 28;
             this.panel4.Visible = false;
             // 
@@ -252,7 +252,7 @@
             // 
             this.lblNameOnScreen.AutoSize = true;
             this.lblNameOnScreen.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNameOnScreen.Location = new System.Drawing.Point(111, 20);
+            this.lblNameOnScreen.Location = new System.Drawing.Point(112, 27);
             this.lblNameOnScreen.MaximumSize = new System.Drawing.Size(195, 0);
             this.lblNameOnScreen.Name = "lblNameOnScreen";
             this.lblNameOnScreen.Size = new System.Drawing.Size(11, 14);
@@ -263,7 +263,7 @@
             // 
             this.lblIDOnScreenStts.AutoSize = true;
             this.lblIDOnScreenStts.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIDOnScreenStts.Location = new System.Drawing.Point(2, 2);
+            this.lblIDOnScreenStts.Location = new System.Drawing.Point(3, 9);
             this.lblIDOnScreenStts.Name = "lblIDOnScreenStts";
             this.lblIDOnScreenStts.Size = new System.Drawing.Size(91, 14);
             this.lblIDOnScreenStts.TabIndex = 20;
@@ -273,7 +273,7 @@
             // 
             this.lblNameOnScreenStts.AutoSize = true;
             this.lblNameOnScreenStts.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNameOnScreenStts.Location = new System.Drawing.Point(2, 20);
+            this.lblNameOnScreenStts.Location = new System.Drawing.Point(3, 27);
             this.lblNameOnScreenStts.Name = "lblNameOnScreenStts";
             this.lblNameOnScreenStts.Size = new System.Drawing.Size(112, 14);
             this.lblNameOnScreenStts.TabIndex = 19;
@@ -285,7 +285,7 @@
             this.lblHourToday.BackColor = System.Drawing.Color.Transparent;
             this.lblHourToday.Font = new System.Drawing.Font("Calibri", 15F);
             this.lblHourToday.ForeColor = System.Drawing.Color.White;
-            this.lblHourToday.Location = new System.Drawing.Point(35, 514);
+            this.lblHourToday.Location = new System.Drawing.Point(35, 512);
             this.lblHourToday.Name = "lblHourToday";
             this.lblHourToday.Size = new System.Drawing.Size(100, 24);
             this.lblHourToday.TabIndex = 30;
@@ -321,7 +321,7 @@
             this.lblDateToday.BackColor = System.Drawing.Color.Transparent;
             this.lblDateToday.Font = new System.Drawing.Font("Calibri", 15F);
             this.lblDateToday.ForeColor = System.Drawing.Color.White;
-            this.lblDateToday.Location = new System.Drawing.Point(21, 488);
+            this.lblDateToday.Location = new System.Drawing.Point(20, 486);
             this.lblDateToday.Name = "lblDateToday";
             this.lblDateToday.Size = new System.Drawing.Size(126, 24);
             this.lblDateToday.TabIndex = 35;
@@ -386,29 +386,29 @@
             this.label1.Text = "ASyst";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label2
+            // lbl
             // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Calibri", 15F);
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.label2.Location = new System.Drawing.Point(186, 488);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(72, 24);
-            this.label2.TabIndex = 31;
-            this.label2.Text = "Status :";
+            this.lbl.AutoSize = true;
+            this.lbl.BackColor = System.Drawing.Color.Transparent;
+            this.lbl.Font = new System.Drawing.Font("Calibri", 15F);
+            this.lbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.lbl.Location = new System.Drawing.Point(186, 486);
+            this.lbl.Name = "lbl";
+            this.lbl.Size = new System.Drawing.Size(72, 24);
+            this.lbl.TabIndex = 31;
+            this.lbl.Text = "Status :";
             // 
-            // label3
+            // lblScanningStatus
             // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Calibri", 15F);
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.label3.Location = new System.Drawing.Point(264, 488);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(88, 24);
-            this.label3.TabIndex = 32;
-            this.label3.Text = "Waiting...";
+            this.lblScanningStatus.AutoSize = true;
+            this.lblScanningStatus.BackColor = System.Drawing.Color.Transparent;
+            this.lblScanningStatus.Font = new System.Drawing.Font("Calibri", 15F);
+            this.lblScanningStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.lblScanningStatus.Location = new System.Drawing.Point(264, 486);
+            this.lblScanningStatus.Name = "lblScanningStatus";
+            this.lblScanningStatus.Size = new System.Drawing.Size(88, 24);
+            this.lblScanningStatus.TabIndex = 32;
+            this.lblScanningStatus.Text = "Waiting...";
             // 
             // pcbCurrentFrame
             // 
@@ -427,7 +427,7 @@
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExit.Font = new System.Drawing.Font("Calibri", 12F);
             this.btnExit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.btnExit.Location = new System.Drawing.Point(809, -1);
+            this.btnExit.Location = new System.Drawing.Point(805, -1);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(45, 27);
             this.btnExit.TabIndex = 33;
@@ -442,7 +442,7 @@
             this.btnHide.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnHide.Font = new System.Drawing.Font("Calibri", 12F);
             this.btnHide.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.btnHide.Location = new System.Drawing.Point(765, -1);
+            this.btnHide.Location = new System.Drawing.Point(761, -1);
             this.btnHide.Name = "btnHide";
             this.btnHide.Size = new System.Drawing.Size(45, 27);
             this.btnHide.TabIndex = 34;
@@ -507,7 +507,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(640, 388);
+            this.dataGridView1.Size = new System.Drawing.Size(640, 361);
             this.dataGridView1.TabIndex = 0;
             // 
             // lblFaceStored
@@ -529,7 +529,7 @@
             this.btnAddFace.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddFace.Font = new System.Drawing.Font("Calibri", 12F);
             this.btnAddFace.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.btnAddFace.Location = new System.Drawing.Point(0, 446);
+            this.btnAddFace.Location = new System.Drawing.Point(0, 423);
             this.btnAddFace.Name = "btnAddFace";
             this.btnAddFace.Size = new System.Drawing.Size(85, 27);
             this.btnAddFace.TabIndex = 24;
@@ -547,7 +547,7 @@
             this.pnlMonitor.Controls.Add(this.lblFaceCounter);
             this.pnlMonitor.Location = new System.Drawing.Point(190, 65);
             this.pnlMonitor.Name = "pnlMonitor";
-            this.pnlMonitor.Size = new System.Drawing.Size(640, 473);
+            this.pnlMonitor.Size = new System.Drawing.Size(640, 471);
             this.pnlMonitor.TabIndex = 35;
             this.pnlMonitor.Visible = false;
             // 
@@ -556,7 +556,7 @@
             this.lblAddFaceWarn.AutoSize = true;
             this.lblAddFaceWarn.Font = new System.Drawing.Font("Calibri", 10F);
             this.lblAddFaceWarn.ForeColor = System.Drawing.Color.Red;
-            this.lblAddFaceWarn.Location = new System.Drawing.Point(91, 453);
+            this.lblAddFaceWarn.Location = new System.Drawing.Point(91, 430);
             this.lblAddFaceWarn.Name = "lblAddFaceWarn";
             this.lblAddFaceWarn.Size = new System.Drawing.Size(152, 17);
             this.lblAddFaceWarn.TabIndex = 26;
@@ -592,6 +592,22 @@
             this.waktuPulang.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.waktuPulang.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
+            // lblPersonDetected
+            // 
+            this.lblPersonDetected.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.lblPersonDetected.FlatAppearance.BorderSize = 0;
+            this.lblPersonDetected.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.lblPersonDetected.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.lblPersonDetected.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblPersonDetected.Font = new System.Drawing.Font("Calibri", 12F);
+            this.lblPersonDetected.ForeColor = System.Drawing.Color.White;
+            this.lblPersonDetected.Location = new System.Drawing.Point(190, 444);
+            this.lblPersonDetected.Name = "lblPersonDetected";
+            this.lblPersonDetected.Size = new System.Drawing.Size(640, 25);
+            this.lblPersonDetected.TabIndex = 36;
+            this.lblPersonDetected.Text = "1234 123456 1 123 - Lucky Valentino Wuntu";
+            this.lblPersonDetected.UseVisualStyleBackColor = false;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -599,10 +615,12 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(850, 562);
             this.Controls.Add(this.pnlMonitor);
+            this.Controls.Add(this.lblPersonDetected);
+            this.Controls.Add(this.lblAttendanceStatus);
             this.Controls.Add(this.btnHide);
             this.Controls.Add(this.btnExit);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lblScanningStatus);
+            this.Controls.Add(this.lbl);
             this.Controls.Add(this.btnAuto);
             this.Controls.Add(this.pnlSidePanel);
             this.Controls.Add(this.btnStart);
@@ -660,8 +678,8 @@
         private System.Windows.Forms.Button btnMonitor;
         private System.Windows.Forms.Button btnLaporan;
         private System.Windows.Forms.Label lblDateToday;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lbl;
+        private System.Windows.Forms.Label lblScanningStatus;
         private Emgu.CV.UI.ImageBox pcbCurrentFrame;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnHide;
@@ -676,6 +694,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Nama;
         private System.Windows.Forms.DataGridViewTextBoxColumn waktuHadir;
         private System.Windows.Forms.DataGridViewTextBoxColumn waktuPulang;
+        private System.Windows.Forms.Button lblPersonDetected;
     }
 }
 

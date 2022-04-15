@@ -73,67 +73,67 @@ namespace ASyst
                 lblCudaStts.Visible = true;
             }
 
-            //// Initialize EmguCV Recognizer using LBPH
-            //recognizer = new LBPHFaceRecognizer(1, 8, 8, 8, 5000.0);
+            // Initialize EmguCV Recognizer using LBPH
+            recognizer = new LBPHFaceRecognizer(1, 8, 8, 8, 5000.0);
 
-            //// Check if directory to save report and dataset exist, if not create one
-            //if (!Directory.Exists(Application.StartupPath + "\\report"))
-            //{
-            //    Directory.CreateDirectory(Application.StartupPath + "\\report");
-            //}
-            //if (!Directory.Exists(Application.StartupPath + "\\report\\dataset"))
-            //{
-            //    Directory.CreateDirectory(Application.StartupPath + "\\report\\dataset");
-            //}
-            //if (!Directory.Exists(pathDataset + "bitmap"))
-            //{
-            //    Directory.CreateDirectory(pathDataset + "bitmap");
-            //}
-            //if (!File.Exists(pathExcel))
-            //{
-            //    excelCreate();
-            //}
-            //if (!File.Exists(pathDataset + "namelabels.txt"))
-            //{
-            //    File.CreateText(pathDataset + "namelabels.txt");
-            //}
-            //if (!File.Exists(pathDataset + "idlabels.txt"))
-            //{
-            //    File.CreateText(pathDataset + "idlabels.txt");
-            //}
-            //if (!File.Exists(pathDataset + "facecount.txt"))
-            //{
-            //    File.CreateText(pathDataset + "facecount.txt");
-            //}
-            //if (File.Exists(pathDataset + "trainingdata.xml"))
-            //{
-            //    recognizer.Load(pathDataset + "trainingdata.xml");
+            // Check if directory to save report and dataset exist, if not create one
+            if (!Directory.Exists(Application.StartupPath + "\\report"))
+            {
+                Directory.CreateDirectory(Application.StartupPath + "\\report");
+            }
+            if (!Directory.Exists(Application.StartupPath + "\\report\\dataset"))
+            {
+                Directory.CreateDirectory(Application.StartupPath + "\\report\\dataset");
+            }
+            if (!Directory.Exists(pathDataset + "bitmap"))
+            {
+                Directory.CreateDirectory(pathDataset + "bitmap");
+            }
+            if (!File.Exists(pathExcel))
+            {
+                excelCreate();
+            }
+            if (!File.Exists(pathDataset + "namelabels.txt"))
+            {
+                File.CreateText(pathDataset + "namelabels.txt");
+            }
+            if (!File.Exists(pathDataset + "idlabels.txt"))
+            {
+                File.CreateText(pathDataset + "idlabels.txt");
+            }
+            if (!File.Exists(pathDataset + "facecount.txt"))
+            {
+                File.CreateText(pathDataset + "facecount.txt");
+            }
+            if (File.Exists(pathDataset + "trainingdata.xml"))
+            {
+                recognizer.Load(pathDataset + "trainingdata.xml");
 
-            //    string namelabels = File.ReadAllText(pathDataset + "namelabels.txt");
-            //    string idlabels = File.ReadAllText(pathDataset + "idlabels.txt");
-            //    string[] Name = namelabels.Split('%');
-            //    string[] NIM = idlabels.Split('%');
+                string namelabels = File.ReadAllText(pathDataset + "namelabels.txt");
+                string idlabels = File.ReadAllText(pathDataset + "idlabels.txt");
+                string[] Name = namelabels.Split('%');
+                string[] NIM = idlabels.Split('%');
 
-            //    string[] count = Directory.GetFiles(pathDataset + "bitmap", "*", SearchOption.AllDirectories);
-            //    faceCounter = count.Length;
-            //    //faceCounter = Convert.ToInt32(File.ReadAllText(pathDataset + "facecount.txt"));
+                string[] count = Directory.GetFiles(pathDataset + "bitmap", "*", SearchOption.AllDirectories);
+                faceCounter = count.Length;
+                //faceCounter = Convert.ToInt32(File.ReadAllText(pathDataset + "facecount.txt"));
 
-            //    for (int l = 0; l < faceCounter; l++)
-            //    {
-            //        trainingImages.Add(new Image<Gray, byte>(pathDataset + "bitmap\\" + "face" + (l + 1) + ".bmp"));
-            //        trainingNameLabels.Add(Name[l]);
-            //        trainingIDLabels.Add(NIM[l]);
-            //        trainingImagesID.Add(l);
-            //    }
+                for (int l = 0; l < faceCounter; l++)
+                {
+                    trainingImages.Add(new Image<Gray, byte>(pathDataset + "bitmap\\" + "face" + (l + 1) + ".bmp"));
+                    trainingNameLabels.Add(Name[l]);
+                    trainingIDLabels.Add(NIM[l]);
+                    trainingImagesID.Add(l);
+                }
 
-            //    lblFaceCounter.Text = (faceCounter / 10).ToString();
-            //    MessageBox.Show("Dataset Loaded,\n" + (faceCounter / 10) + " Face Added", "Dataset Loaded", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Empty Dataset Loaded,\nPlease Add Some Face First", "Dataset Loaded", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //    lblFaceCounter.Text = "Empty";
-            //}
+                lblFaceCounter.Text = (faceCounter / 10).ToString();
+                MessageBox.Show("Dataset Loaded,\n" + (faceCounter / 10) + " Face Added", "Dataset Loaded", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Empty Dataset Loaded,\nPlease Add Some Face First", "Dataset Loaded", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                lblFaceCounter.Text = "Empty";
+            }
 
             //Load all camera device
             try
@@ -150,43 +150,43 @@ namespace ASyst
                 cbxDevices.Enabled = false;
             }
 
-            //// Get the last row used in excel
-            //Excel.Application xlApp = new Excel.Application();
+            // Get the last row used in excel
+            Excel.Application xlApp = new Excel.Application();
 
-            //if (xlApp == null)
-            //{
-            //    MessageBox.Show("Excel not installed properly", "Excel not installed!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //    return;
-            //}
+            if (xlApp == null)
+            {
+                MessageBox.Show("Excel not installed properly", "Excel not installed!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
-            //Excel.Workbook xlWorkBook;
-            //Excel.Worksheet xlWorksheet;
-            //object misValue = System.Reflection.Missing.Value;
+            Excel.Workbook xlWorkBook;
+            Excel.Worksheet xlWorksheet;
+            object misValue = System.Reflection.Missing.Value;
 
-            //xlWorkBook = xlApp.Workbooks.Open(pathExcel);
-            //xlWorksheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+            xlWorkBook = xlApp.Workbooks.Open(pathExcel);
+            xlWorksheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
 
-            //lastUsedColumn = xlWorksheet.UsedRange.Columns.Count;
-            //try
-            //{
-            //    if (!(dateNow.ToString("MM/dd/yyyy") == xlWorksheet.Cells[4, lastUsedColumn].Value.ToString("MM/dd/yyyy")))
-            //    {
-            //        lastUsedColumn += 1;
-            //        xlWorksheet.Columns[lastUsedColumn].ColumnWidth = 10;
-            //        xlWorksheet.Cells[4, lastUsedColumn].Font.Bold = true;
-            //        xlWorksheet.Cells[4, lastUsedColumn] = dateNow.ToString("MM/dd/yyyy");
-            //    }
-            //}
-            //catch
-            //{
-            //    lastUsedColumn += 1;
-            //    xlWorksheet.Columns[lastUsedColumn].ColumnWidth = 10;
-            //    xlWorksheet.Cells[4, lastUsedColumn].Font.Bold = true;
-            //    xlWorksheet.Cells[4, lastUsedColumn] = dateNow.ToString("MM/dd/yyyy");
-            //}
+            lastUsedColumn = xlWorksheet.UsedRange.Columns.Count;
+            try
+            {
+                if (!(dateNow.ToString("MM/dd/yyyy") == xlWorksheet.Cells[4, lastUsedColumn].Value.ToString("MM/dd/yyyy")))
+                {
+                    lastUsedColumn += 1;
+                    xlWorksheet.Columns[lastUsedColumn].ColumnWidth = 10;
+                    xlWorksheet.Cells[4, lastUsedColumn].Font.Bold = true;
+                    xlWorksheet.Cells[4, lastUsedColumn] = dateNow.ToString("MM/dd/yyyy");
+                }
+            }
+            catch
+            {
+                lastUsedColumn += 1;
+                xlWorksheet.Columns[lastUsedColumn].ColumnWidth = 10;
+                xlWorksheet.Cells[4, lastUsedColumn].Font.Bold = true;
+                xlWorksheet.Cells[4, lastUsedColumn] = dateNow.ToString("MM/dd/yyyy");
+            }
 
-            //xlWorkBook.Close(true, misValue, misValue);
-            //xlApp.Quit();
+            xlWorkBook.Close(true, misValue, misValue);
+            xlApp.Quit();
 
             // Set date & hour today
             lblDateToday.Text = DateTime.Now.ToString("dd / MM / yyyy");
@@ -336,6 +336,8 @@ namespace ASyst
                         IDStored = trainingIDLabels.ToArray()[result.Label];
                         NameStored = trainingNameLabels.ToArray()[result.Label].Substring(0, trainingNameLabels.ToArray()[result.Label].IndexOf(' '));
                     }
+
+                    lblPersonDetected.Text = IDStored + " - " + NameStored;
 
                     lblAttendedID.Text = IDStored;
                     lblAttendedName.Text = NameStored;
@@ -499,7 +501,7 @@ namespace ASyst
             if (recognizing == true)
             {
                 tmrScanning.Start();
-                if (lblIDOnScreen.Text.Length > 8)
+                if (lblPersonDetected.Text.Length > 16)
                 {
                     if(counterAbsent == 0)
                     {
