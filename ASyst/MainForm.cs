@@ -63,19 +63,15 @@ namespace ASyst
         // App on load
         private void MainForm_Load(object sender, EventArgs e)
         {
-            //// Set some path
-            //pathExcel = Application.StartupPath + "\\report\\" + dateNow.ToString("yyyy-MMMM") + ".xlsx";
-            //pathDataset = Application.StartupPath + "\\report\\dataset\\";
+            // Set some path
+            pathExcel = Application.StartupPath + "\\report\\" + dateNow.ToString("yyyy-MMMM") + ".xlsx";
+            pathDataset = Application.StartupPath + "\\report\\dataset\\";
 
-            //// Tell if Nvidia CUDA supported
-            //if (CudaInvoke.HasCuda)
-            //{
-            //    lblCudaStts.Text = "CUDA Status :             ON";
-            //}
-            //else
-            //{
-            //    lblCudaStts.Text = "CUDA Status :             OFF";
-            //}
+            // Tell if Nvidia CUDA supported
+            if (CudaInvoke.HasCuda)
+            {
+                lblCudaStts.Visible = true;
+            }
 
             //// Initialize EmguCV Recognizer using LBPH
             //recognizer = new LBPHFaceRecognizer(1, 8, 8, 8, 5000.0);
@@ -200,14 +196,21 @@ namespace ASyst
         // Start button
         private void Start_Click(object sender, EventArgs e)
         {
+            // Disable unnecessary button
+            btnStart.Enabled = false;
+            cbxDevices.Enabled = false;
+            lblAddFaceWarn.Visible = false;
+
+            btnAddFace.Enabled = true;
+
             if (faceCounter > 0)
             {
                 btnAuto.Enabled = true;
             }
-            cbxDevices.Enabled = false;
+
             grabber.QueryFrame();
             Application.Idle += new EventHandler(FrameCapture);
-            btnStart.Enabled = false;
+            
         }
 
         // Adding face function
@@ -268,7 +271,6 @@ namespace ASyst
             if (CudaInvoke.HasCuda)
             {
                 // If Nvidia CUDA Supported
-                lblCudaStts.Text = "CUDA Status :             ON";
                 using (CudaImage<Gray, byte> cuda_grayFrame = new CudaImage<Gray, byte>(grayFrame))
                 using (GpuMat region = new GpuMat())
                 {
@@ -283,7 +285,6 @@ namespace ASyst
             else
             {
                 // If Nvidia CUDA Unsupported
-                lblCudaStts.Text = "CUDA Status :             OFF";
                 faceDetected = cascade.DetectMultiScale(grayFrame, 1.1, 10, new Size(100, 100), Size.Empty);
                 FaceDetector(faceDetected);
                 ScanningCounter();
@@ -429,6 +430,15 @@ namespace ASyst
             btnMonitorReset();
         }
 
+        private void pnlSidePanel_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+            }
+        }
+
         private void MainForm_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
@@ -449,8 +459,9 @@ namespace ASyst
             help.ShowDialog();
         }
 
-        private void stpAddFace_Click(object sender, EventArgs e)
+        private void btnAddFace_Click(object sender, EventArgs e)
         {
+            pnlMonitor.Visible = false;
             AddNewFace add = new AddNewFace();
             add.ShowDialog();
 

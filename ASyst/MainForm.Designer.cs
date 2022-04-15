@@ -30,9 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.pcbRecognized = new Emgu.CV.UI.ImageBox();
-            this.lblFaceStoredold = new System.Windows.Forms.Label();
             this.cbxDevices = new System.Windows.Forms.ComboBox();
             this.lblCudaStts = new System.Windows.Forms.Label();
             this.tmrAddFace = new System.Windows.Forms.Timer(this.components);
@@ -43,7 +43,6 @@
             this.lblIDOnScreen = new System.Windows.Forms.Label();
             this.lblAttendanceStatus = new System.Windows.Forms.Label();
             this.lblAutoStts = new System.Windows.Forms.Label();
-            this.lblFaceCounter = new System.Windows.Forms.Label();
             this.btnStart = new System.Windows.Forms.Button();
             this.lblAttendedName = new System.Windows.Forms.Label();
             this.lblAttendedIDStts = new System.Windows.Forms.Label();
@@ -54,7 +53,7 @@
             this.lblNameOnScreenStts = new System.Windows.Forms.Label();
             this.lblHourToday = new System.Windows.Forms.Label();
             this.tmrTimeNow = new System.Windows.Forms.Timer(this.components);
-            this.panel6 = new System.Windows.Forms.Panel();
+            this.pnlSidePanel = new System.Windows.Forms.Panel();
             this.lblDateToday = new System.Windows.Forms.Label();
             this.btnLaporan = new System.Windows.Forms.Button();
             this.btnMonitor = new System.Windows.Forms.Button();
@@ -66,14 +65,17 @@
             this.btnExit = new System.Windows.Forms.Button();
             this.btnHide = new System.Windows.Forms.Button();
             this.lblDevices = new System.Windows.Forms.Label();
+            this.lblFaceCounter = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Nama = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.waktuHadir = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label4 = new System.Windows.Forms.Label();
+            this.Nama = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lblFaceStored = new System.Windows.Forms.Label();
+            this.btnAddFace = new System.Windows.Forms.Button();
             this.pnlMonitor = new System.Windows.Forms.Panel();
+            this.lblAddFaceWarn = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pcbRecognized)).BeginInit();
             this.panel4.SuspendLayout();
-            this.panel6.SuspendLayout();
+            this.pnlSidePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcbCurrentFrame)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.pnlMonitor.SuspendLayout();
@@ -88,16 +90,6 @@
             this.pcbRecognized.TabIndex = 7;
             this.pcbRecognized.TabStop = false;
             this.pcbRecognized.Visible = false;
-            // 
-            // lblFaceStoredold
-            // 
-            this.lblFaceStoredold.AutoSize = true;
-            this.lblFaceStoredold.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFaceStoredold.Location = new System.Drawing.Point(3, 75);
-            this.lblFaceStoredold.Name = "lblFaceStoredold";
-            this.lblFaceStoredold.Size = new System.Drawing.Size(87, 14);
-            this.lblFaceStoredold.TabIndex = 11;
-            this.lblFaceStoredold.Text = "Face Stored : ";
             // 
             // cbxDevices
             // 
@@ -116,12 +108,15 @@
             // lblCudaStts
             // 
             this.lblCudaStts.AutoSize = true;
-            this.lblCudaStts.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCudaStts.Location = new System.Drawing.Point(2, 42);
+            this.lblCudaStts.BackColor = System.Drawing.Color.Transparent;
+            this.lblCudaStts.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCudaStts.ForeColor = System.Drawing.Color.White;
+            this.lblCudaStts.Location = new System.Drawing.Point(93, 64);
             this.lblCudaStts.Name = "lblCudaStts";
-            this.lblCudaStts.Size = new System.Drawing.Size(136, 14);
+            this.lblCudaStts.Size = new System.Drawing.Size(38, 15);
             this.lblCudaStts.TabIndex = 6;
-            this.lblCudaStts.Text = "CUDA Status :              -";
+            this.lblCudaStts.Text = "CUDA";
+            this.lblCudaStts.Visible = false;
             // 
             // tmrAddFace
             // 
@@ -198,16 +193,6 @@
             this.lblAutoStts.TabIndex = 21;
             this.lblAutoStts.Text = "Automate Status :       OFF";
             // 
-            // lblFaceCounter
-            // 
-            this.lblFaceCounter.AutoSize = true;
-            this.lblFaceCounter.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFaceCounter.Location = new System.Drawing.Point(127, 75);
-            this.lblFaceCounter.Name = "lblFaceCounter";
-            this.lblFaceCounter.Size = new System.Drawing.Size(11, 14);
-            this.lblFaceCounter.TabIndex = 23;
-            this.lblFaceCounter.Text = "-";
-            // 
             // btnStart
             // 
             this.btnStart.BackColor = System.Drawing.Color.Transparent;
@@ -257,15 +242,12 @@
             this.panel4.BackColor = System.Drawing.Color.White;
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel4.Controls.Add(this.lblAutoStts);
-            this.panel4.Controls.Add(this.lblCudaStts);
             this.panel4.Controls.Add(this.lblAttendedName);
             this.panel4.Controls.Add(this.lblNameOnScreen);
             this.panel4.Controls.Add(this.lblAttendanceStatus);
             this.panel4.Controls.Add(this.lblIDOnScreenStts);
-            this.panel4.Controls.Add(this.lblFaceStoredold);
             this.panel4.Controls.Add(this.lblAttendanceStatusStts);
             this.panel4.Controls.Add(this.lblIDOnScreen);
-            this.panel4.Controls.Add(this.lblFaceCounter);
             this.panel4.Controls.Add(this.lblNameOnScreenStts);
             this.panel4.Controls.Add(this.lblAttendedIDStts);
             this.panel4.Controls.Add(this.lblAttendedID);
@@ -326,20 +308,22 @@
             this.tmrTimeNow.Interval = 1000;
             this.tmrTimeNow.Tick += new System.EventHandler(this.tmrTimeNow_Tick);
             // 
-            // panel6
+            // pnlSidePanel
             // 
-            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.panel6.Controls.Add(this.lblDateToday);
-            this.panel6.Controls.Add(this.lblHourToday);
-            this.panel6.Controls.Add(this.panel4);
-            this.panel6.Controls.Add(this.btnLaporan);
-            this.panel6.Controls.Add(this.btnMonitor);
-            this.panel6.Controls.Add(this.btnScanning);
-            this.panel6.Controls.Add(this.label1);
-            this.panel6.Location = new System.Drawing.Point(0, 0);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(170, 562);
-            this.panel6.TabIndex = 30;
+            this.pnlSidePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.pnlSidePanel.Controls.Add(this.lblDateToday);
+            this.pnlSidePanel.Controls.Add(this.lblCudaStts);
+            this.pnlSidePanel.Controls.Add(this.lblHourToday);
+            this.pnlSidePanel.Controls.Add(this.panel4);
+            this.pnlSidePanel.Controls.Add(this.btnLaporan);
+            this.pnlSidePanel.Controls.Add(this.btnMonitor);
+            this.pnlSidePanel.Controls.Add(this.btnScanning);
+            this.pnlSidePanel.Controls.Add(this.label1);
+            this.pnlSidePanel.Location = new System.Drawing.Point(0, 0);
+            this.pnlSidePanel.Name = "pnlSidePanel";
+            this.pnlSidePanel.Size = new System.Drawing.Size(170, 562);
+            this.pnlSidePanel.TabIndex = 30;
+            this.pnlSidePanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlSidePanel_MouseDown);
             // 
             // lblDateToday
             // 
@@ -488,6 +472,17 @@
             this.lblDevices.TabIndex = 5;
             this.lblDevices.Text = "Camera Device :";
             // 
+            // lblFaceCounter
+            // 
+            this.lblFaceCounter.AutoSize = true;
+            this.lblFaceCounter.Font = new System.Drawing.Font("Calibri", 15F);
+            this.lblFaceCounter.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.lblFaceCounter.Location = new System.Drawing.Point(123, -1);
+            this.lblFaceCounter.Name = "lblFaceCounter";
+            this.lblFaceCounter.Size = new System.Drawing.Size(20, 24);
+            this.lblFaceCounter.TabIndex = 23;
+            this.lblFaceCounter.Text = "0";
+            // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToDeleteRows = false;
@@ -506,6 +501,15 @@
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Nama,
             this.waktuHadir});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Calibri", 12F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridView1.EnableHeadersVisualStyles = false;
             this.dataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
             this.dataGridView1.Location = new System.Drawing.Point(0, 43);
             this.dataGridView1.Name = "dataGridView1";
@@ -513,15 +517,6 @@
             this.dataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dataGridView1.Size = new System.Drawing.Size(640, 217);
             this.dataGridView1.TabIndex = 0;
-            // 
-            // Nama
-            // 
-            this.Nama.HeaderText = "Nama";
-            this.Nama.Name = "Nama";
-            this.Nama.ReadOnly = true;
-            this.Nama.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Nama.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Nama.Width = 299;
             // 
             // waktuHadir
             // 
@@ -532,28 +527,66 @@
             this.waktuHadir.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.waktuHadir.Width = 299;
             // 
-            // label4
+            // Nama
             // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Calibri", 15F);
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.label4.Location = new System.Drawing.Point(-4, -1);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(79, 24);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Monitor";
+            this.Nama.HeaderText = "Nama";
+            this.Nama.Name = "Nama";
+            this.Nama.ReadOnly = true;
+            this.Nama.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Nama.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Nama.Width = 299;
+            // 
+            // lblFaceStored
+            // 
+            this.lblFaceStored.AutoSize = true;
+            this.lblFaceStored.BackColor = System.Drawing.Color.Transparent;
+            this.lblFaceStored.Font = new System.Drawing.Font("Calibri", 15F);
+            this.lblFaceStored.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.lblFaceStored.Location = new System.Drawing.Point(-4, -1);
+            this.lblFaceStored.Name = "lblFaceStored";
+            this.lblFaceStored.Size = new System.Drawing.Size(121, 24);
+            this.lblFaceStored.TabIndex = 6;
+            this.lblFaceStored.Text = "Face Stored : ";
+            // 
+            // btnAddFace
+            // 
+            this.btnAddFace.BackColor = System.Drawing.Color.Transparent;
+            this.btnAddFace.Enabled = false;
+            this.btnAddFace.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddFace.Font = new System.Drawing.Font("Calibri", 12F);
+            this.btnAddFace.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnAddFace.Location = new System.Drawing.Point(0, 446);
+            this.btnAddFace.Name = "btnAddFace";
+            this.btnAddFace.Size = new System.Drawing.Size(85, 27);
+            this.btnAddFace.TabIndex = 24;
+            this.btnAddFace.Text = "Add Face";
+            this.btnAddFace.UseVisualStyleBackColor = false;
+            this.btnAddFace.Click += new System.EventHandler(this.btnAddFace_Click);
             // 
             // pnlMonitor
             // 
             this.pnlMonitor.BackColor = System.Drawing.Color.Transparent;
-            this.pnlMonitor.Controls.Add(this.label4);
+            this.pnlMonitor.Controls.Add(this.lblAddFaceWarn);
+            this.pnlMonitor.Controls.Add(this.btnAddFace);
+            this.pnlMonitor.Controls.Add(this.lblFaceStored);
             this.pnlMonitor.Controls.Add(this.dataGridView1);
+            this.pnlMonitor.Controls.Add(this.lblFaceCounter);
             this.pnlMonitor.Location = new System.Drawing.Point(190, 65);
             this.pnlMonitor.Name = "pnlMonitor";
             this.pnlMonitor.Size = new System.Drawing.Size(640, 473);
             this.pnlMonitor.TabIndex = 35;
             this.pnlMonitor.Visible = false;
+            // 
+            // lblAddFaceWarn
+            // 
+            this.lblAddFaceWarn.AutoSize = true;
+            this.lblAddFaceWarn.Font = new System.Drawing.Font("Calibri", 10F);
+            this.lblAddFaceWarn.ForeColor = System.Drawing.Color.Red;
+            this.lblAddFaceWarn.Location = new System.Drawing.Point(91, 453);
+            this.lblAddFaceWarn.Name = "lblAddFaceWarn";
+            this.lblAddFaceWarn.Size = new System.Drawing.Size(152, 17);
+            this.lblAddFaceWarn.TabIndex = 26;
+            this.lblAddFaceWarn.Text = "*Please start camera first";
             // 
             // MainForm
             // 
@@ -567,7 +600,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnAuto);
-            this.Controls.Add(this.panel6);
+            this.Controls.Add(this.pnlSidePanel);
             this.Controls.Add(this.btnStart);
             this.Controls.Add(this.cbxDevices);
             this.Controls.Add(this.lblDevices);
@@ -585,8 +618,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pcbRecognized)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
+            this.pnlSidePanel.ResumeLayout(false);
+            this.pnlSidePanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcbCurrentFrame)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.pnlMonitor.ResumeLayout(false);
@@ -600,7 +633,6 @@
         private System.Windows.Forms.ComboBox cbxDevices;
         private System.Windows.Forms.Label lblCudaStts;
         private Emgu.CV.UI.ImageBox pcbRecognized;
-        private System.Windows.Forms.Label lblFaceStoredold;
         private System.Windows.Forms.Timer tmrAddFace;
         private System.Windows.Forms.Timer tmrScanning;
         private System.Windows.Forms.Label lblAttendedID;
@@ -609,7 +641,6 @@
         private System.Windows.Forms.Label lblIDOnScreen;
         private System.Windows.Forms.Label lblAttendanceStatus;
         private System.Windows.Forms.Label lblAutoStts;
-        private System.Windows.Forms.Label lblFaceCounter;
         private System.Windows.Forms.Button btnStart;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label lblAttendedName;
@@ -620,7 +651,7 @@
         private System.Windows.Forms.Label lblNameOnScreen;
         private System.Windows.Forms.Label lblHourToday;
         private System.Windows.Forms.Timer tmrTimeNow;
-        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Panel pnlSidePanel;
         private System.Windows.Forms.Button btnScanning;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnMonitor;
@@ -632,11 +663,14 @@
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnHide;
         private System.Windows.Forms.Label lblDevices;
+        private System.Windows.Forms.Label lblFaceCounter;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nama;
         private System.Windows.Forms.DataGridViewTextBoxColumn waktuHadir;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblFaceStored;
+        private System.Windows.Forms.Button btnAddFace;
         private System.Windows.Forms.Panel pnlMonitor;
+        private System.Windows.Forms.Label lblAddFaceWarn;
     }
 }
 
