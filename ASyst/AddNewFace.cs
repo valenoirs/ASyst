@@ -31,10 +31,10 @@ namespace ASyst
             {
                 MessageBox.Show("ID Cannot Contain Letter", "Training Fail", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
-            else if (txbIDLabel.Text.Length != 8)
-            {
-                MessageBox.Show("ID Length Cannot More or Less Than 8 Digits", "Training Fail", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
+            //else if (txbIDLabel.Text.Length != 8)
+            //{
+            //    MessageBox.Show("ID Length Cannot More or Less Than 8 Digits", "Training Fail", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            //}
             else
             {
                 MainForm.addFace = true;

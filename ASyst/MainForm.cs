@@ -48,9 +48,9 @@ namespace ASyst
         public static bool addFace = false;
         public static string NameLabel, IDLabel;
         DateTime dateNow = DateTime.Now;
-        //DateTime dateTest = new DateTime(2022, 5, 1, 5, 10, 20);
+        //DateTime dateTest = new DateTime(2022, 4, 23, 5, 10, 20);
 
-        //Cascade Declaration
+        // Cascade Declaration
         CudaCascadeClassifier cuda_cascade = new CudaCascadeClassifier("haarcascade_frontalface_default.xml");
         CascadeClassifier cascade = new CascadeClassifier("haarcascade_frontalface_default.xml");
         #endregion
@@ -74,7 +74,7 @@ namespace ASyst
             }
 
             // Initialize EmguCV Recognizer using LBPH
-            recognizer = new LBPHFaceRecognizer(1, 8, 8, 8, 5000.0);
+            recognizer = new LBPHFaceRecognizer(1, 8, 8, 8, 1000.0);
 
             // Check if directory to save report and dataset exist, if not create one
             if (!Directory.Exists(Application.StartupPath + "\\report"))
@@ -169,12 +169,20 @@ namespace ASyst
             lastUsedColumn = xlWorksheet.UsedRange.Columns.Count;
             try
             {
-                if (!(dateNow.ToString("MM/dd/yyyy") == xlWorksheet.Cells[4, lastUsedColumn].Value.ToString("MM/dd/yyyy")))
+                if (!(dateNow.ToString("MM/dd/yyyy") == xlWorksheet.Cells[4, lastUsedColumn - 1].Value.ToString("MM/dd/yyyy")))
                 {
+                    MessageBox.Show("Exist");
                     lastUsedColumn += 1;
                     xlWorksheet.Columns[lastUsedColumn].ColumnWidth = 10;
                     xlWorksheet.Cells[4, lastUsedColumn].Font.Bold = true;
+                    xlWorksheet.Cells[5, lastUsedColumn].Font.Bold = true;
+                    xlWorksheet.Cells[5, lastUsedColumn + 1].Font.Bold = true;
+                    xlWorksheet.Cells[4, lastUsedColumn].HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                    xlWorksheet.Range[xlWorksheet.Cells[4, lastUsedColumn], xlWorksheet.Cells[4, lastUsedColumn + 1]].Merge();
+
                     xlWorksheet.Cells[4, lastUsedColumn] = dateNow.ToString("MM/dd/yyyy");
+                    xlWorksheet.Cells[5, lastUsedColumn] = "Datang";
+                    xlWorksheet.Cells[5, lastUsedColumn + 1] = "Pulang";
                 }
             }
             catch
@@ -182,7 +190,14 @@ namespace ASyst
                 lastUsedColumn += 1;
                 xlWorksheet.Columns[lastUsedColumn].ColumnWidth = 10;
                 xlWorksheet.Cells[4, lastUsedColumn].Font.Bold = true;
+                xlWorksheet.Cells[5, lastUsedColumn].Font.Bold = true;
+                xlWorksheet.Cells[5, lastUsedColumn + 1].Font.Bold = true;
+                xlWorksheet.Cells[4, lastUsedColumn].HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                xlWorksheet.Range[xlWorksheet.Cells[4, lastUsedColumn], xlWorksheet.Cells[4, lastUsedColumn + 1]].Merge();
+
                 xlWorksheet.Cells[4, lastUsedColumn] = dateNow.ToString("MM/dd/yyyy");
+                xlWorksheet.Cells[5, lastUsedColumn] = "Datang";
+                xlWorksheet.Cells[5, lastUsedColumn + 1] = "Pulang";
             }
 
             xlWorkBook.Close(true, misValue, misValue);
@@ -351,6 +366,66 @@ namespace ASyst
                 }
             }
         }
+                
+        private void ScanningCounter()
+        {
+            counterScanning = 0;
+
+            for (int l = 0; l < faceDetected.Length; l++)
+            {
+                try
+                {
+                    displayID = displayID + IDPersons[l] + ", ";
+                }
+                catch
+                {
+                    continue;
+                }
+            }
+
+            lblIDOnScreen.Text = displayID;
+        }
+
+        private void AutoAbsent()
+        {
+            if (recognizing == true)
+            {
+                tmrScanning.Start();
+                if (lblPersonDetected.Text.Length > 16)
+                {
+                    if(counterAbsent == 0)
+                    {
+                        excelUpdate(IDStored);
+                    }
+                    tmrScanning.Start();
+                    lblScanningCounter.Visible = true;
+                    lblScanningStatus.Text = "Recognizing";
+                    lblScanningCounter.Text = counterAbsent.ToString();
+                }
+                else
+                {
+                    tmrScanning.Stop();
+                    counterAbsent = 5;
+                    lblScanningCounter.Visible = false;
+                    lblPersonDetected.Text = "Scanning";
+                    lblScanningStatus.Text = "Scanning";
+                    lblScanningCounter.Text = "Scanning";
+                    lblAttendedID.Text = "Scanning";
+                    lblAttendedName.Text = "Scanning";
+                }
+            }
+            else if (recognizing == false)
+            {
+                tmrScanning.Stop();
+                lblScanningCounter.Visible = false;
+                lblScanningStatus.Text = "Waiting...";
+                lblPersonDetected.Text = "Paused";
+                lblIDOnScreen.Text = "Paused";
+                lblScanningCounter.Text = "Paused";
+                lblAttendedID.Text = "Paused";
+                lblAttendedName.Text = "Paused";
+            }
+        }
 
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
@@ -362,7 +437,7 @@ namespace ASyst
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            MainForm.ActiveForm.Dispose();
+            MainForm.ActiveForm.Close();
         }
 
         private void btnHide_Click(object sender, EventArgs e)
@@ -477,58 +552,6 @@ namespace ASyst
             }
         }
 
-        private void ScanningCounter()
-        {
-            counterScanning = 0;
-
-            for (int l = 0; l < faceDetected.Length; l++)
-            {
-                try
-                {
-                    displayID = displayID + IDPersons[l] + ", ";
-                }
-                catch
-                {
-                    continue;
-                }
-            }
-
-            lblIDOnScreen.Text = displayID;
-        }
-
-        private void AutoAbsent()
-        {
-            if (recognizing == true)
-            {
-                tmrScanning.Start();
-                if (lblPersonDetected.Text.Length > 16)
-                {
-                    if(counterAbsent == 0)
-                    {
-                        excelUpdate(IDStored);
-                    }
-                    tmrScanning.Start();
-                    lblAttendanceStatus.Text = counterAbsent.ToString();
-                }
-                else
-                {
-                    tmrScanning.Stop();
-                    counterAbsent = 5;
-                    lblAttendanceStatus.Text = "Scanning";
-                    lblAttendedID.Text = "Scanning";
-                    lblAttendedName.Text = "Scanning";
-                }
-            }
-            else if (recognizing == false)
-            {
-                tmrScanning.Stop();
-                lblIDOnScreen.Text = "Paused";
-                lblAttendanceStatus.Text = "Paused";
-                lblAttendedID.Text = "Paused";
-                lblAttendedName.Text = "Paused";
-            }
-        }
-
         private void tmrAddFace_Tick(object sender, EventArgs e)
         {
             if (counterAddFace > 1)
@@ -607,7 +630,7 @@ namespace ASyst
                     if(counterAbsent == 0)
                     {
                         xlWorksheet.Cells[n, lastUsedColumn] = DateTime.Now.ToString("HH:mm:ss");
-                        lblAttendanceStatus.Text = "DONE";
+                        lblScanningCounter.Text = "DONE";
 
                         string toSpeak = "Scanning Completed";
                         SpeechSynthesizer speech = new SpeechSynthesizer();
@@ -616,7 +639,7 @@ namespace ASyst
                     }
                     else
                     {
-                        lblAttendanceStatus.Text = counterAbsent.ToString();
+                        lblScanningCounter.Text = counterAbsent.ToString();
                     }
                 }
             }
@@ -648,6 +671,11 @@ namespace ASyst
 
             xlWorksheet.Range[xlWorksheet.Cells[1, 1], xlWorksheet.Cells[1, 4]].Merge();
             xlWorksheet.Range[xlWorksheet.Cells[2, 1], xlWorksheet.Cells[2, 4]].Merge();
+
+            xlWorksheet.Range[xlWorksheet.Cells[4, 1], xlWorksheet.Cells[5, 1]].Merge();
+            xlWorksheet.Range[xlWorksheet.Cells[4, 2], xlWorksheet.Cells[5, 2]].Merge();
+            xlWorksheet.Range[xlWorksheet.Cells[4, 3], xlWorksheet.Cells[5, 3]].Merge();
+            xlWorksheet.Range[xlWorksheet.Cells[4, 4], xlWorksheet.Cells[5, 4]].Merge();
 
             xlWorksheet.Columns[1].ColumnWidth = 5;
             xlWorksheet.Columns[2].ColumnWidth = 22;
