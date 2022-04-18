@@ -150,58 +150,8 @@ namespace ASyst
                 cbxDevices.Enabled = false;
             }
 
-            // Get the last row used in excel
-            Excel.Application xlApp = new Excel.Application();
-
-            if (xlApp == null)
-            {
-                MessageBox.Show("Excel not installed properly", "Excel not installed!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            Excel.Workbook xlWorkBook;
-            Excel.Worksheet xlWorksheet;
-            object misValue = System.Reflection.Missing.Value;
-
-            xlWorkBook = xlApp.Workbooks.Open(pathExcel);
-            xlWorksheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
-
-            lastUsedColumn = xlWorksheet.UsedRange.Columns.Count;
-            try
-            {
-                if (!(dateNow.ToString("MM/dd/yyyy") == xlWorksheet.Cells[4, lastUsedColumn - 1].Value.ToString("MM/dd/yyyy")))
-                {
-                    MessageBox.Show("Exist");
-                    lastUsedColumn += 1;
-                    xlWorksheet.Columns[lastUsedColumn].ColumnWidth = 10;
-                    xlWorksheet.Cells[4, lastUsedColumn].Font.Bold = true;
-                    xlWorksheet.Cells[5, lastUsedColumn].Font.Bold = true;
-                    xlWorksheet.Cells[5, lastUsedColumn + 1].Font.Bold = true;
-                    xlWorksheet.Cells[4, lastUsedColumn].HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
-                    xlWorksheet.Range[xlWorksheet.Cells[4, lastUsedColumn], xlWorksheet.Cells[4, lastUsedColumn + 1]].Merge();
-
-                    xlWorksheet.Cells[4, lastUsedColumn] = dateNow.ToString("MM/dd/yyyy");
-                    xlWorksheet.Cells[5, lastUsedColumn] = "Datang";
-                    xlWorksheet.Cells[5, lastUsedColumn + 1] = "Pulang";
-                }
-            }
-            catch
-            {
-                lastUsedColumn += 1;
-                xlWorksheet.Columns[lastUsedColumn].ColumnWidth = 10;
-                xlWorksheet.Cells[4, lastUsedColumn].Font.Bold = true;
-                xlWorksheet.Cells[5, lastUsedColumn].Font.Bold = true;
-                xlWorksheet.Cells[5, lastUsedColumn + 1].Font.Bold = true;
-                xlWorksheet.Cells[4, lastUsedColumn].HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
-                xlWorksheet.Range[xlWorksheet.Cells[4, lastUsedColumn], xlWorksheet.Cells[4, lastUsedColumn + 1]].Merge();
-
-                xlWorksheet.Cells[4, lastUsedColumn] = dateNow.ToString("MM/dd/yyyy");
-                xlWorksheet.Cells[5, lastUsedColumn] = "Datang";
-                xlWorksheet.Cells[5, lastUsedColumn + 1] = "Pulang";
-            }
-
-            xlWorkBook.Close(true, misValue, misValue);
-            xlApp.Quit();
+            // Get the last row used in excel and more stuff
+            excelLoad();
 
             // Set date & hour today
             lblDateToday.Text = DateTime.Now.ToString("dd / MM / yyyy");
@@ -225,7 +175,7 @@ namespace ASyst
 
             grabber.QueryFrame();
             Application.Idle += new EventHandler(FrameCapture);
-            
+
         }
 
         // Adding face function
@@ -366,7 +316,7 @@ namespace ASyst
                 }
             }
         }
-                
+
         private void ScanningCounter()
         {
             counterScanning = 0;
@@ -393,7 +343,7 @@ namespace ASyst
                 tmrScanning.Start();
                 if (lblPersonDetected.Text.Length > 16)
                 {
-                    if(counterAbsent == 0)
+                    if (counterAbsent == 0)
                     {
                         excelUpdate(IDStored);
                     }
@@ -575,11 +525,60 @@ namespace ASyst
             }
         }
 
+        private void excelLoad()
+        {
+            Excel.Application xlApp = new Excel.Application();
+
+            if (xlApp == null)
+            {
+                MessageBox.Show("Excel not installed properly", "Excel not installed!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            Excel.Workbook xlWorkBook;
+            Excel.Worksheet xlWorksheet;
+            object misValue = System.Reflection.Missing.Value;
+
+            xlWorkBook = xlApp.Workbooks.Open(pathExcel);
+            xlWorksheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+
+            lastUsedColumn = xlWorksheet.UsedRange.Columns.Count;
+
+            void createNewDate()
+            {
+                lastUsedColumn += 1;
+                xlWorksheet.Cells[4, lastUsedColumn].Font.Bold = true;
+                xlWorksheet.Cells[5, lastUsedColumn].Font.Bold = true;
+                xlWorksheet.Cells[5, lastUsedColumn + 1].Font.Bold = true;
+                xlWorksheet.Cells[4, lastUsedColumn].HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                xlWorksheet.Range[xlWorksheet.Cells[4, lastUsedColumn], xlWorksheet.Cells[4, lastUsedColumn + 1]].Merge();
+
+                xlWorksheet.Cells[4, lastUsedColumn] = dateNow.ToString("MM/dd/yyyy");
+                xlWorksheet.Cells[5, lastUsedColumn] = "Datang";
+                xlWorksheet.Cells[5, lastUsedColumn + 1] = "Pulang";
+            }
+            
+            try
+            {
+                if (!(dateNow.ToString("MM/dd/yyyy") == xlWorksheet.Cells[4, lastUsedColumn - 1].Value.ToString("MM/dd/yyyy")))
+                {
+                    createNewDate();
+                }
+            }
+            catch
+            {
+                createNewDate();
+            }
+
+            xlWorkBook.Close(true, misValue, misValue);
+            xlApp.Quit();
+        }
+
         private void excelAdd()
         {
             Excel.Application xlApp = new Excel.Application();
 
-            int columnToUpdate = faceCounter / 10 + 4;
+            int columnToUpdate = faceCounter / 10 + 5;
 
             if (xlApp == null)
             {
@@ -609,11 +608,17 @@ namespace ASyst
         private void excelUpdate(string ID)
         {
             Excel.Application xlApp = new Excel.Application();
+            int columnToUpdate = lastUsedColumn - 1;
 
             if (xlApp == null)
             {
                 MessageBox.Show("Excel not installed properly", "Excel not installed!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
+            }
+
+            if (ckbPulang.Checked)
+            {
+                columnToUpdate += 1;
             }
 
             Excel.Workbook xlWorkBook;
@@ -623,19 +628,19 @@ namespace ASyst
             xlWorkBook = xlApp.Workbooks.Open(pathExcel);
             xlWorksheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
 
-            for(int n = 5; n < (faceCounter / 10 + 5); n++)
+            for(int n = 6; n < (faceCounter / 10 + 6); n++)
             {
                 if(ID == xlWorksheet.Cells[n, 2].Value.ToString())
                 {
                     if(counterAbsent == 0)
                     {
-                        xlWorksheet.Cells[n, lastUsedColumn] = DateTime.Now.ToString("HH:mm:ss");
+                        xlWorksheet.Cells[n, columnToUpdate] = DateTime.Now.ToString("HH:mm:ss");
                         lblScanningCounter.Text = "DONE";
 
-                        string toSpeak = "Scanning Completed";
-                        SpeechSynthesizer speech = new SpeechSynthesizer();
-                        speech.Speak(toSpeak);
-                        speech.Dispose();
+                        //string toSpeak = "Scanning Completed";
+                        //SpeechSynthesizer speech = new SpeechSynthesizer();
+                        //speech.Speak(toSpeak);
+                        //speech.Dispose();
                     }
                     else
                     {

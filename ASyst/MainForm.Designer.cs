@@ -75,6 +75,7 @@
             this.pnlMonitor = new System.Windows.Forms.Panel();
             this.lblAddFaceWarn = new System.Windows.Forms.Label();
             this.lblPersonDetected = new System.Windows.Forms.Button();
+            this.ckbPulang = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pcbRecognized)).BeginInit();
             this.panel4.SuspendLayout();
             this.pnlSidePanel.SuspendLayout();
@@ -617,6 +618,19 @@
             this.lblPersonDetected.Text = "1234 123456 1 123 - Lucky Valentino Wuntu";
             this.lblPersonDetected.UseVisualStyleBackColor = false;
             // 
+            // ckbPulang
+            // 
+            this.ckbPulang.AutoSize = true;
+            this.ckbPulang.BackColor = System.Drawing.Color.Transparent;
+            this.ckbPulang.Font = new System.Drawing.Font("Calibri", 15F);
+            this.ckbPulang.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.ckbPulang.Location = new System.Drawing.Point(745, 485);
+            this.ckbPulang.Name = "ckbPulang";
+            this.ckbPulang.Size = new System.Drawing.Size(85, 28);
+            this.ckbPulang.TabIndex = 37;
+            this.ckbPulang.Text = "Pulang";
+            this.ckbPulang.UseVisualStyleBackColor = false;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -624,6 +638,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(850, 562);
             this.Controls.Add(this.pnlMonitor);
+            this.Controls.Add(this.ckbPulang);
             this.Controls.Add(this.lblPersonDetected);
             this.Controls.Add(this.lblScanningCounter);
             this.Controls.Add(this.btnHide);
@@ -704,6 +719,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn waktuHadir;
         private System.Windows.Forms.DataGridViewTextBoxColumn waktuPulang;
         private System.Windows.Forms.Button lblPersonDetected;
+        private System.Windows.Forms.CheckBox ckbPulang;
     }
 }
 
