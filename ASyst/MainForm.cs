@@ -65,7 +65,7 @@ namespace ASyst
         {
             // Set some path
             pathExcel = Application.StartupPath + "\\report\\" + dateNow.ToString("yyyy-MMMM") + ".xlsx";
-            pathDataset = Application.StartupPath + "\\report\\dataset\\";
+            pathDataset = Application.StartupPath + "\\dataset\\";
 
             // Tell if Nvidia CUDA supported
             if (CudaInvoke.HasCuda)
@@ -81,9 +81,9 @@ namespace ASyst
             {
                 Directory.CreateDirectory(Application.StartupPath + "\\report");
             }
-            if (!Directory.Exists(Application.StartupPath + "\\report\\dataset"))
+            if (!Directory.Exists(Application.StartupPath + "\\dataset"))
             {
-                Directory.CreateDirectory(Application.StartupPath + "\\report\\dataset");
+                Directory.CreateDirectory(Application.StartupPath + "\\dataset");
             }
             if (!Directory.Exists(pathDataset + "bitmap"))
             {
