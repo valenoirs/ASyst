@@ -38,18 +38,11 @@
             this.tmrAddFace = new System.Windows.Forms.Timer(this.components);
             this.tmrScanning = new System.Windows.Forms.Timer(this.components);
             this.lblAttendedID = new System.Windows.Forms.Label();
-            this.lblAttendanceStatusStts = new System.Windows.Forms.Label();
             this.btnAuto = new System.Windows.Forms.Button();
-            this.lblIDOnScreen = new System.Windows.Forms.Label();
             this.lblScanningCounter = new System.Windows.Forms.Label();
             this.btnStart = new System.Windows.Forms.Button();
             this.lblAttendedName = new System.Windows.Forms.Label();
-            this.lblAttendedIDStts = new System.Windows.Forms.Label();
-            this.lblAttendedNameStts = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.lblNameOnScreen = new System.Windows.Forms.Label();
-            this.lblIDOnScreenStts = new System.Windows.Forms.Label();
-            this.lblNameOnScreenStts = new System.Windows.Forms.Label();
             this.lblHourToday = new System.Windows.Forms.Label();
             this.tmrTimeNow = new System.Windows.Forms.Timer(this.components);
             this.pnlSidePanel = new System.Windows.Forms.Panel();
@@ -77,6 +70,8 @@
             this.lblPersonDetected = new System.Windows.Forms.Button();
             this.ckbPulang = new System.Windows.Forms.CheckBox();
             this.lblReport = new System.Windows.Forms.Label();
+            this.btnPanel = new System.Windows.Forms.Button();
+            this.lblIDOnScreen = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pcbRecognized)).BeginInit();
             this.panel4.SuspendLayout();
             this.pnlSidePanel.SuspendLayout();
@@ -136,21 +131,11 @@
             // 
             this.lblAttendedID.AutoSize = true;
             this.lblAttendedID.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAttendedID.Location = new System.Drawing.Point(127, 66);
+            this.lblAttendedID.Location = new System.Drawing.Point(-1, 28);
             this.lblAttendedID.Name = "lblAttendedID";
-            this.lblAttendedID.Size = new System.Drawing.Size(11, 14);
+            this.lblAttendedID.Size = new System.Drawing.Size(77, 14);
             this.lblAttendedID.TabIndex = 16;
-            this.lblAttendedID.Text = "-";
-            // 
-            // lblAttendanceStatusStts
-            // 
-            this.lblAttendanceStatusStts.AutoSize = true;
-            this.lblAttendanceStatusStts.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAttendanceStatusStts.Location = new System.Drawing.Point(3, 85);
-            this.lblAttendanceStatusStts.Name = "lblAttendanceStatusStts";
-            this.lblAttendanceStatusStts.Size = new System.Drawing.Size(124, 14);
-            this.lblAttendanceStatusStts.TabIndex = 18;
-            this.lblAttendanceStatusStts.Text = "Attendance Status : ";
+            this.lblAttendedID.Text = "Attended ID";
             // 
             // btnAuto
             // 
@@ -165,17 +150,6 @@
             this.btnAuto.Text = "Auto";
             this.btnAuto.UseVisualStyleBackColor = false;
             this.btnAuto.Click += new System.EventHandler(this.btnAuto_Click);
-            // 
-            // lblIDOnScreen
-            // 
-            this.lblIDOnScreen.AutoSize = true;
-            this.lblIDOnScreen.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIDOnScreen.Location = new System.Drawing.Point(112, 9);
-            this.lblIDOnScreen.MaximumSize = new System.Drawing.Size(195, 0);
-            this.lblIDOnScreen.Name = "lblIDOnScreen";
-            this.lblIDOnScreen.Size = new System.Drawing.Size(11, 14);
-            this.lblIDOnScreen.TabIndex = 19;
-            this.lblIDOnScreen.Text = ",";
             // 
             // lblScanningCounter
             // 
@@ -208,81 +182,24 @@
             // 
             this.lblAttendedName.AutoSize = true;
             this.lblAttendedName.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAttendedName.Location = new System.Drawing.Point(127, 46);
+            this.lblAttendedName.Location = new System.Drawing.Point(-1, 14);
             this.lblAttendedName.Name = "lblAttendedName";
-            this.lblAttendedName.Size = new System.Drawing.Size(11, 14);
+            this.lblAttendedName.Size = new System.Drawing.Size(98, 14);
             this.lblAttendedName.TabIndex = 25;
-            this.lblAttendedName.Text = "-";
-            // 
-            // lblAttendedIDStts
-            // 
-            this.lblAttendedIDStts.AutoSize = true;
-            this.lblAttendedIDStts.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAttendedIDStts.Location = new System.Drawing.Point(3, 66);
-            this.lblAttendedIDStts.Name = "lblAttendedIDStts";
-            this.lblAttendedIDStts.Size = new System.Drawing.Size(87, 14);
-            this.lblAttendedIDStts.TabIndex = 24;
-            this.lblAttendedIDStts.Text = "Attended ID : ";
-            // 
-            // lblAttendedNameStts
-            // 
-            this.lblAttendedNameStts.AutoSize = true;
-            this.lblAttendedNameStts.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAttendedNameStts.Location = new System.Drawing.Point(3, 46);
-            this.lblAttendedNameStts.Name = "lblAttendedNameStts";
-            this.lblAttendedNameStts.Size = new System.Drawing.Size(108, 14);
-            this.lblAttendedNameStts.TabIndex = 14;
-            this.lblAttendedNameStts.Text = "Attended Name : ";
+            this.lblAttendedName.Text = "Attended Name";
             // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.White;
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel4.Controls.Add(this.lblAttendedName);
-            this.panel4.Controls.Add(this.lblNameOnScreen);
-            this.panel4.Controls.Add(this.lblIDOnScreenStts);
-            this.panel4.Controls.Add(this.lblAttendanceStatusStts);
             this.panel4.Controls.Add(this.lblIDOnScreen);
-            this.panel4.Controls.Add(this.lblNameOnScreenStts);
-            this.panel4.Controls.Add(this.lblAttendedIDStts);
             this.panel4.Controls.Add(this.lblAttendedID);
-            this.panel4.Controls.Add(this.lblAttendedNameStts);
-            this.panel4.Location = new System.Drawing.Point(3, 376);
+            this.panel4.Location = new System.Drawing.Point(33, 438);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(162, 107);
+            this.panel4.Size = new System.Drawing.Size(98, 45);
             this.panel4.TabIndex = 28;
             this.panel4.Visible = false;
-            // 
-            // lblNameOnScreen
-            // 
-            this.lblNameOnScreen.AutoSize = true;
-            this.lblNameOnScreen.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNameOnScreen.Location = new System.Drawing.Point(112, 27);
-            this.lblNameOnScreen.MaximumSize = new System.Drawing.Size(195, 0);
-            this.lblNameOnScreen.Name = "lblNameOnScreen";
-            this.lblNameOnScreen.Size = new System.Drawing.Size(11, 14);
-            this.lblNameOnScreen.TabIndex = 21;
-            this.lblNameOnScreen.Text = ",";
-            // 
-            // lblIDOnScreenStts
-            // 
-            this.lblIDOnScreenStts.AutoSize = true;
-            this.lblIDOnScreenStts.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIDOnScreenStts.Location = new System.Drawing.Point(3, 9);
-            this.lblIDOnScreenStts.Name = "lblIDOnScreenStts";
-            this.lblIDOnScreenStts.Size = new System.Drawing.Size(91, 14);
-            this.lblIDOnScreenStts.TabIndex = 20;
-            this.lblIDOnScreenStts.Text = "ID On Screen :";
-            // 
-            // lblNameOnScreenStts
-            // 
-            this.lblNameOnScreenStts.AutoSize = true;
-            this.lblNameOnScreenStts.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNameOnScreenStts.Location = new System.Drawing.Point(3, 27);
-            this.lblNameOnScreenStts.Name = "lblNameOnScreenStts";
-            this.lblNameOnScreenStts.Size = new System.Drawing.Size(112, 14);
-            this.lblNameOnScreenStts.TabIndex = 19;
-            this.lblNameOnScreenStts.Text = "Name On Screen :";
             // 
             // lblHourToday
             // 
@@ -346,6 +263,7 @@
             this.btnLaporan.TabIndex = 34;
             this.btnLaporan.Text = "Laporan";
             this.btnLaporan.UseVisualStyleBackColor = false;
+            this.btnLaporan.Visible = false;
             this.btnLaporan.Click += new System.EventHandler(this.btnLaporan_Click);
             // 
             // btnMonitor
@@ -483,6 +401,8 @@
             // 
             this.dtgMonitor.AllowUserToAddRows = false;
             this.dtgMonitor.AllowUserToDeleteRows = false;
+            this.dtgMonitor.AllowUserToResizeColumns = false;
+            this.dtgMonitor.AllowUserToResizeRows = false;
             this.dtgMonitor.BackgroundColor = System.Drawing.Color.White;
             this.dtgMonitor.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dtgMonitor.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -504,18 +424,20 @@
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Calibri", 12F);
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dtgMonitor.DefaultCellStyle = dataGridViewCellStyle2;
             this.dtgMonitor.EnableHeadersVisualStyles = false;
             this.dtgMonitor.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
             this.dtgMonitor.Location = new System.Drawing.Point(0, 43);
+            this.dtgMonitor.MultiSelect = false;
             this.dtgMonitor.Name = "dtgMonitor";
             this.dtgMonitor.ReadOnly = true;
             this.dtgMonitor.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dtgMonitor.RowHeadersVisible = false;
-            this.dtgMonitor.Size = new System.Drawing.Size(640, 361);
+            this.dtgMonitor.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dtgMonitor.Size = new System.Drawing.Size(640, 338);
             this.dtgMonitor.TabIndex = 0;
             // 
             // ID
@@ -582,6 +504,7 @@
             // pnlMonitor
             // 
             this.pnlMonitor.BackColor = System.Drawing.Color.Transparent;
+            this.pnlMonitor.Controls.Add(this.btnPanel);
             this.pnlMonitor.Controls.Add(this.lblReport);
             this.pnlMonitor.Controls.Add(this.lblAddFaceWarn);
             this.pnlMonitor.Controls.Add(this.btnAddFace);
@@ -648,6 +571,32 @@
             this.lblReport.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblReport.Click += new System.EventHandler(this.lblReport_Click);
             // 
+            // btnPanel
+            // 
+            this.btnPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnPanel.FlatAppearance.BorderSize = 0;
+            this.btnPanel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnPanel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnPanel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPanel.Font = new System.Drawing.Font("Calibri", 12F);
+            this.btnPanel.ForeColor = System.Drawing.Color.White;
+            this.btnPanel.Location = new System.Drawing.Point(0, 380);
+            this.btnPanel.Name = "btnPanel";
+            this.btnPanel.Size = new System.Drawing.Size(640, 25);
+            this.btnPanel.TabIndex = 37;
+            this.btnPanel.UseVisualStyleBackColor = false;
+            // 
+            // lblIDOnScreen
+            // 
+            this.lblIDOnScreen.AutoSize = true;
+            this.lblIDOnScreen.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIDOnScreen.Location = new System.Drawing.Point(-1, 0);
+            this.lblIDOnScreen.MaximumSize = new System.Drawing.Size(195, 0);
+            this.lblIDOnScreen.Name = "lblIDOnScreen";
+            this.lblIDOnScreen.Size = new System.Drawing.Size(81, 14);
+            this.lblIDOnScreen.TabIndex = 19;
+            this.lblIDOnScreen.Text = "ID on Screen";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -699,18 +648,11 @@
         private System.Windows.Forms.Timer tmrAddFace;
         private System.Windows.Forms.Timer tmrScanning;
         private System.Windows.Forms.Label lblAttendedID;
-        private System.Windows.Forms.Label lblAttendanceStatusStts;
         private System.Windows.Forms.Button btnAuto;
-        private System.Windows.Forms.Label lblIDOnScreen;
         private System.Windows.Forms.Label lblScanningCounter;
         private System.Windows.Forms.Button btnStart;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label lblAttendedName;
-        private System.Windows.Forms.Label lblAttendedIDStts;
-        private System.Windows.Forms.Label lblNameOnScreenStts;
-        private System.Windows.Forms.Label lblAttendedNameStts;
-        private System.Windows.Forms.Label lblIDOnScreenStts;
-        private System.Windows.Forms.Label lblNameOnScreen;
         private System.Windows.Forms.Label lblHourToday;
         private System.Windows.Forms.Timer tmrTimeNow;
         private System.Windows.Forms.Panel pnlSidePanel;
@@ -738,6 +680,8 @@
         private System.Windows.Forms.Button lblPersonDetected;
         private System.Windows.Forms.CheckBox ckbPulang;
         private System.Windows.Forms.Label lblReport;
+        private System.Windows.Forms.Button btnPanel;
+        private System.Windows.Forms.Label lblIDOnScreen;
     }
 }
 

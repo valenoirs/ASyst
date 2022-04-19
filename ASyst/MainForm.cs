@@ -153,6 +153,18 @@ namespace ASyst
             // Get the last row used in excel and more stuff
             excelLoad();
 
+            //
+            string[] name = File.ReadAllText(pathDataset + "storedname.txt").Split('%');
+            string[] id = File.ReadAllText(pathDataset + "storedid.txt").Split('%');
+
+            if(name.Length > 0)
+            {
+                for (int i = 0; i < name.Length - 1; i++)
+                {
+                    dtgMonitor.Rows.Add(id[i], name[i]);
+                }
+            }
+
             // Set date & hour today
             lblDateToday.Text = DateTime.Now.ToString("dd / MM / yyyy");
             lblHourToday.Text = DateTime.Now.ToString("HH : mm : ss");
@@ -520,6 +532,8 @@ namespace ASyst
                     File.AppendAllText(pathDataset + "storedname.txt", NameLabel + "%");
                     File.AppendAllText(pathDataset + "storedid.txt", IDLabel + "%");
 
+                    dtgMonitor.Rows.Add(IDLabel, NameLabel);
+
                     MessageBox.Show("Done, Hope I Can Recognize Him/Her Later", "Face Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     tmrAddFace.Enabled = false;
                     btnAuto.Enabled = true;
@@ -614,7 +628,7 @@ namespace ASyst
         private void excelUpdate(string ID)
         {
             Excel.Application xlApp = new Excel.Application();
-            int columnToUpdate = lastUsedColumn - 1;
+            int columnToUpdate = lastUsedColumn - 1, dataGridUpdate = 2;
 
             if (xlApp == null)
             {
@@ -625,6 +639,7 @@ namespace ASyst
             if (ckbPulang.Checked)
             {
                 columnToUpdate += 1;
+                dataGridUpdate += 1;
             }
 
             Excel.Workbook xlWorkBook;
@@ -641,6 +656,7 @@ namespace ASyst
                     if(counterAbsent == 0)
                     {
                         xlWorksheet.Cells[n, columnToUpdate] = DateTime.Now.ToString("HH:mm:ss");
+                        dtgMonitor.Rows[n - 6].Cells[dataGridUpdate].Value = DateTime.Now.ToString("HH:mm:ss");
                         lblScanningCounter.Text = "DONE";
 
                         //string toSpeak = "Scanning Completed";
