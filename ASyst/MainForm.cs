@@ -123,11 +123,11 @@ namespace ASyst
                 }
 
                 lblFaceCounter.Text = (faceCounter / 10).ToString();
-                MessageBox.Show("Dataset Loaded,\n" + (faceCounter / 10) + " Face Added", "Dataset Loaded", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //MessageBox.Show("Dataset Loaded,\n" + (faceCounter / 10) + " Face Added", "Dataset Loaded", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                MessageBox.Show("Empty Dataset Loaded,\nPlease Add Some Face First", "Dataset Loaded", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Empty Dataset Created,\nPlease Add Some Face First", "Dataset Created", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 lblFaceCounter.Text = "Empty";
             }
             if (!File.Exists(pathExcel))
@@ -215,16 +215,6 @@ namespace ASyst
             recognizer.Save(pathDataset + "trainingdata.xml");
 
             lblFaceCounter.Text = (faceCounter / 10).ToString();
-        }
-
-        private void tmrScanning_Tick(object sender, EventArgs e)
-        {
-            counterAbsent--;
-
-            if (counterAbsent == -1)
-            {
-                counterAbsent = 5;
-            }
         }
 
         private void FrameCapture(object sender, EventArgs e)
@@ -385,29 +375,6 @@ namespace ASyst
         [System.Runtime.InteropServices.DllImport("user32.dll")]
         public static extern bool ReleaseCapture();
 
-        private void btnExit_Click(object sender, EventArgs e)
-        {
-            MainForm.ActiveForm.Close();
-        }
-
-        private void btnHide_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnAuto_Click(object sender, EventArgs e)
-        {
-            counterAbsent = 5;
-            if (recognizing == false)
-            {
-                recognizing = true;
-            }
-            else if (recognizing == true)
-            {
-                recognizing = false;
-            }
-        }
-
         private void btnScanningReset()
         {
             btnScanning.BackColor = Color.Transparent;
@@ -426,7 +393,25 @@ namespace ASyst
             btnLaporan.ForeColor = Color.White;
         }
 
+        private void pnlSidePanel_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+            }
+        }
 
+        private void MainForm_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+            }
+        }
+
+        #region Button
         private void btnScanning_Click(object sender, EventArgs e)
         {
             btnScanning.BackColor = Color.White;
@@ -455,29 +440,6 @@ namespace ASyst
             btnMonitorReset();
         }
 
-        private void pnlSidePanel_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                ReleaseCapture();
-                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
-            }
-        }
-
-        private void MainForm_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                ReleaseCapture();
-                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
-            }
-        }
-
-        private void tmrTimeNow_Tick(object sender, EventArgs e)
-        {
-            lblHourToday.Text = DateTime.Now.ToString("HH : mm : ss");
-        }
-
         private void btnAddFace_Click(object sender, EventArgs e)
         {
             pnlMonitor.Visible = false;
@@ -494,6 +456,46 @@ namespace ASyst
                 tmrAddFace.Enabled = true;
                 pcbRecognized.Visible = true;
             }
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            MainForm.ActiveForm.Close();
+        }
+
+        private void btnHide_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAuto_Click(object sender, EventArgs e)
+        {
+            counterAbsent = 5;
+            if (recognizing == false)
+            {
+                recognizing = true;
+            }
+            else if (recognizing == true)
+            {
+                recognizing = false;
+            }
+        }
+        #endregion
+
+        #region Timer
+        private void tmrScanning_Tick(object sender, EventArgs e)
+        {
+            counterAbsent--;
+
+            if (counterAbsent == -1)
+            {
+                counterAbsent = 5;
+            }
+        }
+
+        private void tmrTimeNow_Tick(object sender, EventArgs e)
+        {
+            lblHourToday.Text = DateTime.Now.ToString("HH : mm : ss");
         }
 
         private void tmrAddFace_Tick(object sender, EventArgs e)
@@ -521,7 +523,9 @@ namespace ASyst
                 }
             }
         }
+        #endregion
 
+        #region Excel
         private void excelLoad()
         {
             Excel.Application xlApp = new Excel.Application();
@@ -726,6 +730,6 @@ namespace ASyst
 
             MessageBox.Show("New Month, new Spreadsheet", "Excel Created!", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-
+        #endregion
     }
 }
