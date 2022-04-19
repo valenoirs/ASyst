@@ -458,6 +458,11 @@ namespace ASyst
             }
         }
 
+        private void lblReport_Click(object sender, EventArgs e)
+        {
+            Process.Start(@Application.StartupPath+"\\report");
+        }
+
         private void btnExit_Click(object sender, EventArgs e)
         {
             MainForm.ActiveForm.Close();

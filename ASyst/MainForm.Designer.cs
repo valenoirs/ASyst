@@ -76,6 +76,7 @@
             this.lblAddFaceWarn = new System.Windows.Forms.Label();
             this.lblPersonDetected = new System.Windows.Forms.Button();
             this.ckbPulang = new System.Windows.Forms.CheckBox();
+            this.lblReport = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pcbRecognized)).BeginInit();
             this.panel4.SuspendLayout();
             this.pnlSidePanel.SuspendLayout();
@@ -581,6 +582,7 @@
             // pnlMonitor
             // 
             this.pnlMonitor.BackColor = System.Drawing.Color.Transparent;
+            this.pnlMonitor.Controls.Add(this.lblReport);
             this.pnlMonitor.Controls.Add(this.lblAddFaceWarn);
             this.pnlMonitor.Controls.Add(this.btnAddFace);
             this.pnlMonitor.Controls.Add(this.lblFaceStored);
@@ -630,6 +632,21 @@
             this.ckbPulang.TabIndex = 37;
             this.ckbPulang.Text = "Pulang";
             this.ckbPulang.UseVisualStyleBackColor = false;
+            // 
+            // lblReport
+            // 
+            this.lblReport.AutoSize = true;
+            this.lblReport.BackColor = System.Drawing.Color.Transparent;
+            this.lblReport.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblReport.Font = new System.Drawing.Font("Calibri", 12F);
+            this.lblReport.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.lblReport.Location = new System.Drawing.Point(552, 427);
+            this.lblReport.Name = "lblReport";
+            this.lblReport.Size = new System.Drawing.Size(88, 19);
+            this.lblReport.TabIndex = 35;
+            this.lblReport.Text = "View Report";
+            this.lblReport.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblReport.Click += new System.EventHandler(this.lblReport_Click);
             // 
             // MainForm
             // 
@@ -720,6 +737,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn waktuPulang;
         private System.Windows.Forms.Button lblPersonDetected;
         private System.Windows.Forms.CheckBox ckbPulang;
+        private System.Windows.Forms.Label lblReport;
     }
 }
 
