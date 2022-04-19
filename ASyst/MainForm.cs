@@ -290,13 +290,13 @@ namespace ASyst
                         0.5,
                         new Bgr(Color.White).MCvScalar);
 
-                        CvInvoke.PutText(
-                        currentFrame,
-                        trainingIDLabels.ToArray()[result.Label],
-                        new Point(face.X - 2, face.Y - 20),
-                        FontFace.HersheyDuplex,
-                        0.5,
-                        new Bgr(Color.White).MCvScalar);
+                        //CvInvoke.PutText(
+                        //currentFrame,
+                        //trainingIDLabels.ToArray()[result.Label],
+                        //new Point(face.X - 2, face.Y - 20),
+                        //FontFace.HersheyDuplex,
+                        //0.5,
+                        //new Bgr(Color.White).MCvScalar);
 
                         IDStored = trainingIDLabels.ToArray()[result.Label];
                         NameStored = trainingNameLabels.ToArray()[result.Label].Substring(0, trainingNameLabels.ToArray()[result.Label].IndexOf(' '));
@@ -476,12 +476,6 @@ namespace ASyst
         private void tmrTimeNow_Tick(object sender, EventArgs e)
         {
             lblHourToday.Text = DateTime.Now.ToString("HH : mm : ss");
-        }
-
-        private void stpHelp_Click(object sender, EventArgs e)
-        {
-            Help help = new Help();
-            help.ShowDialog();
         }
 
         private void btnAddFace_Click(object sender, EventArgs e)
