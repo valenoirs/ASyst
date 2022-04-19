@@ -153,7 +153,7 @@ namespace ASyst
             // Get the last row used in excel and more stuff
             excelLoad();
 
-            //
+            // Populate monitor data grid with stored name and ID
             string[] name = File.ReadAllText(pathDataset + "storedname.txt").Split('%');
             string[] id = File.ReadAllText(pathDataset + "storedid.txt").Split('%');
 
@@ -186,11 +186,13 @@ namespace ASyst
             }
 
             grabber.QueryFrame();
+            // Application Idle Event Handler
             Application.Idle += new EventHandler(FrameCapture);
 
         }
 
-        // Adding face function
+        #region CoreFunction
+        // Adding Face
         private void AddFace()
         {
             grayFrame = grabber.QueryFrame().ToImage<Gray, byte>().Resize(pcbCurrentFrame.Width, pcbCurrentFrame.Height, Inter.Cubic);
@@ -229,6 +231,7 @@ namespace ASyst
             lblFaceCounter.Text = (faceCounter / 10).ToString();
         }
 
+        // Capture frame from camera device
         private void FrameCapture(object sender, EventArgs e)
         {
             IDPersons.Add("");
@@ -268,6 +271,7 @@ namespace ASyst
             IDPersons.Clear();
         }
 
+        // Face Detector and Recognizer using Viola-Jones and LBPH algorithm
         private void FaceDetector(Rectangle[] facelessVoid)
         {
             foreach (Rectangle face in facelessVoid)
@@ -319,6 +323,7 @@ namespace ASyst
             }
         }
 
+        // Counter before saving attendance record
         private void ScanningCounter()
         {
             counterScanning = 0;
@@ -338,6 +343,7 @@ namespace ASyst
             lblIDOnScreen.Text = displayID;
         }
 
+        // Saving attendance record and status
         private void AutoAbsent()
         {
             if (recognizing == true)
@@ -378,15 +384,9 @@ namespace ASyst
                 lblAttendedName.Text = "Paused";
             }
         }
+        #endregion
 
-        public const int WM_NCLBUTTONDOWN = 0xA1;
-        public const int HT_CAPTION = 0x2;
-
-        [System.Runtime.InteropServices.DllImport("user32.dll")]
-        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
-        [System.Runtime.InteropServices.DllImport("user32.dll")]
-        public static extern bool ReleaseCapture();
-
+        #region ResetButtonStyle
         private void btnScanningReset()
         {
             btnScanning.BackColor = Color.Transparent;
@@ -404,6 +404,16 @@ namespace ASyst
             btnLaporan.BackColor = Color.Transparent;
             btnLaporan.ForeColor = Color.White;
         }
+        #endregion
+
+        #region Drag&Drop
+        public const int WM_NCLBUTTONDOWN = 0xA1;
+        public const int HT_CAPTION = 0x2;
+
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        public static extern bool ReleaseCapture();
 
         private void pnlSidePanel_MouseDown(object sender, MouseEventArgs e)
         {
@@ -422,6 +432,7 @@ namespace ASyst
                 SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
             }
         }
+        #endregion
 
         #region Button
         private void btnScanning_Click(object sender, EventArgs e)
