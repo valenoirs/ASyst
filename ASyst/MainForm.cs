@@ -89,10 +89,6 @@ namespace ASyst
             {
                 Directory.CreateDirectory(pathDataset + "bitmap");
             }
-            if (!File.Exists(pathExcel))
-            {
-                excelCreate();
-            }
             if (!File.Exists(pathDataset + "namelabels.txt"))
             {
                 File.CreateText(pathDataset + "namelabels.txt");
@@ -112,7 +108,7 @@ namespace ASyst
                 string namelabels = File.ReadAllText(pathDataset + "namelabels.txt");
                 string idlabels = File.ReadAllText(pathDataset + "idlabels.txt");
                 string[] Name = namelabels.Split('%');
-                string[] NIM = idlabels.Split('%');
+                string[] ID = idlabels.Split('%');
 
                 string[] count = Directory.GetFiles(pathDataset + "bitmap", "*", SearchOption.AllDirectories);
                 faceCounter = count.Length;
@@ -122,7 +118,7 @@ namespace ASyst
                 {
                     trainingImages.Add(new Image<Gray, byte>(pathDataset + "bitmap\\" + "face" + (l + 1) + ".bmp"));
                     trainingNameLabels.Add(Name[l]);
-                    trainingIDLabels.Add(NIM[l]);
+                    trainingIDLabels.Add(ID[l]);
                     trainingImagesID.Add(l);
                 }
 
@@ -133,6 +129,10 @@ namespace ASyst
             {
                 MessageBox.Show("Empty Dataset Loaded,\nPlease Add Some Face First", "Dataset Loaded", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 lblFaceCounter.Text = "Empty";
+            }
+            if (!File.Exists(pathExcel))
+            {
+                excelCreate();
             }
 
             //Load all camera device
@@ -516,6 +516,9 @@ namespace ASyst
 
                     excelAdd();
 
+                    File.AppendAllText(pathDataset + "storedname.txt", NameLabel + "%");
+                    File.AppendAllText(pathDataset + "storedid.txt", IDLabel + "%");
+
                     MessageBox.Show("Done, Hope I Can Recognize Him/Her Later", "Face Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     tmrAddFace.Enabled = false;
                     btnAuto.Enabled = true;
@@ -661,6 +664,9 @@ namespace ASyst
         {
             Excel.Application xlApp = new Excel.Application();
 
+            string[] name = File.ReadAllText(pathDataset + "storedname.txt").Split('%');
+            string[] id = File.ReadAllText(pathDataset + "storedid.txt").Split('%');
+
             if (xlApp == null)
             {
                 MessageBox.Show("Excel not installed properly", "Excel not installed!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -706,6 +712,16 @@ namespace ASyst
             xlWorksheet.Cells[4, 2] = "NIP";
             xlWorksheet.Cells[4, 3] = "Nama";
             xlWorksheet.Cells[4, 4] = "Hadir/Tidak Hadir";
+
+            if (name.Length > 0)
+            {
+                for (int i = 0; i < name.Length - 1; i++)
+                {
+                    xlWorksheet.Cells[i + 6, 1] = (i + 1).ToString();
+                    xlWorksheet.Cells[i + 6, 2] = id[i];
+                    xlWorksheet.Cells[i + 6, 3] = name[i];
+                }
+            }
 
             xlApp.DisplayAlerts = false;
 

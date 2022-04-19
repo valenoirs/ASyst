@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.pcbRecognized = new Emgu.CV.UI.ImageBox();
             this.cbxDevices = new System.Windows.Forms.ComboBox();
@@ -76,12 +78,20 @@
             this.lblAddFaceWarn = new System.Windows.Forms.Label();
             this.lblPersonDetected = new System.Windows.Forms.Button();
             this.ckbPulang = new System.Windows.Forms.CheckBox();
+            this.pnlLaporan = new System.Windows.Forms.Panel();
+            this.dtgLaporan = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.pcbRecognized)).BeginInit();
             this.panel4.SuspendLayout();
             this.pnlSidePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcbCurrentFrame)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgMonitor)).BeginInit();
             this.pnlMonitor.SuspendLayout();
+            this.pnlLaporan.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgLaporan)).BeginInit();
             this.SuspendLayout();
             // 
             // pcbRecognized
@@ -452,6 +462,7 @@
             this.btnHide.TabIndex = 34;
             this.btnHide.Text = "-";
             this.btnHide.UseVisualStyleBackColor = false;
+            this.btnHide.Visible = false;
             this.btnHide.Click += new System.EventHandler(this.btnHide_Click);
             // 
             // lblDevices
@@ -631,12 +642,96 @@
             this.ckbPulang.Text = "Pulang";
             this.ckbPulang.UseVisualStyleBackColor = false;
             // 
+            // pnlLaporan
+            // 
+            this.pnlLaporan.BackColor = System.Drawing.Color.Transparent;
+            this.pnlLaporan.Controls.Add(this.dtgLaporan);
+            this.pnlLaporan.Location = new System.Drawing.Point(190, 64);
+            this.pnlLaporan.Name = "pnlLaporan";
+            this.pnlLaporan.Size = new System.Drawing.Size(640, 472);
+            this.pnlLaporan.TabIndex = 36;
+            this.pnlLaporan.Visible = false;
+            // 
+            // dtgLaporan
+            // 
+            this.dtgLaporan.AllowUserToAddRows = false;
+            this.dtgLaporan.AllowUserToDeleteRows = false;
+            this.dtgLaporan.BackgroundColor = System.Drawing.Color.White;
+            this.dtgLaporan.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dtgLaporan.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Calibri", 12F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgLaporan.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dtgLaporan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dtgLaporan.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4});
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Calibri", 12F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgLaporan.DefaultCellStyle = dataGridViewCellStyle4;
+            this.dtgLaporan.EnableHeadersVisualStyles = false;
+            this.dtgLaporan.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.dtgLaporan.Location = new System.Drawing.Point(0, 43);
+            this.dtgLaporan.Name = "dtgLaporan";
+            this.dtgLaporan.ReadOnly = true;
+            this.dtgLaporan.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dtgLaporan.RowHeadersVisible = false;
+            this.dtgLaporan.Size = new System.Drawing.Size(640, 361);
+            this.dtgLaporan.TabIndex = 0;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "ID";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewTextBoxColumn1.Width = 200;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "Nama";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewTextBoxColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewTextBoxColumn2.Width = 238;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "Datang";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewTextBoxColumn3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.HeaderText = "Pulang";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            this.dataGridViewTextBoxColumn4.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewTextBoxColumn4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(850, 562);
+            this.Controls.Add(this.pnlLaporan);
             this.Controls.Add(this.pnlMonitor);
             this.Controls.Add(this.ckbPulang);
             this.Controls.Add(this.lblPersonDetected);
@@ -670,6 +765,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtgMonitor)).EndInit();
             this.pnlMonitor.ResumeLayout(false);
             this.pnlMonitor.PerformLayout();
+            this.pnlLaporan.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dtgLaporan)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -720,6 +817,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn waktuPulang;
         private System.Windows.Forms.Button lblPersonDetected;
         private System.Windows.Forms.CheckBox ckbPulang;
+        private System.Windows.Forms.Panel pnlLaporan;
+        private System.Windows.Forms.DataGridView dtgLaporan;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
     }
 }
 
