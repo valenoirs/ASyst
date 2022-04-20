@@ -44,15 +44,15 @@ namespace ASyst
         List<string> IDPersons = new List<string>();
         int faceCounter, counterAddFace, counterAbsent = 5, counterScanning, lastUsedColumn;
         string pathDataset = null, pathExcel = null, IDStored = null, NameStored = null, displayID = null;
-        private bool recognizing = false;
+        private bool hasCuda = false, recognizing = false;
         public static bool addFace = false;
         public static string NameLabel, IDLabel;
         DateTime dateNow = DateTime.Now;
         //DateTime dateTest = new DateTime(2022, 4, 23, 5, 10, 20);
 
         // Cascade Declaration
-        CudaCascadeClassifier cuda_cascade = new CudaCascadeClassifier("haarcascade_frontalface_default.xml");
-        CascadeClassifier cascade = new CascadeClassifier("haarcascade_frontalface_default.xml");
+        CudaCascadeClassifier cuda_cascade;
+        CascadeClassifier cascade;
         #endregion
 
         public MainForm()
@@ -63,15 +63,23 @@ namespace ASyst
         // App on load
         private void MainForm_Load(object sender, EventArgs e)
         {
+            //Check if user operating system support NVIDIA CUDA
+            hasCuda = CudaInvoke.HasCuda;
+
+            // Initialize Cascade Classifier declaration based on CUDA
+            if (hasCuda)
+            {
+                lblCudaStts.Visible = true;
+                cuda_cascade = new CudaCascadeClassifier("haarcascade_frontalface_default.xml");
+            }
+            else
+            {
+                cascade = new CascadeClassifier("haarcascade_frontalface_default.xml");
+            }
+
             // Set some path
             pathExcel = Application.StartupPath + "\\report\\" + dateNow.ToString("yyyy-MMMM") + ".xlsx";
             pathDataset = Application.StartupPath + "\\dataset\\";
-
-            // Tell if Nvidia CUDA supported
-            if (CudaInvoke.HasCuda)
-            {
-                lblCudaStts.Visible = true;
-            }
 
             // Initialize EmguCV Recognizer using LBPH
             recognizer = new LBPHFaceRecognizer(1, 8, 8, 8, 1000.0);
@@ -238,7 +246,7 @@ namespace ASyst
             currentFrame = grabber.QueryFrame().ToImage<Bgr, byte>().Resize(pcbCurrentFrame.Width, pcbCurrentFrame.Height, Inter.Cubic);
             grayFrame = currentFrame.Convert<Gray, byte>();
 
-            if (CudaInvoke.HasCuda)
+            if (hasCuda)
             {
                 // If Nvidia CUDA Supported
                 using (CudaImage<Gray, byte> cuda_grayFrame = new CudaImage<Gray, byte>(grayFrame))
