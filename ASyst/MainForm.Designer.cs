@@ -75,6 +75,7 @@
             this.btnEffectiveDay = new System.Windows.Forms.Button();
             this.pnlMonitor = new System.Windows.Forms.Panel();
             this.lblEffectiveDay = new System.Windows.Forms.Label();
+            this.lblEffectiveDayWarn = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pcbRecognized)).BeginInit();
             this.panel4.SuspendLayout();
             this.pnlSidePanel.SuspendLayout();
@@ -170,6 +171,7 @@
             // btnStart
             // 
             this.btnStart.BackColor = System.Drawing.Color.Transparent;
+            this.btnStart.Enabled = false;
             this.btnStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnStart.Font = new System.Drawing.Font("Calibri", 12F);
             this.btnStart.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
@@ -198,7 +200,7 @@
             this.panel4.Controls.Add(this.lblAttendedName);
             this.panel4.Controls.Add(this.lblIDOnScreen);
             this.panel4.Controls.Add(this.lblAttendedID);
-            this.panel4.Location = new System.Drawing.Point(33, 438);
+            this.panel4.Location = new System.Drawing.Point(37, 270);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(98, 45);
             this.panel4.TabIndex = 28;
@@ -221,7 +223,7 @@
             this.lblHourToday.BackColor = System.Drawing.Color.Transparent;
             this.lblHourToday.Font = new System.Drawing.Font("Calibri", 15F);
             this.lblHourToday.ForeColor = System.Drawing.Color.White;
-            this.lblHourToday.Location = new System.Drawing.Point(35, 512);
+            this.lblHourToday.Location = new System.Drawing.Point(35, 509);
             this.lblHourToday.Name = "lblHourToday";
             this.lblHourToday.Size = new System.Drawing.Size(100, 24);
             this.lblHourToday.TabIndex = 30;
@@ -255,11 +257,11 @@
             // 
             this.lblDateToday.AutoSize = true;
             this.lblDateToday.BackColor = System.Drawing.Color.Transparent;
-            this.lblDateToday.Font = new System.Drawing.Font("Calibri", 15F);
+            this.lblDateToday.Font = new System.Drawing.Font("Calibri", 12F);
             this.lblDateToday.ForeColor = System.Drawing.Color.White;
-            this.lblDateToday.Location = new System.Drawing.Point(20, 486);
+            this.lblDateToday.Location = new System.Drawing.Point(35, 486);
             this.lblDateToday.Name = "lblDateToday";
-            this.lblDateToday.Size = new System.Drawing.Size(126, 24);
+            this.lblDateToday.Size = new System.Drawing.Size(101, 19);
             this.lblDateToday.TabIndex = 35;
             this.lblDateToday.Text = "20 / 02 / 2022";
             this.lblDateToday.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -327,11 +329,11 @@
             // 
             this.lbl.AutoSize = true;
             this.lbl.BackColor = System.Drawing.Color.Transparent;
-            this.lbl.Font = new System.Drawing.Font("Calibri", 15F);
+            this.lbl.Font = new System.Drawing.Font("Calibri", 12F);
             this.lbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
             this.lbl.Location = new System.Drawing.Point(186, 486);
             this.lbl.Name = "lbl";
-            this.lbl.Size = new System.Drawing.Size(72, 24);
+            this.lbl.Size = new System.Drawing.Size(57, 19);
             this.lbl.TabIndex = 31;
             this.lbl.Text = "Status :";
             // 
@@ -339,11 +341,11 @@
             // 
             this.lblScanningStatus.AutoSize = true;
             this.lblScanningStatus.BackColor = System.Drawing.Color.Transparent;
-            this.lblScanningStatus.Font = new System.Drawing.Font("Calibri", 15F);
+            this.lblScanningStatus.Font = new System.Drawing.Font("Calibri", 12F);
             this.lblScanningStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.lblScanningStatus.Location = new System.Drawing.Point(264, 486);
+            this.lblScanningStatus.Location = new System.Drawing.Point(249, 486);
             this.lblScanningStatus.Name = "lblScanningStatus";
-            this.lblScanningStatus.Size = new System.Drawing.Size(88, 24);
+            this.lblScanningStatus.Size = new System.Drawing.Size(71, 19);
             this.lblScanningStatus.TabIndex = 32;
             this.lblScanningStatus.Text = "Waiting...";
             // 
@@ -419,11 +421,11 @@
             // 
             this.ckbPulang.AutoSize = true;
             this.ckbPulang.BackColor = System.Drawing.Color.Transparent;
-            this.ckbPulang.Font = new System.Drawing.Font("Calibri", 15F);
+            this.ckbPulang.Font = new System.Drawing.Font("Calibri", 12F);
             this.ckbPulang.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
             this.ckbPulang.Location = new System.Drawing.Point(745, 485);
             this.ckbPulang.Name = "ckbPulang";
-            this.ckbPulang.Size = new System.Drawing.Size(85, 28);
+            this.ckbPulang.Size = new System.Drawing.Size(72, 23);
             this.ckbPulang.TabIndex = 37;
             this.ckbPulang.Text = "Pulang";
             this.ckbPulang.UseVisualStyleBackColor = false;
@@ -479,7 +481,7 @@
             this.dtgMonitor.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dtgMonitor.RowHeadersVisible = false;
             this.dtgMonitor.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dtgMonitor.Size = new System.Drawing.Size(640, 338);
+            this.dtgMonitor.Size = new System.Drawing.Size(640, 336);
             this.dtgMonitor.TabIndex = 0;
             // 
             // ID
@@ -535,7 +537,7 @@
             this.btnAddFace.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddFace.Font = new System.Drawing.Font("Calibri", 12F);
             this.btnAddFace.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.btnAddFace.Location = new System.Drawing.Point(0, 423);
+            this.btnAddFace.Location = new System.Drawing.Point(555, 0);
             this.btnAddFace.Name = "btnAddFace";
             this.btnAddFace.Size = new System.Drawing.Size(85, 27);
             this.btnAddFace.TabIndex = 24;
@@ -548,7 +550,7 @@
             this.lblAddFaceWarn.AutoSize = true;
             this.lblAddFaceWarn.Font = new System.Drawing.Font("Calibri", 10F);
             this.lblAddFaceWarn.ForeColor = System.Drawing.Color.Red;
-            this.lblAddFaceWarn.Location = new System.Drawing.Point(91, 430);
+            this.lblAddFaceWarn.Location = new System.Drawing.Point(397, 7);
             this.lblAddFaceWarn.Name = "lblAddFaceWarn";
             this.lblAddFaceWarn.Size = new System.Drawing.Size(152, 17);
             this.lblAddFaceWarn.TabIndex = 26;
@@ -561,7 +563,7 @@
             this.lblReport.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblReport.Font = new System.Drawing.Font("Calibri", 12F);
             this.lblReport.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.lblReport.Location = new System.Drawing.Point(552, 427);
+            this.lblReport.Location = new System.Drawing.Point(552, 420);
             this.lblReport.Name = "lblReport";
             this.lblReport.Size = new System.Drawing.Size(88, 19);
             this.lblReport.TabIndex = 35;
@@ -578,7 +580,7 @@
             this.btnPanel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPanel.Font = new System.Drawing.Font("Calibri", 12F);
             this.btnPanel.ForeColor = System.Drawing.Color.White;
-            this.btnPanel.Location = new System.Drawing.Point(0, 380);
+            this.btnPanel.Location = new System.Drawing.Point(0, 378);
             this.btnPanel.Name = "btnPanel";
             this.btnPanel.Size = new System.Drawing.Size(640, 25);
             this.btnPanel.TabIndex = 37;
@@ -587,11 +589,11 @@
             // lblEffectiveDayCount
             // 
             this.lblEffectiveDayCount.AutoSize = true;
-            this.lblEffectiveDayCount.Font = new System.Drawing.Font("Calibri", 15F);
+            this.lblEffectiveDayCount.Font = new System.Drawing.Font("Calibri", 12F);
             this.lblEffectiveDayCount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.lblEffectiveDayCount.Location = new System.Drawing.Point(611, -1);
+            this.lblEffectiveDayCount.Location = new System.Drawing.Point(199, 420);
             this.lblEffectiveDayCount.Name = "lblEffectiveDayCount";
-            this.lblEffectiveDayCount.Size = new System.Drawing.Size(20, 24);
+            this.lblEffectiveDayCount.Size = new System.Drawing.Size(17, 19);
             this.lblEffectiveDayCount.TabIndex = 39;
             this.lblEffectiveDayCount.Text = "0";
             // 
@@ -601,11 +603,11 @@
             this.btnEffectiveDay.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEffectiveDay.Font = new System.Drawing.Font("Calibri", 12F);
             this.btnEffectiveDay.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.btnEffectiveDay.Location = new System.Drawing.Point(389, 0);
+            this.btnEffectiveDay.Location = new System.Drawing.Point(0, 416);
             this.btnEffectiveDay.Name = "btnEffectiveDay";
             this.btnEffectiveDay.Size = new System.Drawing.Size(85, 27);
             this.btnEffectiveDay.TabIndex = 40;
-            this.btnEffectiveDay.Text = "Change";
+            this.btnEffectiveDay.Text = "Set";
             this.btnEffectiveDay.UseVisualStyleBackColor = false;
             this.btnEffectiveDay.Click += new System.EventHandler(this.btnEffectiveDay_Click);
             // 
@@ -622,9 +624,9 @@
             this.pnlMonitor.Controls.Add(this.lblFaceStored);
             this.pnlMonitor.Controls.Add(this.dtgMonitor);
             this.pnlMonitor.Controls.Add(this.lblFaceCounter);
-            this.pnlMonitor.Location = new System.Drawing.Point(190, 64);
+            this.pnlMonitor.Location = new System.Drawing.Point(190, 66);
             this.pnlMonitor.Name = "pnlMonitor";
-            this.pnlMonitor.Size = new System.Drawing.Size(640, 472);
+            this.pnlMonitor.Size = new System.Drawing.Size(640, 470);
             this.pnlMonitor.TabIndex = 35;
             this.pnlMonitor.Visible = false;
             // 
@@ -632,13 +634,24 @@
             // 
             this.lblEffectiveDay.AutoSize = true;
             this.lblEffectiveDay.BackColor = System.Drawing.Color.Transparent;
-            this.lblEffectiveDay.Font = new System.Drawing.Font("Calibri", 15F);
+            this.lblEffectiveDay.Font = new System.Drawing.Font("Calibri", 12F);
             this.lblEffectiveDay.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.lblEffectiveDay.Location = new System.Drawing.Point(480, -1);
+            this.lblEffectiveDay.Location = new System.Drawing.Point(91, 420);
             this.lblEffectiveDay.Name = "lblEffectiveDay";
-            this.lblEffectiveDay.Size = new System.Drawing.Size(125, 24);
+            this.lblEffectiveDay.Size = new System.Drawing.Size(102, 19);
             this.lblEffectiveDay.TabIndex = 38;
             this.lblEffectiveDay.Text = "Effective Day :";
+            // 
+            // lblEffectiveDayWarn
+            // 
+            this.lblEffectiveDayWarn.AutoSize = true;
+            this.lblEffectiveDayWarn.Font = new System.Drawing.Font("Calibri", 10F);
+            this.lblEffectiveDayWarn.ForeColor = System.Drawing.Color.Red;
+            this.lblEffectiveDayWarn.Location = new System.Drawing.Point(636, 46);
+            this.lblEffectiveDayWarn.Name = "lblEffectiveDayWarn";
+            this.lblEffectiveDayWarn.Size = new System.Drawing.Size(171, 17);
+            this.lblEffectiveDayWarn.TabIndex = 38;
+            this.lblEffectiveDayWarn.Text = "*Please set effective day first";
             // 
             // MainForm
             // 
@@ -647,6 +660,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(850, 562);
             this.Controls.Add(this.pnlMonitor);
+            this.Controls.Add(this.lblEffectiveDayWarn);
             this.Controls.Add(this.ckbPulang);
             this.Controls.Add(this.lblPersonDetected);
             this.Controls.Add(this.lblScanningCounter);
@@ -728,6 +742,7 @@
         private System.Windows.Forms.Panel pnlMonitor;
         private System.Windows.Forms.Label lblEffectiveDay;
         private System.Windows.Forms.Label lblEffectiveDayCount;
+        private System.Windows.Forms.Label lblEffectiveDayWarn;
     }
 }
 

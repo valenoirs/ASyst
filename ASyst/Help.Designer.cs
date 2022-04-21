@@ -69,7 +69,7 @@
             this.btnCalculate.Name = "btnCalculate";
             this.btnCalculate.Size = new System.Drawing.Size(85, 27);
             this.btnCalculate.TabIndex = 25;
-            this.btnCalculate.Text = "Calculate";
+            this.btnCalculate.Text = "Set";
             this.btnCalculate.UseVisualStyleBackColor = false;
             this.btnCalculate.Click += new System.EventHandler(this.btnCalculate_Click);
             // 

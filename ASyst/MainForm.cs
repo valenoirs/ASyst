@@ -452,6 +452,7 @@ namespace ASyst
             btnLaporanReset();
 
             pnlMonitor.Visible = false;
+            lblEffectiveDayWarn.Visible = true;
         }
 
         private void btnMonitor_Click(object sender, EventArgs e)
@@ -462,6 +463,7 @@ namespace ASyst
             btnLaporanReset();
 
             pnlMonitor.Visible = true;
+            lblEffectiveDayWarn.Visible = false;
         }
 
         private void btnLaporan_Click(object sender, EventArgs e)
@@ -498,6 +500,8 @@ namespace ASyst
             if(Help.effectiveDay > 0)
             {
                 lblEffectiveDayCount.Text = Help.effectiveDay.ToString();
+                lblEffectiveDayWarn.Text = "";
+                btnStart.Enabled = true;
             }
         }
 
@@ -624,7 +628,13 @@ namespace ASyst
                 createNewDate();
             }
 
-            lblEffectiveDayCount.Text = xlWorksheet.Cells[4, 1].Value.ToString();
+            if(xlWorksheet.Cells[4, 1].Value != null)
+            {
+                lblEffectiveDayCount.Text = xlWorksheet.Cells[4, 1].Value.ToString();
+                lblEffectiveDayWarn.Text = "";
+
+                btnStart.Enabled = true;
+            }
 
             xlWorkBook.Close(true, misValue, misValue);
             xlApp.Quit();
