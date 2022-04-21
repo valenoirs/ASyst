@@ -42,13 +42,14 @@ namespace ASyst
         List<string> trainingIDLabels = new List<string>();
         List<int> trainingImagesID = new List<int>();
         List<string> IDPersons = new List<string>();
-        int faceCounter, counterAddFace, counterAbsent = 5, counterScanning, lastUsedColumn;
-        string pathDataset = null, pathExcel = null, IDStored = null, NameStored = null, displayID = null;
+        int counterAddFace, counterAbsent = 5, counterScanning, lastUsedColumn;
+        string pathDataset = null, IDStored = null, NameStored = null, displayID = null;
         private bool hasCuda = false, recognizing = false;
         public static bool addFace = false;
-        public static string NameLabel, IDLabel;
+        public static int faceCounter;
+        public static string NameLabel, IDLabel, pathExcel = null;
         DateTime dateNow = DateTime.Now;
-        DateTime dateTest = new DateTime(2022, 4, 25, 5, 10, 20);
+        DateTime dateTest = new DateTime(2022, 4, 30, 5, 10, 20);
 
         // Cascade Declaration
         CudaCascadeClassifier cuda_cascade;
@@ -176,8 +177,6 @@ namespace ASyst
             // Set date & hour today
             lblDateToday.Text = DateTime.Now.ToString("dd / MM / yyyy");
             lblHourToday.Text = DateTime.Now.ToString("HH : mm : ss");
-
-            MessageBox.Show(lastUsedColumn.ToString());
         }
 
         // Start button
@@ -491,6 +490,17 @@ namespace ASyst
             }
         }
 
+        private void btnEffectiveDay_Click(object sender, EventArgs e)
+        {
+            Help help = new Help();
+            help.ShowDialog();
+
+            if(Help.effectiveDay > 0)
+            {
+                lblEffectiveDayCount.Text = Help.effectiveDay.ToString();
+            }
+        }
+
         private void lblReport_Click(object sender, EventArgs e)
         {
             Process.Start(@Application.StartupPath+"\\report");
@@ -595,7 +605,7 @@ namespace ASyst
                 xlWorksheet.Cells[5, lastUsedColumn].HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
                 xlWorksheet.Range[xlWorksheet.Cells[5, lastUsedColumn], xlWorksheet.Cells[5, lastUsedColumn + 1]].Merge();
 
-                xlWorksheet.Cells[5, lastUsedColumn] = dateTest.ToString("MM/dd/yyyy");
+                xlWorksheet.Cells[5, lastUsedColumn] = dateNow.ToString("MM/dd/yyyy");
                 xlWorksheet.Cells[6, lastUsedColumn] = "Datang";
                 xlWorksheet.Cells[6, lastUsedColumn + 1] = "Pulang";
 
@@ -604,7 +614,7 @@ namespace ASyst
             
             try
             {
-                if (!(dateTest.ToString("MM/dd/yyyy") == xlWorksheet.Cells[5, lastUsedColumn - 1].Value.ToString("MM/dd/yyyy")))
+                if (!(dateNow.ToString("MM/dd/yyyy") == xlWorksheet.Cells[5, lastUsedColumn - 1].Value.ToString("MM/dd/yyyy")))
                 {
                     createNewDate();
                 }
@@ -613,6 +623,8 @@ namespace ASyst
             {
                 createNewDate();
             }
+
+            lblEffectiveDayCount.Text = xlWorksheet.Cells[4, 1].Value.ToString();
 
             xlWorkBook.Close(true, misValue, misValue);
             xlApp.Quit();

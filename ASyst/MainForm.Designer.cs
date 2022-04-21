@@ -58,6 +58,8 @@
             this.btnExit = new System.Windows.Forms.Button();
             this.btnHide = new System.Windows.Forms.Button();
             this.lblDevices = new System.Windows.Forms.Label();
+            this.lblPersonDetected = new System.Windows.Forms.Button();
+            this.ckbPulang = new System.Windows.Forms.CheckBox();
             this.lblFaceCounter = new System.Windows.Forms.Label();
             this.dtgMonitor = new System.Windows.Forms.DataGridView();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -66,12 +68,13 @@
             this.waktuPulang = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblFaceStored = new System.Windows.Forms.Label();
             this.btnAddFace = new System.Windows.Forms.Button();
-            this.pnlMonitor = new System.Windows.Forms.Panel();
-            this.btnPanel = new System.Windows.Forms.Button();
-            this.lblReport = new System.Windows.Forms.Label();
             this.lblAddFaceWarn = new System.Windows.Forms.Label();
-            this.lblPersonDetected = new System.Windows.Forms.Button();
-            this.ckbPulang = new System.Windows.Forms.CheckBox();
+            this.lblReport = new System.Windows.Forms.Label();
+            this.btnPanel = new System.Windows.Forms.Button();
+            this.lblEffectiveDayCount = new System.Windows.Forms.Label();
+            this.btnEffectiveDay = new System.Windows.Forms.Button();
+            this.pnlMonitor = new System.Windows.Forms.Panel();
+            this.lblEffectiveDay = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pcbRecognized)).BeginInit();
             this.panel4.SuspendLayout();
             this.pnlSidePanel.SuspendLayout();
@@ -397,6 +400,34 @@
             this.lblDevices.TabIndex = 5;
             this.lblDevices.Text = "Camera Device :";
             // 
+            // lblPersonDetected
+            // 
+            this.lblPersonDetected.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.lblPersonDetected.FlatAppearance.BorderSize = 0;
+            this.lblPersonDetected.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.lblPersonDetected.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.lblPersonDetected.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblPersonDetected.Font = new System.Drawing.Font("Calibri", 12F);
+            this.lblPersonDetected.ForeColor = System.Drawing.Color.White;
+            this.lblPersonDetected.Location = new System.Drawing.Point(190, 444);
+            this.lblPersonDetected.Name = "lblPersonDetected";
+            this.lblPersonDetected.Size = new System.Drawing.Size(640, 25);
+            this.lblPersonDetected.TabIndex = 36;
+            this.lblPersonDetected.UseVisualStyleBackColor = false;
+            // 
+            // ckbPulang
+            // 
+            this.ckbPulang.AutoSize = true;
+            this.ckbPulang.BackColor = System.Drawing.Color.Transparent;
+            this.ckbPulang.Font = new System.Drawing.Font("Calibri", 15F);
+            this.ckbPulang.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.ckbPulang.Location = new System.Drawing.Point(745, 485);
+            this.ckbPulang.Name = "ckbPulang";
+            this.ckbPulang.Size = new System.Drawing.Size(85, 28);
+            this.ckbPulang.TabIndex = 37;
+            this.ckbPulang.Text = "Pulang";
+            this.ckbPulang.UseVisualStyleBackColor = false;
+            // 
             // lblFaceCounter
             // 
             this.lblFaceCounter.AutoSize = true;
@@ -512,36 +543,16 @@
             this.btnAddFace.UseVisualStyleBackColor = false;
             this.btnAddFace.Click += new System.EventHandler(this.btnAddFace_Click);
             // 
-            // pnlMonitor
+            // lblAddFaceWarn
             // 
-            this.pnlMonitor.BackColor = System.Drawing.Color.Transparent;
-            this.pnlMonitor.Controls.Add(this.btnPanel);
-            this.pnlMonitor.Controls.Add(this.lblReport);
-            this.pnlMonitor.Controls.Add(this.lblAddFaceWarn);
-            this.pnlMonitor.Controls.Add(this.btnAddFace);
-            this.pnlMonitor.Controls.Add(this.lblFaceStored);
-            this.pnlMonitor.Controls.Add(this.dtgMonitor);
-            this.pnlMonitor.Controls.Add(this.lblFaceCounter);
-            this.pnlMonitor.Location = new System.Drawing.Point(190, 64);
-            this.pnlMonitor.Name = "pnlMonitor";
-            this.pnlMonitor.Size = new System.Drawing.Size(640, 472);
-            this.pnlMonitor.TabIndex = 35;
-            this.pnlMonitor.Visible = false;
-            // 
-            // btnPanel
-            // 
-            this.btnPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.btnPanel.FlatAppearance.BorderSize = 0;
-            this.btnPanel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.btnPanel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.btnPanel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPanel.Font = new System.Drawing.Font("Calibri", 12F);
-            this.btnPanel.ForeColor = System.Drawing.Color.White;
-            this.btnPanel.Location = new System.Drawing.Point(0, 380);
-            this.btnPanel.Name = "btnPanel";
-            this.btnPanel.Size = new System.Drawing.Size(640, 25);
-            this.btnPanel.TabIndex = 37;
-            this.btnPanel.UseVisualStyleBackColor = false;
+            this.lblAddFaceWarn.AutoSize = true;
+            this.lblAddFaceWarn.Font = new System.Drawing.Font("Calibri", 10F);
+            this.lblAddFaceWarn.ForeColor = System.Drawing.Color.Red;
+            this.lblAddFaceWarn.Location = new System.Drawing.Point(91, 430);
+            this.lblAddFaceWarn.Name = "lblAddFaceWarn";
+            this.lblAddFaceWarn.Size = new System.Drawing.Size(152, 17);
+            this.lblAddFaceWarn.TabIndex = 26;
+            this.lblAddFaceWarn.Text = "*Please start camera first";
             // 
             // lblReport
             // 
@@ -558,44 +569,76 @@
             this.lblReport.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblReport.Click += new System.EventHandler(this.lblReport_Click);
             // 
-            // lblAddFaceWarn
+            // btnPanel
             // 
-            this.lblAddFaceWarn.AutoSize = true;
-            this.lblAddFaceWarn.Font = new System.Drawing.Font("Calibri", 10F);
-            this.lblAddFaceWarn.ForeColor = System.Drawing.Color.Red;
-            this.lblAddFaceWarn.Location = new System.Drawing.Point(91, 430);
-            this.lblAddFaceWarn.Name = "lblAddFaceWarn";
-            this.lblAddFaceWarn.Size = new System.Drawing.Size(152, 17);
-            this.lblAddFaceWarn.TabIndex = 26;
-            this.lblAddFaceWarn.Text = "*Please start camera first";
+            this.btnPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnPanel.FlatAppearance.BorderSize = 0;
+            this.btnPanel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnPanel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnPanel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPanel.Font = new System.Drawing.Font("Calibri", 12F);
+            this.btnPanel.ForeColor = System.Drawing.Color.White;
+            this.btnPanel.Location = new System.Drawing.Point(0, 380);
+            this.btnPanel.Name = "btnPanel";
+            this.btnPanel.Size = new System.Drawing.Size(640, 25);
+            this.btnPanel.TabIndex = 37;
+            this.btnPanel.UseVisualStyleBackColor = false;
             // 
-            // lblPersonDetected
+            // lblEffectiveDayCount
             // 
-            this.lblPersonDetected.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.lblPersonDetected.FlatAppearance.BorderSize = 0;
-            this.lblPersonDetected.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.lblPersonDetected.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.lblPersonDetected.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblPersonDetected.Font = new System.Drawing.Font("Calibri", 12F);
-            this.lblPersonDetected.ForeColor = System.Drawing.Color.White;
-            this.lblPersonDetected.Location = new System.Drawing.Point(190, 444);
-            this.lblPersonDetected.Name = "lblPersonDetected";
-            this.lblPersonDetected.Size = new System.Drawing.Size(640, 25);
-            this.lblPersonDetected.TabIndex = 36;
-            this.lblPersonDetected.UseVisualStyleBackColor = false;
+            this.lblEffectiveDayCount.AutoSize = true;
+            this.lblEffectiveDayCount.Font = new System.Drawing.Font("Calibri", 15F);
+            this.lblEffectiveDayCount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.lblEffectiveDayCount.Location = new System.Drawing.Point(611, -1);
+            this.lblEffectiveDayCount.Name = "lblEffectiveDayCount";
+            this.lblEffectiveDayCount.Size = new System.Drawing.Size(20, 24);
+            this.lblEffectiveDayCount.TabIndex = 39;
+            this.lblEffectiveDayCount.Text = "0";
             // 
-            // ckbPulang
+            // btnEffectiveDay
             // 
-            this.ckbPulang.AutoSize = true;
-            this.ckbPulang.BackColor = System.Drawing.Color.Transparent;
-            this.ckbPulang.Font = new System.Drawing.Font("Calibri", 15F);
-            this.ckbPulang.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.ckbPulang.Location = new System.Drawing.Point(745, 485);
-            this.ckbPulang.Name = "ckbPulang";
-            this.ckbPulang.Size = new System.Drawing.Size(85, 28);
-            this.ckbPulang.TabIndex = 37;
-            this.ckbPulang.Text = "Pulang";
-            this.ckbPulang.UseVisualStyleBackColor = false;
+            this.btnEffectiveDay.BackColor = System.Drawing.Color.Transparent;
+            this.btnEffectiveDay.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEffectiveDay.Font = new System.Drawing.Font("Calibri", 12F);
+            this.btnEffectiveDay.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnEffectiveDay.Location = new System.Drawing.Point(389, 0);
+            this.btnEffectiveDay.Name = "btnEffectiveDay";
+            this.btnEffectiveDay.Size = new System.Drawing.Size(85, 27);
+            this.btnEffectiveDay.TabIndex = 40;
+            this.btnEffectiveDay.Text = "Change";
+            this.btnEffectiveDay.UseVisualStyleBackColor = false;
+            this.btnEffectiveDay.Click += new System.EventHandler(this.btnEffectiveDay_Click);
+            // 
+            // pnlMonitor
+            // 
+            this.pnlMonitor.BackColor = System.Drawing.Color.Transparent;
+            this.pnlMonitor.Controls.Add(this.btnEffectiveDay);
+            this.pnlMonitor.Controls.Add(this.lblEffectiveDayCount);
+            this.pnlMonitor.Controls.Add(this.lblEffectiveDay);
+            this.pnlMonitor.Controls.Add(this.btnPanel);
+            this.pnlMonitor.Controls.Add(this.lblReport);
+            this.pnlMonitor.Controls.Add(this.lblAddFaceWarn);
+            this.pnlMonitor.Controls.Add(this.btnAddFace);
+            this.pnlMonitor.Controls.Add(this.lblFaceStored);
+            this.pnlMonitor.Controls.Add(this.dtgMonitor);
+            this.pnlMonitor.Controls.Add(this.lblFaceCounter);
+            this.pnlMonitor.Location = new System.Drawing.Point(190, 64);
+            this.pnlMonitor.Name = "pnlMonitor";
+            this.pnlMonitor.Size = new System.Drawing.Size(640, 472);
+            this.pnlMonitor.TabIndex = 35;
+            this.pnlMonitor.Visible = false;
+            // 
+            // lblEffectiveDay
+            // 
+            this.lblEffectiveDay.AutoSize = true;
+            this.lblEffectiveDay.BackColor = System.Drawing.Color.Transparent;
+            this.lblEffectiveDay.Font = new System.Drawing.Font("Calibri", 15F);
+            this.lblEffectiveDay.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.lblEffectiveDay.Location = new System.Drawing.Point(480, -1);
+            this.lblEffectiveDay.Name = "lblEffectiveDay";
+            this.lblEffectiveDay.Size = new System.Drawing.Size(125, 24);
+            this.lblEffectiveDay.TabIndex = 38;
+            this.lblEffectiveDay.Text = "Effective Day :";
             // 
             // MainForm
             // 
@@ -667,21 +710,24 @@
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnHide;
         private System.Windows.Forms.Label lblDevices;
+        private System.Windows.Forms.Button lblPersonDetected;
+        private System.Windows.Forms.CheckBox ckbPulang;
+        private System.Windows.Forms.Label lblIDOnScreen;
         private System.Windows.Forms.Label lblFaceCounter;
         private System.Windows.Forms.DataGridView dtgMonitor;
-        private System.Windows.Forms.Label lblFaceStored;
-        private System.Windows.Forms.Button btnAddFace;
-        private System.Windows.Forms.Panel pnlMonitor;
-        private System.Windows.Forms.Label lblAddFaceWarn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nama;
         private System.Windows.Forms.DataGridViewTextBoxColumn waktuHadir;
         private System.Windows.Forms.DataGridViewTextBoxColumn waktuPulang;
-        private System.Windows.Forms.Button lblPersonDetected;
-        private System.Windows.Forms.CheckBox ckbPulang;
+        private System.Windows.Forms.Label lblFaceStored;
+        private System.Windows.Forms.Button btnAddFace;
+        private System.Windows.Forms.Label lblAddFaceWarn;
         private System.Windows.Forms.Label lblReport;
         private System.Windows.Forms.Button btnPanel;
-        private System.Windows.Forms.Label lblIDOnScreen;
+        private System.Windows.Forms.Button btnEffectiveDay;
+        private System.Windows.Forms.Panel pnlMonitor;
+        private System.Windows.Forms.Label lblEffectiveDay;
+        private System.Windows.Forms.Label lblEffectiveDayCount;
     }
 }
 
