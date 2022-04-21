@@ -48,7 +48,7 @@ namespace ASyst
         public static bool addFace = false;
         public static string NameLabel, IDLabel;
         DateTime dateNow = DateTime.Now;
-        //DateTime dateTest = new DateTime(2022, 4, 23, 5, 10, 20);
+        DateTime dateTest = new DateTime(2022, 4, 25, 5, 10, 20);
 
         // Cascade Declaration
         CudaCascadeClassifier cuda_cascade;
@@ -176,6 +176,8 @@ namespace ASyst
             // Set date & hour today
             lblDateToday.Text = DateTime.Now.ToString("dd / MM / yyyy");
             lblHourToday.Text = DateTime.Now.ToString("HH : mm : ss");
+
+            MessageBox.Show(lastUsedColumn.ToString());
         }
 
         // Start button
@@ -586,20 +588,23 @@ namespace ASyst
             void createNewDate()
             {
                 lastUsedColumn += 1;
+
                 xlWorksheet.Cells[5, lastUsedColumn].Font.Bold = true;
                 xlWorksheet.Cells[6, lastUsedColumn].Font.Bold = true;
                 xlWorksheet.Cells[6, lastUsedColumn + 1].Font.Bold = true;
                 xlWorksheet.Cells[5, lastUsedColumn].HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
                 xlWorksheet.Range[xlWorksheet.Cells[5, lastUsedColumn], xlWorksheet.Cells[5, lastUsedColumn + 1]].Merge();
 
-                xlWorksheet.Cells[5, lastUsedColumn] = dateNow.ToString("MM/dd/yyyy");
+                xlWorksheet.Cells[5, lastUsedColumn] = dateTest.ToString("MM/dd/yyyy");
                 xlWorksheet.Cells[6, lastUsedColumn] = "Datang";
                 xlWorksheet.Cells[6, lastUsedColumn + 1] = "Pulang";
+
+                lastUsedColumn += 1;
             }
             
             try
             {
-                if (!(dateNow.ToString("MM/dd/yyyy") == xlWorksheet.Cells[5, lastUsedColumn - 1].Value.ToString("MM/dd/yyyy")))
+                if (!(dateTest.ToString("MM/dd/yyyy") == xlWorksheet.Cells[5, lastUsedColumn - 1].Value.ToString("MM/dd/yyyy")))
                 {
                     createNewDate();
                 }
@@ -617,7 +622,7 @@ namespace ASyst
         {
             Excel.Application xlApp = new Excel.Application();
 
-            int columnToUpdate = faceCounter / 10 + 6;
+            int rowToUpdate = faceCounter / 10 + 6;
 
             if (xlApp == null)
             {
@@ -632,9 +637,11 @@ namespace ASyst
             xlWorkBook = xlApp.Workbooks.Open(pathExcel);
             xlWorksheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
 
-            xlWorksheet.Cells[columnToUpdate, 1] = faceCounter / 10;
-            xlWorksheet.Cells[columnToUpdate, 2] = IDLabel;
-            xlWorksheet.Cells[columnToUpdate, 3] = NameLabel;
+            xlWorksheet.Cells[rowToUpdate, 1] = faceCounter / 10;
+            xlWorksheet.Cells[rowToUpdate, 2] = IDLabel;
+            xlWorksheet.Cells[rowToUpdate, 3] = NameLabel;
+            
+            xlWorksheet.Cells[rowToUpdate, 4] = 0;
 
             xlApp.DisplayAlerts = false;
 
@@ -647,7 +654,7 @@ namespace ASyst
         private void excelUpdate(string ID)
         {
             Excel.Application xlApp = new Excel.Application();
-            int columnToUpdate = lastUsedColumn - 1, dataGridUpdate = 2;
+            int columnToUpdate = lastUsedColumn - 1, dataGridUpdate = 2, hadir;
 
             if (xlApp == null)
             {
@@ -674,8 +681,17 @@ namespace ASyst
                 {
                     if(counterAbsent == 0)
                     {
+                        if(ckbPulang.Checked == false && xlWorksheet.Cells[n, columnToUpdate].Value == null)
+                        {
+                            hadir = Convert.ToInt32(xlWorksheet.Cells[n, 4].Value) + 1;
+                            xlWorksheet.Cells[n, 4] = hadir;
+                            xlWorksheet.Cells[n, 5] = xlWorksheet.Cells[4, 1].Value - hadir;
+                        }
+
                         xlWorksheet.Cells[n, columnToUpdate] = DateTime.Now.ToString("HH:mm:ss");
                         dtgMonitor.Rows[n - 7].Cells[dataGridUpdate].Value = DateTime.Now.ToString("HH:mm:ss");
+
+
                         lblScanningCounter.Text = "DONE";
 
                         //string toSpeak = "Scanning Completed";
@@ -766,6 +782,9 @@ namespace ASyst
                     xlWorksheet.Cells[i + 7, 1] = (i + 1).ToString();
                     xlWorksheet.Cells[i + 7, 2] = id[i];
                     xlWorksheet.Cells[i + 7, 3] = name[i];
+
+                    xlWorksheet.Cells[i + 7, 4] = 0;
+                    xlWorksheet.Cells[i + 7, 5] = xlWorksheet.Cells[4, 1].Value;
                 }
             }
 
