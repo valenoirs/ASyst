@@ -586,20 +586,20 @@ namespace ASyst
             void createNewDate()
             {
                 lastUsedColumn += 1;
-                xlWorksheet.Cells[4, lastUsedColumn].Font.Bold = true;
                 xlWorksheet.Cells[5, lastUsedColumn].Font.Bold = true;
-                xlWorksheet.Cells[5, lastUsedColumn + 1].Font.Bold = true;
-                xlWorksheet.Cells[4, lastUsedColumn].HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
-                xlWorksheet.Range[xlWorksheet.Cells[4, lastUsedColumn], xlWorksheet.Cells[4, lastUsedColumn + 1]].Merge();
+                xlWorksheet.Cells[6, lastUsedColumn].Font.Bold = true;
+                xlWorksheet.Cells[6, lastUsedColumn + 1].Font.Bold = true;
+                xlWorksheet.Cells[5, lastUsedColumn].HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                xlWorksheet.Range[xlWorksheet.Cells[5, lastUsedColumn], xlWorksheet.Cells[5, lastUsedColumn + 1]].Merge();
 
-                xlWorksheet.Cells[4, lastUsedColumn] = dateNow.ToString("MM/dd/yyyy");
-                xlWorksheet.Cells[5, lastUsedColumn] = "Datang";
-                xlWorksheet.Cells[5, lastUsedColumn + 1] = "Pulang";
+                xlWorksheet.Cells[5, lastUsedColumn] = dateNow.ToString("MM/dd/yyyy");
+                xlWorksheet.Cells[6, lastUsedColumn] = "Datang";
+                xlWorksheet.Cells[6, lastUsedColumn + 1] = "Pulang";
             }
             
             try
             {
-                if (!(dateNow.ToString("MM/dd/yyyy") == xlWorksheet.Cells[4, lastUsedColumn - 1].Value.ToString("MM/dd/yyyy")))
+                if (!(dateNow.ToString("MM/dd/yyyy") == xlWorksheet.Cells[5, lastUsedColumn - 1].Value.ToString("MM/dd/yyyy")))
                 {
                     createNewDate();
                 }
@@ -617,7 +617,7 @@ namespace ASyst
         {
             Excel.Application xlApp = new Excel.Application();
 
-            int columnToUpdate = faceCounter / 10 + 5;
+            int columnToUpdate = faceCounter / 10 + 6;
 
             if (xlApp == null)
             {
@@ -668,14 +668,14 @@ namespace ASyst
             xlWorkBook = xlApp.Workbooks.Open(pathExcel);
             xlWorksheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
 
-            for(int n = 6; n < (faceCounter / 10 + 6); n++)
+            for(int n = 7; n < (faceCounter / 10 + 7); n++)
             {
                 if(ID == xlWorksheet.Cells[n, 2].Value.ToString())
                 {
                     if(counterAbsent == 0)
                     {
                         xlWorksheet.Cells[n, columnToUpdate] = DateTime.Now.ToString("HH:mm:ss");
-                        dtgMonitor.Rows[n - 6].Cells[dataGridUpdate].Value = DateTime.Now.ToString("HH:mm:ss");
+                        dtgMonitor.Rows[n - 7].Cells[dataGridUpdate].Value = DateTime.Now.ToString("HH:mm:ss");
                         lblScanningCounter.Text = "DONE";
 
                         //string toSpeak = "Scanning Completed";
@@ -718,25 +718,30 @@ namespace ASyst
             xlWorkBook = xlApp.Workbooks.Add(misValue);
             xlWorksheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
 
-            xlWorksheet.Range[xlWorksheet.Cells[1, 1], xlWorksheet.Cells[1, 4]].Merge();
-            xlWorksheet.Range[xlWorksheet.Cells[2, 1], xlWorksheet.Cells[2, 4]].Merge();
+            xlWorksheet.Range[xlWorksheet.Cells[1, 1], xlWorksheet.Cells[1, 5]].Merge();
+            xlWorksheet.Range[xlWorksheet.Cells[2, 1], xlWorksheet.Cells[2, 5]].Merge();
 
-            xlWorksheet.Range[xlWorksheet.Cells[4, 1], xlWorksheet.Cells[5, 1]].Merge();
-            xlWorksheet.Range[xlWorksheet.Cells[4, 2], xlWorksheet.Cells[5, 2]].Merge();
-            xlWorksheet.Range[xlWorksheet.Cells[4, 3], xlWorksheet.Cells[5, 3]].Merge();
-            xlWorksheet.Range[xlWorksheet.Cells[4, 4], xlWorksheet.Cells[5, 4]].Merge();
+            xlWorksheet.Range[xlWorksheet.Cells[5, 1], xlWorksheet.Cells[6, 1]].Merge();
+            xlWorksheet.Range[xlWorksheet.Cells[5, 2], xlWorksheet.Cells[6, 2]].Merge();
+            xlWorksheet.Range[xlWorksheet.Cells[5, 3], xlWorksheet.Cells[6, 3]].Merge();
+            xlWorksheet.Range[xlWorksheet.Cells[5, 4], xlWorksheet.Cells[6, 4]].Merge();
+            xlWorksheet.Range[xlWorksheet.Cells[5, 5], xlWorksheet.Cells[6, 5]].Merge();
 
             xlWorksheet.Columns[1].ColumnWidth = 5;
             xlWorksheet.Columns[2].ColumnWidth = 22;
             xlWorksheet.Columns[3].ColumnWidth = 28;
-            xlWorksheet.Columns[4].ColumnWidth = 16;
+            xlWorksheet.Columns[4].ColumnWidth = 6;
+            xlWorksheet.Columns[5].ColumnWidth = 6;
 
             xlWorksheet.Cells[1, 1].Font.Bold = true;
             xlWorksheet.Cells[2, 1].Font.Bold = true;
             xlWorksheet.Cells[4, 1].Font.Bold = true;
             xlWorksheet.Cells[4, 2].Font.Bold = true;
-            xlWorksheet.Cells[4, 3].Font.Bold = true;
-            xlWorksheet.Cells[4, 4].Font.Bold = true;
+            xlWorksheet.Cells[5, 1].Font.Bold = true;
+            xlWorksheet.Cells[5, 2].Font.Bold = true;
+            xlWorksheet.Cells[5, 3].Font.Bold = true;
+            xlWorksheet.Cells[5, 4].Font.Bold = true;
+            xlWorksheet.Cells[5, 5].Font.Bold = true;
 
             xlWorksheet.Cells[1, 1].HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
             xlWorksheet.Cells[2, 1].HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
@@ -746,18 +751,21 @@ namespace ASyst
 
             xlWorksheet.Cells[1, 1] = "DATA KEHADIRAN GURU & PEGAWAI SD GMIM 2 TONDANO";
             xlWorksheet.Cells[2, 1] = dateNow.ToString("MMMM . yyyy");
-            xlWorksheet.Cells[4, 1] = "No";
-            xlWorksheet.Cells[4, 2] = "NIP";
-            xlWorksheet.Cells[4, 3] = "Nama";
-            xlWorksheet.Cells[4, 4] = "Hadir/Tidak Hadir";
+            xlWorksheet.Cells[4, 1] = 20;
+            xlWorksheet.Cells[4, 2] = "Hari Efektif";
+            xlWorksheet.Cells[5, 1] = "No";
+            xlWorksheet.Cells[5, 2] = "NIP";
+            xlWorksheet.Cells[5, 3] = "Nama";
+            xlWorksheet.Cells[5, 4] = "Hadir";
+            xlWorksheet.Cells[5, 5] = "Absen";
 
             if (name.Length > 0)
             {
                 for (int i = 0; i < name.Length - 1; i++)
                 {
-                    xlWorksheet.Cells[i + 6, 1] = (i + 1).ToString();
-                    xlWorksheet.Cells[i + 6, 2] = id[i];
-                    xlWorksheet.Cells[i + 6, 3] = name[i];
+                    xlWorksheet.Cells[i + 7, 1] = (i + 1).ToString();
+                    xlWorksheet.Cells[i + 7, 2] = id[i];
+                    xlWorksheet.Cells[i + 7, 3] = name[i];
                 }
             }
 

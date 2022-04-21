@@ -43,6 +43,7 @@
             this.btnStart = new System.Windows.Forms.Button();
             this.lblAttendedName = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.lblIDOnScreen = new System.Windows.Forms.Label();
             this.lblHourToday = new System.Windows.Forms.Label();
             this.tmrTimeNow = new System.Windows.Forms.Timer(this.components);
             this.pnlSidePanel = new System.Windows.Forms.Panel();
@@ -66,12 +67,11 @@
             this.lblFaceStored = new System.Windows.Forms.Label();
             this.btnAddFace = new System.Windows.Forms.Button();
             this.pnlMonitor = new System.Windows.Forms.Panel();
+            this.btnPanel = new System.Windows.Forms.Button();
+            this.lblReport = new System.Windows.Forms.Label();
             this.lblAddFaceWarn = new System.Windows.Forms.Label();
             this.lblPersonDetected = new System.Windows.Forms.Button();
             this.ckbPulang = new System.Windows.Forms.CheckBox();
-            this.lblReport = new System.Windows.Forms.Label();
-            this.btnPanel = new System.Windows.Forms.Button();
-            this.lblIDOnScreen = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pcbRecognized)).BeginInit();
             this.panel4.SuspendLayout();
             this.pnlSidePanel.SuspendLayout();
@@ -200,6 +200,17 @@
             this.panel4.Size = new System.Drawing.Size(98, 45);
             this.panel4.TabIndex = 28;
             this.panel4.Visible = false;
+            // 
+            // lblIDOnScreen
+            // 
+            this.lblIDOnScreen.AutoSize = true;
+            this.lblIDOnScreen.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIDOnScreen.Location = new System.Drawing.Point(-1, 0);
+            this.lblIDOnScreen.MaximumSize = new System.Drawing.Size(195, 0);
+            this.lblIDOnScreen.Name = "lblIDOnScreen";
+            this.lblIDOnScreen.Size = new System.Drawing.Size(81, 14);
+            this.lblIDOnScreen.TabIndex = 19;
+            this.lblIDOnScreen.Text = "ID on Screen";
             // 
             // lblHourToday
             // 
@@ -517,6 +528,36 @@
             this.pnlMonitor.TabIndex = 35;
             this.pnlMonitor.Visible = false;
             // 
+            // btnPanel
+            // 
+            this.btnPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnPanel.FlatAppearance.BorderSize = 0;
+            this.btnPanel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnPanel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnPanel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPanel.Font = new System.Drawing.Font("Calibri", 12F);
+            this.btnPanel.ForeColor = System.Drawing.Color.White;
+            this.btnPanel.Location = new System.Drawing.Point(0, 380);
+            this.btnPanel.Name = "btnPanel";
+            this.btnPanel.Size = new System.Drawing.Size(640, 25);
+            this.btnPanel.TabIndex = 37;
+            this.btnPanel.UseVisualStyleBackColor = false;
+            // 
+            // lblReport
+            // 
+            this.lblReport.AutoSize = true;
+            this.lblReport.BackColor = System.Drawing.Color.Transparent;
+            this.lblReport.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblReport.Font = new System.Drawing.Font("Calibri", 12F);
+            this.lblReport.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.lblReport.Location = new System.Drawing.Point(552, 427);
+            this.lblReport.Name = "lblReport";
+            this.lblReport.Size = new System.Drawing.Size(88, 19);
+            this.lblReport.TabIndex = 35;
+            this.lblReport.Text = "View Report";
+            this.lblReport.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblReport.Click += new System.EventHandler(this.lblReport_Click);
+            // 
             // lblAddFaceWarn
             // 
             this.lblAddFaceWarn.AutoSize = true;
@@ -555,47 +596,6 @@
             this.ckbPulang.TabIndex = 37;
             this.ckbPulang.Text = "Pulang";
             this.ckbPulang.UseVisualStyleBackColor = false;
-            // 
-            // lblReport
-            // 
-            this.lblReport.AutoSize = true;
-            this.lblReport.BackColor = System.Drawing.Color.Transparent;
-            this.lblReport.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lblReport.Font = new System.Drawing.Font("Calibri", 12F);
-            this.lblReport.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.lblReport.Location = new System.Drawing.Point(552, 427);
-            this.lblReport.Name = "lblReport";
-            this.lblReport.Size = new System.Drawing.Size(88, 19);
-            this.lblReport.TabIndex = 35;
-            this.lblReport.Text = "View Report";
-            this.lblReport.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblReport.Click += new System.EventHandler(this.lblReport_Click);
-            // 
-            // btnPanel
-            // 
-            this.btnPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.btnPanel.FlatAppearance.BorderSize = 0;
-            this.btnPanel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.btnPanel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.btnPanel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPanel.Font = new System.Drawing.Font("Calibri", 12F);
-            this.btnPanel.ForeColor = System.Drawing.Color.White;
-            this.btnPanel.Location = new System.Drawing.Point(0, 380);
-            this.btnPanel.Name = "btnPanel";
-            this.btnPanel.Size = new System.Drawing.Size(640, 25);
-            this.btnPanel.TabIndex = 37;
-            this.btnPanel.UseVisualStyleBackColor = false;
-            // 
-            // lblIDOnScreen
-            // 
-            this.lblIDOnScreen.AutoSize = true;
-            this.lblIDOnScreen.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIDOnScreen.Location = new System.Drawing.Point(-1, 0);
-            this.lblIDOnScreen.MaximumSize = new System.Drawing.Size(195, 0);
-            this.lblIDOnScreen.Name = "lblIDOnScreen";
-            this.lblIDOnScreen.Size = new System.Drawing.Size(81, 14);
-            this.lblIDOnScreen.TabIndex = 19;
-            this.lblIDOnScreen.Text = "ID on Screen";
             // 
             // MainForm
             // 
