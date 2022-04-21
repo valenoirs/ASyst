@@ -23,7 +23,7 @@ namespace ASyst
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            Help.ActiveForm.Close();
+            this.Close();
         }
 
         private void btnCalculate_Click(object sender, EventArgs e)

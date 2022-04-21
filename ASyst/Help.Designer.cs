@@ -40,11 +40,11 @@
             // lblEffectiveDay
             // 
             this.lblEffectiveDay.AutoSize = true;
-            this.lblEffectiveDay.Font = new System.Drawing.Font("Calibri", 12F);
+            this.lblEffectiveDay.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEffectiveDay.ForeColor = System.Drawing.Color.White;
-            this.lblEffectiveDay.Location = new System.Drawing.Point(3, 4);
+            this.lblEffectiveDay.Location = new System.Drawing.Point(3, 3);
             this.lblEffectiveDay.Name = "lblEffectiveDay";
-            this.lblEffectiveDay.Size = new System.Drawing.Size(94, 19);
+            this.lblEffectiveDay.Size = new System.Drawing.Size(97, 19);
             this.lblEffectiveDay.TabIndex = 0;
             this.lblEffectiveDay.Text = "Effective Day";
             // 
@@ -52,7 +52,7 @@
             // 
             this.txbEffectiveDay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txbEffectiveDay.Font = new System.Drawing.Font("Calibri", 15F);
-            this.txbEffectiveDay.Location = new System.Drawing.Point(133, 63);
+            this.txbEffectiveDay.Location = new System.Drawing.Point(108, 63);
             this.txbEffectiveDay.MaxLength = 2;
             this.txbEffectiveDay.Name = "txbEffectiveDay";
             this.txbEffectiveDay.Size = new System.Drawing.Size(85, 32);
@@ -65,7 +65,7 @@
             this.btnCalculate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCalculate.Font = new System.Drawing.Font("Calibri", 12F);
             this.btnCalculate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.btnCalculate.Location = new System.Drawing.Point(133, 110);
+            this.btnCalculate.Location = new System.Drawing.Point(108, 110);
             this.btnCalculate.Name = "btnCalculate";
             this.btnCalculate.Size = new System.Drawing.Size(85, 27);
             this.btnCalculate.TabIndex = 25;
@@ -80,7 +80,7 @@
             this.pnlNav.Controls.Add(this.lblEffectiveDay);
             this.pnlNav.Location = new System.Drawing.Point(0, 0);
             this.pnlNav.Name = "pnlNav";
-            this.pnlNav.Size = new System.Drawing.Size(350, 25);
+            this.pnlNav.Size = new System.Drawing.Size(300, 25);
             this.pnlNav.TabIndex = 26;
             this.pnlNav.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlNav_MouseDown);
             // 
@@ -91,7 +91,7 @@
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExit.Font = new System.Drawing.Font("Calibri", 12F);
             this.btnExit.ForeColor = System.Drawing.Color.White;
-            this.btnExit.Location = new System.Drawing.Point(305, 0);
+            this.btnExit.Location = new System.Drawing.Point(255, 0);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(45, 27);
             this.btnExit.TabIndex = 34;
@@ -104,7 +104,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(350, 200);
+            this.ClientSize = new System.Drawing.Size(300, 200);
             this.Controls.Add(this.pnlNav);
             this.Controls.Add(this.btnCalculate);
             this.Controls.Add(this.txbEffectiveDay);
