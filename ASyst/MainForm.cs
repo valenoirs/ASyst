@@ -163,15 +163,22 @@ namespace ASyst
             excelLoad();
 
             // Populate monitor data grid with stored name and ID
-            string[] name = File.ReadAllText(pathDataset + "storedname.txt").Split('%');
-            string[] id = File.ReadAllText(pathDataset + "storedid.txt").Split('%');
-
-            if(name.Length > 0)
+            try
             {
-                for (int i = 0; i < name.Length - 1; i++)
+                string[] name = File.ReadAllText(pathDataset + "storedname.txt").Split('%');
+                string[] id = File.ReadAllText(pathDataset + "storedid.txt").Split('%');
+    
+                if(name.Length > 0)
                 {
-                    dtgMonitor.Rows.Add(id[i], name[i]);
+                    for (int i = 0; i < name.Length - 1; i++)
+                    {
+                        dtgMonitor.Rows.Add(id[i], name[i]);
+                    }
                 }
+            }
+            catch
+            {
+                Console.WriteLine("No name stored!");
             }
 
             // Set date & hour today
