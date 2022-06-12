@@ -211,8 +211,20 @@ namespace ASyst
         // Adding Face
         private void AddFace()
         {
-            grayFrame = grabber.QueryFrame().ToImage<Gray, byte>().Resize(pcbCurrentFrame.Width, pcbCurrentFrame.Height, Inter.Cubic);
-            faceDetected = cascade.DetectMultiScale(grayFrame, 1.1, 10, new Size(20, 20), Size.Empty);
+            if (hasCuda)
+            {
+                using (CudaImage<Gray, byte> cuda_grayFrame = new CudaImage<Gray, byte>(grayFrame))
+                using (GpuMat region = new GpuMat())
+                {
+                    cuda_cascade.DetectMultiScale(cuda_grayFrame, region);
+                    faceDetected = cuda_cascade.Convert(region);
+                }
+            }
+            else
+            {
+                grayFrame = grabber.QueryFrame().ToImage<Gray, byte>().Resize(pcbCurrentFrame.Width, pcbCurrentFrame.Height, Inter.Cubic);
+                faceDetected = cascade.DetectMultiScale(grayFrame, 1.1, 10, new Size(20, 20), Size.Empty);
+            }
 
             foreach (Rectangle face in faceDetected)
             {
