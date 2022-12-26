@@ -71,11 +71,11 @@
             this.btnEffectiveDay = new System.Windows.Forms.Button();
             this.pnlMonitor = new System.Windows.Forms.Panel();
             this.lblAddFaceWarn = new System.Windows.Forms.Label();
-            this.waktuPulang = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.waktuHadir = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nama = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dtgMonitor = new System.Windows.Forms.DataGridView();
+            this.NIP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nama = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.waktuHadir = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.waktuPulang = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.pcbRecognized)).BeginInit();
             this.panel4.SuspendLayout();
             this.pnlSidePanel.SuspendLayout();
@@ -612,46 +612,6 @@
             this.lblAddFaceWarn.TabIndex = 26;
             this.lblAddFaceWarn.Text = "*Please start camera first";
             // 
-            // waktuPulang
-            // 
-            this.waktuPulang.HeaderText = "Pulang";
-            this.waktuPulang.MinimumWidth = 6;
-            this.waktuPulang.Name = "waktuPulang";
-            this.waktuPulang.ReadOnly = true;
-            this.waktuPulang.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.waktuPulang.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.waktuPulang.Width = 125;
-            // 
-            // waktuHadir
-            // 
-            this.waktuHadir.HeaderText = "Datang";
-            this.waktuHadir.MinimumWidth = 6;
-            this.waktuHadir.Name = "waktuHadir";
-            this.waktuHadir.ReadOnly = true;
-            this.waktuHadir.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.waktuHadir.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.waktuHadir.Width = 125;
-            // 
-            // Nama
-            // 
-            this.Nama.HeaderText = "Nama";
-            this.Nama.MinimumWidth = 6;
-            this.Nama.Name = "Nama";
-            this.Nama.ReadOnly = true;
-            this.Nama.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Nama.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Nama.Width = 238;
-            // 
-            // ID
-            // 
-            this.ID.HeaderText = "ID";
-            this.ID.MinimumWidth = 6;
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            this.ID.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.ID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.ID.Width = 200;
-            // 
             // dtgMonitor
             // 
             this.dtgMonitor.AllowUserToAddRows = false;
@@ -672,7 +632,7 @@
             this.dtgMonitor.ColumnHeadersHeight = 29;
             this.dtgMonitor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dtgMonitor.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ID,
+            this.NIP,
             this.Nama,
             this.waktuHadir,
             this.waktuPulang});
@@ -697,6 +657,46 @@
             this.dtgMonitor.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dtgMonitor.Size = new System.Drawing.Size(853, 414);
             this.dtgMonitor.TabIndex = 0;
+            // 
+            // NIP
+            // 
+            this.NIP.HeaderText = "NIP";
+            this.NIP.MinimumWidth = 6;
+            this.NIP.Name = "NIP";
+            this.NIP.ReadOnly = true;
+            this.NIP.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.NIP.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.NIP.Width = 200;
+            // 
+            // Nama
+            // 
+            this.Nama.HeaderText = "Nama";
+            this.Nama.MinimumWidth = 6;
+            this.Nama.Name = "Nama";
+            this.Nama.ReadOnly = true;
+            this.Nama.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Nama.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Nama.Width = 238;
+            // 
+            // waktuHadir
+            // 
+            this.waktuHadir.HeaderText = "Datang";
+            this.waktuHadir.MinimumWidth = 6;
+            this.waktuHadir.Name = "waktuHadir";
+            this.waktuHadir.ReadOnly = true;
+            this.waktuHadir.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.waktuHadir.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.waktuHadir.Width = 125;
+            // 
+            // waktuPulang
+            // 
+            this.waktuPulang.HeaderText = "Pulang";
+            this.waktuPulang.MinimumWidth = 6;
+            this.waktuPulang.Name = "waktuPulang";
+            this.waktuPulang.ReadOnly = true;
+            this.waktuPulang.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.waktuPulang.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.waktuPulang.Width = 125;
             // 
             // MainForm
             // 
@@ -785,7 +785,7 @@
         private System.Windows.Forms.Panel pnlMonitor;
         private System.Windows.Forms.Label lblAddFaceWarn;
         private System.Windows.Forms.DataGridView dtgMonitor;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NIP;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nama;
         private System.Windows.Forms.DataGridViewTextBoxColumn waktuHadir;
         private System.Windows.Forms.DataGridViewTextBoxColumn waktuPulang;
