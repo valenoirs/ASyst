@@ -100,15 +100,23 @@ namespace ASyst
             }
             if (!File.Exists(pathDataset + "namelabels.txt"))
             {
-                File.CreateText(pathDataset + "namelabels.txt");
+                File.CreateText(pathDataset + "namelabels.txt").Close();
             }
             if (!File.Exists(pathDataset + "idlabels.txt"))
             {
-                File.CreateText(pathDataset + "idlabels.txt");
+                File.CreateText(pathDataset + "idlabels.txt").Close();
+            }
+            if (!File.Exists(pathDataset + "storedname.txt"))
+            {
+                File.CreateText(pathDataset + "storedname.txt").Close();
+            }
+            if (!File.Exists(pathDataset + "storedid.txt"))
+            {
+                File.CreateText(pathDataset + "storedid.txt").Close();
             }
             if (!File.Exists(pathDataset + "facecount.txt"))
             {
-                File.CreateText(pathDataset + "facecount.txt");
+                File.CreateText(pathDataset + "facecount.txt").Close();
             }
             if (File.Exists(pathDataset + "trainingdata.xml"))
             {
@@ -139,6 +147,7 @@ namespace ASyst
                 MessageBox.Show("Empty Dataset Created,\nPlease Add Some Face First", "Dataset Created", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 lblFaceCounter.Text = "Empty";
             }
+
             if (!File.Exists(pathExcel))
             {
                 excelCreate();
@@ -763,7 +772,7 @@ namespace ASyst
 
             string[] name = File.ReadAllText(pathDataset + "storedname.txt").Split('%');
             string[] id = File.ReadAllText(pathDataset + "storedid.txt").Split('%');
-
+            
             if (xlApp == null)
             {
                 MessageBox.Show("Excel not installed properly", "Excel not installed!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
