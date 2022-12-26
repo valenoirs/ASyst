@@ -28,14 +28,24 @@ namespace ASyst
 
         private void btnCalculate_Click(object sender, EventArgs e)
         {
-            effectiveDay = Convert.ToInt32(txbEffectiveDay.Text);
-
             if (txbEffectiveDay.Text.Length < 1)
             {
                 MessageBox.Show("Effective day cannot empty!");
                 return;
             }
-            if(effectiveDay > 30)
+
+            bool allDigits = txbEffectiveDay.Text.All(char.IsDigit);
+
+            if (!allDigits)
+            {
+                MessageBox.Show("Effective must a number!");
+                return;
+            }
+
+            effectiveDay = Convert.ToInt32(txbEffectiveDay.Text);
+
+
+            if (effectiveDay > 30)
             {
                 MessageBox.Show("Effective day must less than 30 days!");
                 return;
