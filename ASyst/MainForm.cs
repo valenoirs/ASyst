@@ -325,7 +325,7 @@ namespace ASyst
                 {
                     var result = recognizer.Predict(faceResult.Copy().Resize(100, 100, Inter.Cubic));
 
-                    if (result.Label >= 0)
+                    if (result.Label >= 0 && result.Distance < 90)
                     {
                         CvInvoke.PutText(
                         currentFrame,
@@ -345,6 +345,15 @@ namespace ASyst
 
                         IDStored = trainingIDLabels.ToArray()[result.Label];
                         NameStored = trainingNameLabels.ToArray()[result.Label].Substring(0, trainingNameLabels.ToArray()[result.Label].IndexOf(' '));
+                    }else
+                    {
+                        CvInvoke.PutText(
+                        currentFrame,
+                        "Unknown",
+                        new Point(face.X - 2, face.Y - 5),
+                        FontFace.HersheyDuplex,
+                        0.5,
+                        new Bgr(Color.White).MCvScalar);
                     }
 
                     lblPersonDetected.Text = IDStored + " - " + NameStored;
