@@ -295,7 +295,9 @@ namespace ASyst
             if (lblIDOnScreen.Text == "")
             {
                 displayID = "Scanning";
+                lblPersonDetected.Text = "Scanning";
             }
+            
             IDPersons.Clear();
         }
 
@@ -377,7 +379,7 @@ namespace ASyst
             if (recognizing == true)
             {
                 tmrScanning.Start();
-                if (lblPersonDetected.Text.Length > 16)
+                if (lblPersonDetected.Text != "Scanning")
                 {
                     if (counterAbsent == 0)
                     {

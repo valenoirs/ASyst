@@ -58,37 +58,37 @@
             this.btnExit = new System.Windows.Forms.Button();
             this.btnHide = new System.Windows.Forms.Button();
             this.lblDevices = new System.Windows.Forms.Label();
-            this.lblPersonDetected = new System.Windows.Forms.Button();
             this.ckbPulang = new System.Windows.Forms.CheckBox();
             this.lblEffectiveDayWarn = new System.Windows.Forms.Label();
+            this.lblPersonDetected = new System.Windows.Forms.Button();
             this.lblFaceCounter = new System.Windows.Forms.Label();
-            this.dtgMonitor = new System.Windows.Forms.DataGridView();
-            this.waktuPulang = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.waktuHadir = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nama = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblFaceStored = new System.Windows.Forms.Label();
             this.btnAddFace = new System.Windows.Forms.Button();
-            this.lblAddFaceWarn = new System.Windows.Forms.Label();
             this.lblReport = new System.Windows.Forms.Label();
             this.btnPanel = new System.Windows.Forms.Button();
             this.lblEffectiveDay = new System.Windows.Forms.Label();
             this.lblEffectiveDayCount = new System.Windows.Forms.Label();
             this.btnEffectiveDay = new System.Windows.Forms.Button();
             this.pnlMonitor = new System.Windows.Forms.Panel();
+            this.lblAddFaceWarn = new System.Windows.Forms.Label();
+            this.waktuPulang = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.waktuHadir = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nama = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dtgMonitor = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.pcbRecognized)).BeginInit();
             this.panel4.SuspendLayout();
             this.pnlSidePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcbCurrentFrame)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgMonitor)).BeginInit();
             this.pnlMonitor.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgMonitor)).BeginInit();
             this.SuspendLayout();
             // 
             // pcbRecognized
             // 
             this.pcbRecognized.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pcbRecognized.Location = new System.Drawing.Point(253, 134);
-            this.pcbRecognized.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pcbRecognized.Margin = new System.Windows.Forms.Padding(4);
             this.pcbRecognized.Name = "pcbRecognized";
             this.pcbRecognized.Size = new System.Drawing.Size(133, 123);
             this.pcbRecognized.TabIndex = 7;
@@ -104,7 +104,7 @@
             this.cbxDevices.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
             this.cbxDevices.FormattingEnabled = true;
             this.cbxDevices.Location = new System.Drawing.Point(465, 81);
-            this.cbxDevices.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbxDevices.Margin = new System.Windows.Forms.Padding(4);
             this.cbxDevices.Name = "cbxDevices";
             this.cbxDevices.Size = new System.Drawing.Size(353, 32);
             this.cbxDevices.TabIndex = 2;
@@ -152,7 +152,7 @@
             this.btnAuto.Font = new System.Drawing.Font("Calibri", 12F);
             this.btnAuto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
             this.btnAuto.Location = new System.Drawing.Point(993, 81);
-            this.btnAuto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAuto.Margin = new System.Windows.Forms.Padding(4);
             this.btnAuto.Name = "btnAuto";
             this.btnAuto.Size = new System.Drawing.Size(113, 33);
             this.btnAuto.TabIndex = 8;
@@ -182,7 +182,7 @@
             this.btnStart.Font = new System.Drawing.Font("Calibri", 12F);
             this.btnStart.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
             this.btnStart.Location = new System.Drawing.Point(852, 81);
-            this.btnStart.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnStart.Margin = new System.Windows.Forms.Padding(4);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(113, 33);
             this.btnStart.TabIndex = 6;
@@ -209,7 +209,7 @@
             this.panel4.Controls.Add(this.lblIDOnScreen);
             this.panel4.Controls.Add(this.lblAttendedID);
             this.panel4.Location = new System.Drawing.Point(49, 332);
-            this.panel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel4.Margin = new System.Windows.Forms.Padding(4);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(130, 55);
             this.panel4.TabIndex = 28;
@@ -259,7 +259,7 @@
             this.pnlSidePanel.Controls.Add(this.btnScanning);
             this.pnlSidePanel.Controls.Add(this.label1);
             this.pnlSidePanel.Location = new System.Drawing.Point(0, 0);
-            this.pnlSidePanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlSidePanel.Margin = new System.Windows.Forms.Padding(4);
             this.pnlSidePanel.Name = "pnlSidePanel";
             this.pnlSidePanel.Size = new System.Drawing.Size(227, 692);
             this.pnlSidePanel.TabIndex = 30;
@@ -287,7 +287,7 @@
             this.btnLaporan.Font = new System.Drawing.Font("Calibri", 15F);
             this.btnLaporan.ForeColor = System.Drawing.Color.White;
             this.btnLaporan.Location = new System.Drawing.Point(0, 235);
-            this.btnLaporan.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnLaporan.Margin = new System.Windows.Forms.Padding(4);
             this.btnLaporan.Name = "btnLaporan";
             this.btnLaporan.Size = new System.Drawing.Size(227, 43);
             this.btnLaporan.TabIndex = 34;
@@ -304,7 +304,7 @@
             this.btnMonitor.Font = new System.Drawing.Font("Calibri", 15F);
             this.btnMonitor.ForeColor = System.Drawing.Color.White;
             this.btnMonitor.Location = new System.Drawing.Point(0, 185);
-            this.btnMonitor.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnMonitor.Margin = new System.Windows.Forms.Padding(4);
             this.btnMonitor.Name = "btnMonitor";
             this.btnMonitor.Size = new System.Drawing.Size(227, 43);
             this.btnMonitor.TabIndex = 33;
@@ -320,7 +320,7 @@
             this.btnScanning.Font = new System.Drawing.Font("Calibri", 15F);
             this.btnScanning.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
             this.btnScanning.Location = new System.Drawing.Point(0, 134);
-            this.btnScanning.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnScanning.Margin = new System.Windows.Forms.Padding(4);
             this.btnScanning.Name = "btnScanning";
             this.btnScanning.Size = new System.Drawing.Size(227, 43);
             this.btnScanning.TabIndex = 32;
@@ -373,7 +373,7 @@
             this.pcbCurrentFrame.BackColor = System.Drawing.Color.Transparent;
             this.pcbCurrentFrame.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pcbCurrentFrame.Location = new System.Drawing.Point(253, 134);
-            this.pcbCurrentFrame.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pcbCurrentFrame.Margin = new System.Windows.Forms.Padding(4);
             this.pcbCurrentFrame.Name = "pcbCurrentFrame";
             this.pcbCurrentFrame.Size = new System.Drawing.Size(853, 443);
             this.pcbCurrentFrame.TabIndex = 4;
@@ -387,7 +387,7 @@
             this.btnExit.Font = new System.Drawing.Font("Calibri", 12F);
             this.btnExit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
             this.btnExit.Location = new System.Drawing.Point(1073, -1);
-            this.btnExit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(4);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(60, 33);
             this.btnExit.TabIndex = 33;
@@ -403,7 +403,7 @@
             this.btnHide.Font = new System.Drawing.Font("Calibri", 12F);
             this.btnHide.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
             this.btnHide.Location = new System.Drawing.Point(1015, -1);
-            this.btnHide.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnHide.Margin = new System.Windows.Forms.Padding(4);
             this.btnHide.Name = "btnHide";
             this.btnHide.Size = new System.Drawing.Size(60, 33);
             this.btnHide.TabIndex = 34;
@@ -425,22 +425,6 @@
             this.lblDevices.TabIndex = 5;
             this.lblDevices.Text = "Camera Device :";
             // 
-            // lblPersonDetected
-            // 
-            this.lblPersonDetected.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.lblPersonDetected.FlatAppearance.BorderSize = 0;
-            this.lblPersonDetected.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.lblPersonDetected.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.lblPersonDetected.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblPersonDetected.Font = new System.Drawing.Font("Calibri", 12F);
-            this.lblPersonDetected.ForeColor = System.Drawing.Color.White;
-            this.lblPersonDetected.Location = new System.Drawing.Point(253, 546);
-            this.lblPersonDetected.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.lblPersonDetected.Name = "lblPersonDetected";
-            this.lblPersonDetected.Size = new System.Drawing.Size(853, 31);
-            this.lblPersonDetected.TabIndex = 36;
-            this.lblPersonDetected.UseVisualStyleBackColor = false;
-            // 
             // ckbPulang
             // 
             this.ckbPulang.AutoSize = true;
@@ -448,7 +432,7 @@
             this.ckbPulang.Font = new System.Drawing.Font("Calibri", 12F);
             this.ckbPulang.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
             this.ckbPulang.Location = new System.Drawing.Point(993, 597);
-            this.ckbPulang.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ckbPulang.Margin = new System.Windows.Forms.Padding(4);
             this.ckbPulang.Name = "ckbPulang";
             this.ckbPulang.Size = new System.Drawing.Size(88, 28);
             this.ckbPulang.TabIndex = 37;
@@ -467,6 +451,22 @@
             this.lblEffectiveDayWarn.TabIndex = 38;
             this.lblEffectiveDayWarn.Text = "*Please set effective day first";
             // 
+            // lblPersonDetected
+            // 
+            this.lblPersonDetected.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.lblPersonDetected.FlatAppearance.BorderSize = 0;
+            this.lblPersonDetected.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.lblPersonDetected.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.lblPersonDetected.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblPersonDetected.Font = new System.Drawing.Font("Calibri", 12F);
+            this.lblPersonDetected.ForeColor = System.Drawing.Color.White;
+            this.lblPersonDetected.Location = new System.Drawing.Point(253, 546);
+            this.lblPersonDetected.Margin = new System.Windows.Forms.Padding(4);
+            this.lblPersonDetected.Name = "lblPersonDetected";
+            this.lblPersonDetected.Size = new System.Drawing.Size(853, 31);
+            this.lblPersonDetected.TabIndex = 36;
+            this.lblPersonDetected.UseVisualStyleBackColor = false;
+            // 
             // lblFaceCounter
             // 
             this.lblFaceCounter.AutoSize = true;
@@ -478,92 +478,6 @@
             this.lblFaceCounter.Size = new System.Drawing.Size(27, 31);
             this.lblFaceCounter.TabIndex = 23;
             this.lblFaceCounter.Text = "0";
-            // 
-            // dtgMonitor
-            // 
-            this.dtgMonitor.AllowUserToAddRows = false;
-            this.dtgMonitor.AllowUserToDeleteRows = false;
-            this.dtgMonitor.AllowUserToResizeColumns = false;
-            this.dtgMonitor.AllowUserToResizeRows = false;
-            this.dtgMonitor.BackgroundColor = System.Drawing.Color.White;
-            this.dtgMonitor.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dtgMonitor.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Calibri", 12F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgMonitor.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dtgMonitor.ColumnHeadersHeight = 29;
-            this.dtgMonitor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dtgMonitor.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ID,
-            this.Nama,
-            this.waktuHadir,
-            this.waktuPulang});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Calibri", 12F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgMonitor.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dtgMonitor.EnableHeadersVisualStyles = false;
-            this.dtgMonitor.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.dtgMonitor.Location = new System.Drawing.Point(0, 53);
-            this.dtgMonitor.Margin = new System.Windows.Forms.Padding(4);
-            this.dtgMonitor.MultiSelect = false;
-            this.dtgMonitor.Name = "dtgMonitor";
-            this.dtgMonitor.ReadOnly = true;
-            this.dtgMonitor.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.dtgMonitor.RowHeadersVisible = false;
-            this.dtgMonitor.RowHeadersWidth = 51;
-            this.dtgMonitor.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dtgMonitor.Size = new System.Drawing.Size(853, 414);
-            this.dtgMonitor.TabIndex = 0;
-            // 
-            // waktuPulang
-            // 
-            this.waktuPulang.HeaderText = "Pulang";
-            this.waktuPulang.MinimumWidth = 6;
-            this.waktuPulang.Name = "waktuPulang";
-            this.waktuPulang.ReadOnly = true;
-            this.waktuPulang.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.waktuPulang.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.waktuPulang.Width = 125;
-            // 
-            // waktuHadir
-            // 
-            this.waktuHadir.HeaderText = "Datang";
-            this.waktuHadir.MinimumWidth = 6;
-            this.waktuHadir.Name = "waktuHadir";
-            this.waktuHadir.ReadOnly = true;
-            this.waktuHadir.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.waktuHadir.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.waktuHadir.Width = 125;
-            // 
-            // Nama
-            // 
-            this.Nama.HeaderText = "Nama";
-            this.Nama.MinimumWidth = 6;
-            this.Nama.Name = "Nama";
-            this.Nama.ReadOnly = true;
-            this.Nama.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Nama.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Nama.Width = 238;
-            // 
-            // ID
-            // 
-            this.ID.HeaderText = "ID";
-            this.ID.MinimumWidth = 6;
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            this.ID.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.ID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.ID.Width = 200;
             // 
             // lblFaceStored
             // 
@@ -593,18 +507,6 @@
             this.btnAddFace.Text = "Add Face";
             this.btnAddFace.UseVisualStyleBackColor = false;
             this.btnAddFace.Click += new System.EventHandler(this.btnAddFace_Click);
-            // 
-            // lblAddFaceWarn
-            // 
-            this.lblAddFaceWarn.AutoSize = true;
-            this.lblAddFaceWarn.Font = new System.Drawing.Font("Calibri", 10F);
-            this.lblAddFaceWarn.ForeColor = System.Drawing.Color.Red;
-            this.lblAddFaceWarn.Location = new System.Drawing.Point(529, 9);
-            this.lblAddFaceWarn.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblAddFaceWarn.Name = "lblAddFaceWarn";
-            this.lblAddFaceWarn.Size = new System.Drawing.Size(186, 21);
-            this.lblAddFaceWarn.TabIndex = 26;
-            this.lblAddFaceWarn.Text = "*Please start camera first";
             // 
             // lblReport
             // 
@@ -698,6 +600,104 @@
             this.pnlMonitor.TabIndex = 35;
             this.pnlMonitor.Visible = false;
             // 
+            // lblAddFaceWarn
+            // 
+            this.lblAddFaceWarn.AutoSize = true;
+            this.lblAddFaceWarn.Font = new System.Drawing.Font("Calibri", 10F);
+            this.lblAddFaceWarn.ForeColor = System.Drawing.Color.Red;
+            this.lblAddFaceWarn.Location = new System.Drawing.Point(529, 9);
+            this.lblAddFaceWarn.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblAddFaceWarn.Name = "lblAddFaceWarn";
+            this.lblAddFaceWarn.Size = new System.Drawing.Size(186, 21);
+            this.lblAddFaceWarn.TabIndex = 26;
+            this.lblAddFaceWarn.Text = "*Please start camera first";
+            // 
+            // waktuPulang
+            // 
+            this.waktuPulang.HeaderText = "Pulang";
+            this.waktuPulang.MinimumWidth = 6;
+            this.waktuPulang.Name = "waktuPulang";
+            this.waktuPulang.ReadOnly = true;
+            this.waktuPulang.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.waktuPulang.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.waktuPulang.Width = 125;
+            // 
+            // waktuHadir
+            // 
+            this.waktuHadir.HeaderText = "Datang";
+            this.waktuHadir.MinimumWidth = 6;
+            this.waktuHadir.Name = "waktuHadir";
+            this.waktuHadir.ReadOnly = true;
+            this.waktuHadir.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.waktuHadir.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.waktuHadir.Width = 125;
+            // 
+            // Nama
+            // 
+            this.Nama.HeaderText = "Nama";
+            this.Nama.MinimumWidth = 6;
+            this.Nama.Name = "Nama";
+            this.Nama.ReadOnly = true;
+            this.Nama.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Nama.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Nama.Width = 238;
+            // 
+            // ID
+            // 
+            this.ID.HeaderText = "ID";
+            this.ID.MinimumWidth = 6;
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            this.ID.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.ID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ID.Width = 200;
+            // 
+            // dtgMonitor
+            // 
+            this.dtgMonitor.AllowUserToAddRows = false;
+            this.dtgMonitor.AllowUserToDeleteRows = false;
+            this.dtgMonitor.AllowUserToResizeColumns = false;
+            this.dtgMonitor.AllowUserToResizeRows = false;
+            this.dtgMonitor.BackgroundColor = System.Drawing.Color.White;
+            this.dtgMonitor.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dtgMonitor.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Calibri", 12F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgMonitor.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dtgMonitor.ColumnHeadersHeight = 29;
+            this.dtgMonitor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dtgMonitor.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ID,
+            this.Nama,
+            this.waktuHadir,
+            this.waktuPulang});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Calibri", 12F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgMonitor.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dtgMonitor.EnableHeadersVisualStyles = false;
+            this.dtgMonitor.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.dtgMonitor.Location = new System.Drawing.Point(0, 53);
+            this.dtgMonitor.Margin = new System.Windows.Forms.Padding(4);
+            this.dtgMonitor.MultiSelect = false;
+            this.dtgMonitor.Name = "dtgMonitor";
+            this.dtgMonitor.ReadOnly = true;
+            this.dtgMonitor.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dtgMonitor.RowHeadersVisible = false;
+            this.dtgMonitor.RowHeadersWidth = 51;
+            this.dtgMonitor.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dtgMonitor.Size = new System.Drawing.Size(853, 414);
+            this.dtgMonitor.TabIndex = 0;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -723,7 +723,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -736,9 +736,9 @@
             this.pnlSidePanel.ResumeLayout(false);
             this.pnlSidePanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcbCurrentFrame)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgMonitor)).EndInit();
             this.pnlMonitor.ResumeLayout(false);
             this.pnlMonitor.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgMonitor)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -770,25 +770,25 @@
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnHide;
         private System.Windows.Forms.Label lblDevices;
-        private System.Windows.Forms.Button lblPersonDetected;
         private System.Windows.Forms.CheckBox ckbPulang;
         private System.Windows.Forms.Label lblIDOnScreen;
         private System.Windows.Forms.Label lblEffectiveDayWarn;
+        private System.Windows.Forms.Button lblPersonDetected;
         private System.Windows.Forms.Label lblFaceCounter;
-        private System.Windows.Forms.DataGridView dtgMonitor;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nama;
-        private System.Windows.Forms.DataGridViewTextBoxColumn waktuHadir;
-        private System.Windows.Forms.DataGridViewTextBoxColumn waktuPulang;
         private System.Windows.Forms.Label lblFaceStored;
         private System.Windows.Forms.Button btnAddFace;
-        private System.Windows.Forms.Label lblAddFaceWarn;
         private System.Windows.Forms.Label lblReport;
         private System.Windows.Forms.Button btnPanel;
         private System.Windows.Forms.Label lblEffectiveDay;
         private System.Windows.Forms.Label lblEffectiveDayCount;
         private System.Windows.Forms.Button btnEffectiveDay;
         private System.Windows.Forms.Panel pnlMonitor;
+        private System.Windows.Forms.Label lblAddFaceWarn;
+        private System.Windows.Forms.DataGridView dtgMonitor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nama;
+        private System.Windows.Forms.DataGridViewTextBoxColumn waktuHadir;
+        private System.Windows.Forms.DataGridViewTextBoxColumn waktuPulang;
     }
 }
 
